@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMI and AC Notes</title>
+<meta name="description" content="CBSE Class 12 Physics: Electromagnetic Induction and Alternating Current – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="../index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="01-electrostatics.html">Electrostatics</a>
+    <a href="02-current.html">Current</a>
+    <a href="03-magnetism.html">Magnetism</a>
+    <a href="04-emi-ac.html">EMI &amp; AC</a>
+    <a href="05-optics.html">EM Waves &amp; Optics</a>
+    <a href="06-modern.html">Modern</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Unit 4 · EMI &amp; Alternating Current</h1>
+<p class="lead">Ch 6 Electromagnetic Induction · Ch 7 Alternating Current. One 5-mark question (AC generator, transformer or LCR) comes from here in nearly every paper.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#faraday">Faraday's and Lenz's laws</a></li>
+<li><a href="#motional">Motional emf &amp; eddy currents</a></li>
+<li><a href="#inductance">Self and mutual inductance</a></li>
+<li><a href="#generator">AC generator</a></li>
+<li><a href="#acckt">AC through R, L, C</a></li>
+<li><a href="#lcr">Series LCR, resonance, power</a></li>
+<li><a href="#transformer">Transformer</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="faraday">1. Faraday's and Lenz's laws</h2>
+
+<div class="qa"><p class="q">Q. State Faraday's laws and Lenz's law. Show that Lenz's law obeys conservation of energy.<span class="tag">2–3 M</span></p>
+<div class="a">
+<div class="formula">ε = − N dΦ/dt, &nbsp; Φ = B⃗·A⃗ = BA cos θ</div>
+<ol><li>An emf is induced whenever the magnetic flux linked with a circuit changes.</li>
+<li>Its magnitude equals the rate of change of flux linkage.</li></ol>
+<p><strong>Lenz's law:</strong> the induced current flows in a direction that opposes the change in flux producing it (the minus sign).</p>
+<p><strong>Energy:</strong> when a magnet's N-pole approaches a coil, the near face of the coil becomes an N-pole and repels it. Work must be done against this repulsion, and that work appears as electrical energy. If the induced current <em>aided</em> the change, the magnet would accelerate by itself and create energy from nothing. So Lenz's law is a consequence of conservation of energy.</p>
+<div class="tip"><strong>A–R trap:</strong> "Lenz's law violates conservation of energy" and "induced emf supports the change" are both false. Answer: D.</div></div></div>
+
+<div class="qa"><p class="q">Q. A magnet falls through a copper ring / long solenoid. Compare its acceleration with g.<span class="tag">1 M</span></p>
+<div class="a"><p>Less than g. The induced current opposes the relative motion (above the ring it repels the approaching magnet, below it attracts the receding one).</p></div></div>
+
+<div class="qa"><p class="q">Q. Flux through a loop varies with time as shown in a graph. How do you plot the induced current?<span class="tag">3 M</span></p>
+<div class="a"><p>ε = −A dB/dt. Constant slope → constant emf; flat part → zero emf; falling part → emf of opposite sign. E.g. r = 12 cm, R = 8.5 Ω, dB/dt = 0.5 T/s: ε = π(0.12)²×0.5 = 0.0226 V, I = 2.66 mA, then 0, then −2.66 mA.</p>
+<p>Φ = 8t² + 5t + 7 → ε = dΦ/dt = 16t + 5 → at t = 4 s, ε = 69 V.</p></div></div>
+
+<h2 id="motional">2. Motional emf &amp; eddy currents</h2>
+
+<div class="qa"><p class="q">Q. Derive the emf induced in a rod of length l moving with velocity v ⟂ B on rails. Find the force needed and show that mechanical power = electrical power.<span class="tag">3–5 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 340 170" width="340" role="img" aria-label="Rod sliding on rails in a magnetic field">
+  <line class="ln" x1="30" y1="30" x2="320" y2="30"/><line class="ln" x1="30" y1="140" x2="320" y2="140"/>
+  <line class="ln" x1="30" y1="30" x2="30" y2="140"/><rect x="22" y="70" width="16" height="30" class="fillb"/><text x="0" y="90">R</text>
+  <line class="acc2" x1="190" y1="22" x2="190" y2="148" stroke-width="4"/><text x="196" y="22" class="a2">P</text><text x="196" y="160" class="a2">Q</text>
+  <line class="acc" x1="200" y1="85" x2="250" y2="85"/><polygon class="dota" points="256,85 246,80 246,90"/><text x="232" y="78" class="a">v</text>
+  <text x="200" y="104" class="s">l</text>
+  <g class="s"><text x="80" y="60">× × × ×</text><text x="80" y="90">× × × ×</text><text x="80" y="120">× × × ×</text><text x="250" y="60">× ×</text><text x="250" y="120">× ×</text></g>
+  <text x="120" y="160" class="s">B into page; x = distance of rod from R</text>
+</svg>
+</figure>
+<p>Flux Φ = Blx. ε = −dΦ/dt = −Bl dx/dt →</p>
+<div class="formula">|ε| = Blv, &nbsp; I = Blv/R, &nbsp; F = IlB = B²l²v/R</div>
+<p>Mechanical power P = Fv = B²l²v²/R = I²R = electrical power dissipated. ✔</p>
+<p><em>Example:</em> l = 0.5 m, v = 4 m/s, B = 0.3 T, R = 0.6 Ω: ε = 0.6 V, I = 1 A, F = 0.15 N, P = 0.6 W.</p>
+<p><strong>Rod rotating</strong> about one end: ε = ½Bωl². (0.8 T, 20 rad/s, 0.5 m → 2 V.)</p>
+<p><strong>Rectangular loop (8 cm × 2 cm) leaving a field of 0.3 T at 1 cm/s:</strong> velocity ⟂ to the longer side → ε = 0.3 × 0.08 × 0.01 = 2.4×10⁻⁴ V for 2 s; ⟂ to the shorter side → 0.6×10⁻⁴ V for 8 s.</p></div></div>
+
+<div class="qa"><p class="q">Q. What are eddy currents? Give their uses and how to reduce them.<span class="tag">2–3 M · case study</span></p>
+<div class="a"><p>Circulating currents induced in the bulk of a conductor when the flux through it changes. They oppose the motion (Lenz) and heat the conductor (I²R).</p>
+<ul><li>Uses: electromagnetic (eddy-current) brakes in trains, electromagnetic damping in galvanometers, induction furnace, induction cooktop, speedometers.</li>
+<li>Reduce: use <strong>laminated</strong> cores (thin insulated sheets) to increase resistance of eddy current paths; slotted plates.</li>
+<li>Eddy-current brakes give smooth braking without mechanical wear since there is no contact; kinetic energy → heat.</li></ul></div></div>
+
+<h2 id="inductance">3. Self and mutual inductance</h2>
+
+<div class="qa"><p class="q">Q. Define self-inductance. Derive L for a long solenoid. How does it change if N is doubled?<span class="tag">2–5 M · ~7 papers</span></p>
+<div class="a">
+<p>Self-inductance: NΦ = LI; also ε = −L dI/dt. SI unit henry (H).</p>
+<p>B = μ₀nI = μ₀NI/l. Flux linkage NΦ = N · BA = μ₀N²AI/l →</p>
+<div class="formula">L = μ₀N²A / l = μ₀n²Al &nbsp;&nbsp;(with core: μ<sub>r</sub> × this)</div>
+<p>Doubling N (same l, A) → L becomes <strong>4L</strong>. Increase L with more turns, larger area, or an iron core.</p>
+<p><em>Example:</em> N = 500, l = 0.5 m, A = 2×10⁻⁴ m²: L = 4π×10⁻⁷ × 25×10⁴ × 2×10⁻⁴ / 0.5 = 1.26×10⁻⁴ H; current 0→5 A in 0.1 s → ε = 6.3 mV.</p>
+<p>Energy stored: <strong>U = ½LI²</strong> (from W = ∫LI dI). E.g. 2 H at 5 A → 25 J. Current 5→1 A in 0.2 s through 2 H → ε = 40 V. 5→2 A in 0.1 s gives 50 V → L = 50 × 0.1/3 = 1.67 H.</p></div></div>
+
+<div class="qa"><p class="q">Q. Define mutual inductance. Derive M for two coaxial solenoids / a solenoid and a coaxial loop. What affects M?<span class="tag">3 M</span></p>
+<div class="a">
+<p>N₂Φ₂ = MI₁; ε₂ = −M dI₁/dt.</p>
+<p>Inner solenoid (radius r₁, N₂ turns) inside outer (n₁ turns/m) of length l: field of outer B = μ₀n₁I₁, flux linkage with inner = N₂ · μ₀n₁I₁ · πr₁² →</p>
+<div class="formula">M = μ₀ n₁ n₂ π r₁² l</div>
+<p>Small loop of radius r at the centre of a long solenoid (n turns/m): M = μ₀nπr².</p>
+<p>M decreases when the coils are separated; increases with more turns; increases with an iron core (μ<sub>r</sub>); a thin iron sheet between coils shields and reduces flux linkage. Example: primary 7 A → 3 A in 0.04 s with M = 0.5 H → ε = 50 V.</p></div></div>
+
+<h2 id="generator">4. AC generator</h2>
+
+<div class="qa"><p class="q">Q. With a labelled diagram, explain the principle, construction and working of an AC generator. Derive the expression for instantaneous emf. When is it maximum?<span class="tag">5 M · 11 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 220" width="420" role="img" aria-label="AC generator with coil between magnet poles, slip rings and brushes">
+  <rect x="20" y="50" width="60" height="110" class="fillb"/><text x="42" y="110" font-weight="700">N</text>
+  <rect x="260" y="50" width="60" height="110" class="fillb"/><text x="284" y="110" font-weight="700">S</text>
+  <line class="acc" x1="85" y1="75" x2="255" y2="75"/><line class="acc" x1="85" y1="135" x2="255" y2="135"/><text x="235" y="68" class="a">B</text>
+  <polygon points="130,60 210,80 210,150 130,130" class="thin" stroke-width="2.5"/>
+  <text x="120" y="56">a</text><text x="212" y="78">b</text><text x="212" y="162">c</text><text x="118" y="144">d</text>
+  <line class="dash" x1="170" y1="30" x2="170" y2="200"/><text x="176" y="34" class="s">axis, ω</text>
+  <line class="ln" x1="160" y1="140" x2="160" y2="180"/><line class="ln" x1="180" y1="140" x2="180" y2="195"/>
+  <ellipse class="ln" cx="170" cy="180" rx="14" ry="5"/><ellipse class="ln" cx="170" cy="195" rx="14" ry="5"/>
+  <text x="80" y="190" class="s">slip rings</text>
+  <rect x="190" y="175" width="14" height="10" class="fillb"/><rect x="190" y="190" width="14" height="10" class="fillb"/>
+  <line class="ln" x1="204" y1="180" x2="360" y2="180"/><line class="ln" x1="204" y1="195" x2="360" y2="195"/>
+  <circle class="fillb" cx="370" cy="188" r="14"/><text x="364" y="192">~</text><text x="345" y="214" class="s">load</text>
+  <text x="212" y="210" class="s">brushes</text>
+</svg>
+</figure>
+<p><strong>Principle:</strong> electromagnetic induction — when a coil rotates in a magnetic field, the flux through it changes continuously and an alternating emf is induced.</p>
+<p><strong>Construction:</strong> armature coil (N turns, area A) on a soft-iron core; strong field magnets; slip rings rotating with the coil; carbon brushes pressing on the rings to connect to the load.</p>
+<p><strong>Working / derivation:</strong> at time t, the normal to the coil makes angle θ = ωt with B.</p>
+<div class="formula">Φ = NBA cos ωt &nbsp;⇒&nbsp; ε = −dΦ/dt = NBAω sin ωt = ε₀ sin ωt</div>
+<p>ε₀ = NBAω is maximum when sin ωt = ±1, i.e. the plane of the coil is <strong>parallel</strong> to B (flux zero, but changing fastest): t = T/4, 3T/4. Emf is zero when the plane is ⟂ to B (t = 0, T/2, T).</p>
+<p>Source of energy: mechanical work done to rotate the coil against the opposing (Lenz) torque.</p>
+<p><em>Examples:</em> N = 200, A = 0.02 m², B = 0.5 T, ω = 50 rad/s → ε₀ = 100 V, ε<sub>rms</sub> = 70.7 V. Coil 100 turns, 0.1 m², 60 rev/s, 0.2 T → ε₀ = 100 × 0.2 × 0.1 × 2π × 60 = 754 V. Coil r = 8 cm, 20 turns, 50 rad/s, 3×10⁻² T → ε₀ = 20 × π(0.08)² × 3×10⁻² × 50 = 0.603 V; with R = 10 Ω: I₀ = 0.0603 A, average power = ½ε₀I₀ = 0.018 W.</p></div></div>
+
+<h2 id="acckt">5. AC through R, L, C</h2>
+
+<div class="qa"><p class="q">Q. Show that in a pure inductor the current lags the voltage by π/2, and in a pure capacitor it leads by π/2. Draw graphs and phasors.<span class="tag">3–5 M</span></p>
+<div class="a">
+<p><strong>Inductor:</strong> v = V₀ sin ωt = L di/dt → i = −(V₀/ωL) cos ωt = I₀ sin(ωt − π/2). X<sub>L</sub> = ωL.</p>
+<p><strong>Capacitor:</strong> q = Cv → i = dq/dt = ωCV₀ cos ωt = I₀ sin(ωt + π/2). X<sub>C</sub> = 1/ωC.</p>
+<figure>
+<svg viewBox="0 0 460 170" width="460" role="img" aria-label="Voltage and current waveforms for a capacitor, and reactance versus frequency">
+  <g transform="translate(10,10)">
+    <line class="ln" x1="0" y1="70" x2="220" y2="70"/><text x="205" y="88" class="s">ωt</text>
+    <path class="acc" d="M0 70 C 25 10, 45 10, 55 10 C 65 10, 85 10, 110 70 C 135 130, 155 130, 165 130 C 175 130, 195 130, 220 70"/>
+    <path class="acc2" d="M0 10 C 10 10, 30 10, 55 70 C 80 130, 100 130, 110 130 C 120 130, 140 130, 165 70 C 190 10, 210 10, 220 10"/>
+    <text x="60" y="6" class="a">v</text><text x="2" y="4" class="a2">i (leads)</text>
+    <text x="40" y="155" class="s">Capacitor: i leads v by π/2</text>
+  </g>
+  <g transform="translate(260,10)">
+    <line class="ln" x1="20" y1="130" x2="190" y2="130"/><line class="ln" x1="20" y1="130" x2="20" y2="5"/>
+    <line class="acc" x1="20" y1="130" x2="180" y2="20"/><text x="150" y="20" class="a">X<tspan dy="3">L</tspan><tspan dy="-3"> = ωL</tspan></text>
+    <path class="acc2" d="M30 8 Q 45 100 180 118"/><text x="100" y="98" class="a2">X<tspan dy="3">C</tspan><tspan dy="-3"> = 1/ωC</tspan></text>
+    <text x="180" y="146">f</text><text x="2" y="12">X</text>
+    <text x="40" y="160" class="s">Reactance vs frequency</text>
+  </g>
+</svg>
+</figure>
+<p>X<sub>L</sub> ∝ f (straight line through origin); X<sub>C</sub> ∝ 1/f (hyperbola). For DC (f = 0) a capacitor blocks current and an inductor offers no reactance.</p>
+<p><strong>Average power in pure L or C is zero:</strong> P = V<sub>rms</sub>I<sub>rms</sub> cos(π/2) = 0 — energy stored in one quarter-cycle is returned in the next. Such current is called <em>wattless current</em>.</p>
+<p><em>Bulb in series with a capacitor:</em> on DC it does not glow (after charging). On AC it glows; reducing C increases X<sub>C</sub> → dimmer. <em>Bulb with an iron-cored inductor:</em> removing the iron reduces L, lowers X<sub>L</sub> → brighter. Adding a capacitor with X<sub>C</sub> = X<sub>L</sub> → resonance → brightest.</p></div></div>
+
+<h2 id="lcr">6. Series LCR, resonance, power</h2>
+
+<div class="qa"><p class="q">Q. Using a phasor diagram, derive the impedance of a series LCR circuit and the phase angle.<span class="tag">5 M · very frequent</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 300 220" width="300" role="img" aria-label="Phasor diagram for series LCR circuit">
+  <line class="ln" x1="40" y1="160" x2="270" y2="160"/>
+  <line class="acc" x1="40" y1="160" x2="200" y2="160"/><polygon class="dota" points="206,160 196,155 196,165"/><text x="150" y="178" class="a">V<tspan dy="3">R</tspan><tspan dy="-3">, I</tspan></text>
+  <line class="ln" x1="40" y1="160" x2="40" y2="20"/><polygon class="dot" points="40,14 35,24 45,24"/><text x="46" y="24">V<tspan dy="3">L</tspan></text>
+  <line class="ln" x1="40" y1="160" x2="40" y2="210"/><polygon class="dot" points="40,216 35,206 45,206"/><text x="46" y="212">V<tspan dy="3">C</tspan></text>
+  <line class="dash" x1="40" y1="70" x2="200" y2="70"/><line class="dash" x1="200" y1="70" x2="200" y2="160"/>
+  <text x="2" y="74" class="s">V<tspan dy="3">L</tspan><tspan dy="-3">−V</tspan><tspan dy="3">C</tspan></text>
+  <line class="acc2" x1="40" y1="160" x2="200" y2="70"/><polygon class="dota2" points="204,68 192,68 198,78"/><text x="120" y="100" class="a2">V</text>
+  <path class="thin" d="M80 160 A 40 40 0 0 0 76 140"/><text x="86" y="150">φ</text>
+</svg>
+<figcaption>Current I is common to all; V<sub>R</sub> along I, V<sub>L</sub> leads by 90°, V<sub>C</sub> lags by 90°.</figcaption>
+</figure>
+<p>V² = V<sub>R</sub>² + (V<sub>L</sub> − V<sub>C</sub>)² = I²[R² + (X<sub>L</sub> − X<sub>C</sub>)²]</p>
+<div class="formula">Z = √(R² + (X<sub>L</sub> − X<sub>C</sub>)²), &nbsp; tan φ = (X<sub>L</sub> − X<sub>C</sub>)/R</div>
+<p>X<sub>L</sub> &gt; X<sub>C</sub>: inductive, current lags. X<sub>L</sub> &lt; X<sub>C</sub>: capacitive, current leads.</p>
+<p><em>Example:</em> R = 30 Ω, X<sub>L</sub> = 70 Ω, X<sub>C</sub> = 30 Ω, 200 V: Z = 50 Ω, I = 4 A, tan φ = 4/3 → φ = 53°, current lags.</p>
+<p>Why can V<sub>R</sub> + V<sub>L</sub> + V<sub>C</sub> exceed the source voltage? They are not in phase, so they add as phasors, not algebraically.</p></div></div>
+
+<div class="qa"><p class="q">Q. What is resonance? Derive the resonant frequency. Plot I vs ω. Define Q-factor. How is it used in radio tuning?<span class="tag">3–5 M</span></p>
+<div class="a">
+<p>At resonance X<sub>L</sub> = X<sub>C</sub> → ω₀L = 1/ω₀C →</p>
+<div class="formula">ω₀ = 1/√(LC), &nbsp; f₀ = 1/(2π√(LC)), &nbsp; Z<sub>min</sub> = R, &nbsp; I<sub>max</sub> = V/R</div>
+<figure>
+<svg viewBox="0 0 300 170" width="300" role="img" aria-label="Resonance curves for small and large resistance">
+  <line class="ln" x1="30" y1="145" x2="290" y2="145"/><line class="ln" x1="30" y1="145" x2="30" y2="10"/><text x="280" y="162">ω</text><text x="10" y="18">I</text>
+  <path class="acc" d="M35 140 C 100 135, 130 20, 150 18 C 170 20, 200 135, 285 140"/>
+  <path class="acc2" d="M35 140 C 90 130, 120 75, 150 72 C 180 75, 210 130, 285 140"/>
+  <line class="dash" x1="150" y1="18" x2="150" y2="145"/><text x="144" y="162">ω₀</text>
+  <text x="160" y="30" class="a">small R (sharp)</text><text x="185" y="96" class="a2">large R</text>
+</svg>
+</figure>
+<p><strong>Quality factor</strong> Q = ω₀L/R = (1/R)√(L/C) = ω₀/(bandwidth). A high Q (small R) gives a sharp peak and better selectivity.</p>
+<p><strong>Radio tuning:</strong> C is varied so the circuit's f₀ equals the desired station's frequency; that station's current is maximum while others are suppressed. A sharper curve (higher Q) avoids adjacent-channel interference.</p>
+<p><em>Examples:</em> L = 2 H, C = 32 μF: ω₀ = 1/√(64×10⁻⁶) = 125 rad/s. L = 0.1 H, C = 10 μF, R = 10 Ω, 100 V: ω₀ = 1000 rad/s, I = 10 A. R = 10, L = 0.5 H, C = 20 μF: ω₀ = 316 rad/s, Q = 15.8.</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the average power in a series LCR circuit. Define power factor. When is power maximum? When is current wattless?<span class="tag">3–5 M</span></p>
+<div class="a">
+<p>v = V₀ sin ωt, i = I₀ sin(ωt − φ). p = vi = V₀I₀ sin ωt sin(ωt − φ) = (V₀I₀/2)[cos φ − cos(2ωt − φ)]. Average of cos(2ωt − φ) over a cycle is 0:</p>
+<div class="formula">P<sub>avg</sub> = V<sub>rms</sub> I<sub>rms</sub> cos φ, &nbsp; power factor cos φ = R/Z</div>
+<ul><li>Maximum power: cos φ = 1, φ = 0 → purely resistive or at resonance.</li>
+<li>Zero power (wattless current): φ = ±90° → pure L or pure C (R = 0).</li></ul>
+<p><em>Example:</em> 80 mH and 250 μF in series, 240 V, 100 rad/s, R ≈ 0: X<sub>L</sub> = 8 Ω, X<sub>C</sub> = 40 Ω, Z = 32 Ω, I = 7.5 A, average power = 0.</p>
+<div class="tip"><strong>Choke coil:</strong> preferred over a resistor to limit AC current because an ideal inductor consumes no average power.</div></div></div>
+
+<h2 id="transformer">7. Transformer</h2>
+
+<div class="qa"><p class="q">Q. With a labelled diagram, explain the principle and working of a step-up transformer. Derive the voltage and current ratios. State the energy losses.<span class="tag">5 M · 9 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 380 200" width="380" role="img" aria-label="Transformer with primary and secondary coils on a laminated core">
+  <rect x="90" y="30" width="200" height="140" class="fillb"/><rect x="125" y="62" width="130" height="76" fill="var(--bg)" stroke="var(--svg-line)" stroke-width="1.5"/>
+  <g class="acc"><path d="M80 60 h20 M80 75 h20 M80 90 h20 M80 105 h20 M80 120 h20 M80 135 h20"/></g>
+  <g class="acc2"><path d="M280 50 h20 M280 60 h20 M280 70 h20 M280 80 h20 M280 90 h20 M280 100 h20 M280 110 h20 M280 120 h20 M280 130 h20 M280 140 h20 M280 150 h20"/></g>
+  <line class="ln" x1="80" y1="60" x2="30" y2="60"/><line class="ln" x1="80" y1="135" x2="30" y2="135"/><circle class="fillb" cx="30" cy="98" r="14"/><text x="25" y="103">~</text>
+  <line class="ln" x1="30" y1="60" x2="30" y2="84"/><line class="ln" x1="30" y1="112" x2="30" y2="135"/>
+  <line class="ln" x1="300" y1="50" x2="350" y2="50"/><line class="ln" x1="300" y1="150" x2="350" y2="150"/><rect x="342" y="80" width="16" height="40" class="fillb"/>
+  <line class="ln" x1="350" y1="50" x2="350" y2="80"/><line class="ln" x1="350" y1="120" x2="350" y2="150"/>
+  <text x="56" y="185" class="a">Primary N<tspan dy="3">p</tspan></text><text x="260" y="185" class="a2">Secondary N<tspan dy="3">s</tspan></text>
+  <text x="150" y="104" class="s">laminated soft-iron core</text><text x="352" y="74" class="s">load</text>
+</svg>
+</figure>
+<p><strong>Principle:</strong> mutual induction. AC in the primary sets up an alternating flux in the core, which links the secondary and induces an emf in it.</p>
+<p><strong>Derivation</strong> (ideal: same flux links both coils, negligible resistance, no losses):</p>
+<p>ε<sub>p</sub> = −N<sub>p</sub> dΦ/dt, ε<sub>s</sub> = −N<sub>s</sub> dΦ/dt →</p>
+<div class="formula">V<sub>s</sub>/V<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub> = I<sub>p</sub>/I<sub>s</sub> &nbsp;(since V<sub>p</sub>I<sub>p</sub> = V<sub>s</sub>I<sub>s</sub>)</div>
+<p>Step-up: N<sub>s</sub> &gt; N<sub>p</sub> → voltage up, current down by the same factor; power is unchanged, so it does <strong>not</strong> violate energy conservation and cannot increase power.</p>
+<p><strong>Energy losses and remedies:</strong></p>
+<ul><li>Flux leakage — wind coils over each other.</li><li>Copper (I²R) loss — thick copper wire.</li><li>Eddy current loss — laminated core.</li><li>Hysteresis loss — soft iron with a narrow loop.</li></ul>
+<p><strong>Why not DC?</strong> Steady DC produces constant flux, so dΦ/dt = 0 and no emf is induced in the secondary.</p>
+<p><strong>Why step-up for transmission?</strong> High voltage → low current → low I²R loss over long distances.</p>
+<p><em>Examples:</em> 220 V → 11 kV: N<sub>s</sub>/N<sub>p</sub> = 50. 200 turns/4000 turns, 220 V → 4400 V, I<sub>p</sub>:I<sub>s</sub> = 20:1. Refrigerator 110 V, 550 W on 220 V supply → I<sub>p</sub> = 2.5 A. 1150/230 turns, 200 V → 40 V; I<sub>s</sub> = 2 A → I<sub>p</sub> = 0.4 A; 75% efficiency → output 60 W.</p></div></div>
+
+<h2 id="quick">8. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Inductor: current vs voltage</td><td>current lags by π/2</td></tr>
+<tr><td>Impedance at resonance</td><td>minimum, equal to R</td></tr>
+<tr><td>V<sub>L</sub> = V<sub>C</sub> in series LCR</td><td>resonance</td></tr>
+<tr><td>V<sub>R</sub> = V<sub>L</sub> = V<sub>C</sub> = 10 V, C shorted: V<sub>L</sub></td><td>10/√2 V (source 10 V, R = X<sub>L</sub>)</td></tr>
+<tr><td>Current I₀ sin(ωt + π/4) with R and X</td><td>X is a capacitor, X<sub>C</sub> = R</td></tr>
+<tr><td>Time for 50 Hz voltage to go from peak to zero</td><td>T/4 = 5 ms</td></tr>
+<tr><td>X<sub>C</sub> = 25 Ω at 400/π Hz: C</td><td>50 μF</td></tr>
+<tr><td>V = 200√2 sin(100t) across 100 Ω: I<sub>rms</sub></td><td>2 A</td></tr>
+<tr><td>Long wire coiled into many loops on AC</td><td>current decreases (inductance increases)</td></tr>
+<tr><td>Lenz's law is a consequence of conservation of</td><td>energy</td></tr>
+</table>
+
+<div class="pager"><a href="03-magnetism.html">← Magnetism</a><a href="05-optics.html">EM Waves &amp; Optics →</a></div>
+</main>
+<footer>Study notes compiled from patterns in 20 KV Ernakulam Region Pre-Board 1 (2026–27) papers. Verify against NCERT.</footer>
+</body>
+</html>

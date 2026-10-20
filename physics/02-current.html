@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Current Electricity Notes</title>
+<meta name="description" content="CBSE Class 12 Physics: Current Electricity – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="../index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="01-electrostatics.html">Electrostatics</a>
+    <a href="02-current.html">Current</a>
+    <a href="03-magnetism.html">Magnetism</a>
+    <a href="04-emi-ac.html">EMI &amp; AC</a>
+    <a href="05-optics.html">EM Waves &amp; Optics</a>
+    <a href="06-modern.html">Modern</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Unit 2 · Current Electricity</h1>
+<p class="lead">Ch 3. Drift velocity derivation, Kirchhoff/Wheatstone and cell combinations are the most repeated items.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#drift">Drift velocity, mobility, resistivity</a></li>
+<li><a href="#temp">Temperature dependence</a></li>
+<li><a href="#cells">EMF, internal resistance, cell combinations</a></li>
+<li><a href="#kirchhoff">Kirchhoff's rules &amp; Wheatstone bridge</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="drift">1. Drift velocity, mobility, resistivity</h2>
+
+<div class="qa"><p class="q">Q. Define drift velocity and relaxation time. Derive I = neAv<sub>d</sub>.<span class="tag">3–5 M · ~9 papers</span></p>
+<div class="a">
+<p><strong>Drift velocity</strong> v<sub>d</sub>: the average velocity with which free electrons drift opposite to the applied field. <strong>Relaxation time</strong> τ: average time between successive collisions.</p>
+<p>Each electron accelerates a = −eE/m. Averaging v = u + at over all electrons (average u = 0, average t = τ):</p>
+<div class="formula">v<sub>d</sub> = − eEτ / m</div>
+<figure>
+<svg viewBox="0 0 360 140" width="360" role="img" aria-label="Conductor of cross-section A with electrons drifting">
+  <rect x="40" y="40" width="260" height="60" rx="30" class="fillb"/>
+  <ellipse cx="200" cy="70" rx="12" ry="30" class="thin"/>
+  <line class="dash" x1="200" y1="40" x2="200" y2="100"/>
+  <line class="dash" x1="140" y1="40" x2="140" y2="100"/>
+  <text x="155" y="30" class="s">v<tspan dy="3">d</tspan><tspan dy="-3"> Δt</tspan></text>
+  <circle class="dota2" cx="160" cy="62" r="4"/><circle class="dota2" cx="178" cy="82" r="4"/><circle class="dota2" cx="150" cy="80" r="4"/>
+  <line class="acc" x1="250" y1="120" x2="320" y2="120"/><polygon class="dota" points="326,120 316,115 316,125"/><text x="300" y="112" class="a">I, E</text>
+  <line class="acc2" x1="120" y1="120" x2="60" y2="120"/><polygon class="dota2" points="54,120 64,115 64,125"/><text x="62" y="112" class="a2">electrons</text>
+  <text x="208" y="62" class="s">A</text>
+</svg>
+<figcaption>Electrons in a length v<sub>d</sub>Δt cross area A in time Δt.</figcaption>
+</figure>
+<p>Charge crossing area A in Δt: Q = (n · A · v<sub>d</sub>Δt) e → </p>
+<div class="formula">I = neAv<sub>d</sub> &nbsp;&nbsp;|&nbsp;&nbsp; j = I/A = nev<sub>d</sub></div>
+<p>Substituting v<sub>d</sub>: j = (ne²τ/m) E = σE → <strong>σ = ne²τ/m</strong>, <strong>ρ = m/(ne²τ)</strong>. This is Ohm's law in microscopic form, and shows current density is along E.</p>
+<p><em>Example:</em> I = 1.6 A, A = 10⁻⁶ m², n = 8×10²⁸ → v<sub>d</sub> = 1.6/(8×10²⁸ × 1.6×10⁻¹⁹ × 10⁻⁶) = <strong>1.25 × 10⁻⁴ m/s</strong>.</p></div></div>
+
+<div class="qa"><p class="q">Q. If drift speed is only mm/s, why does a bulb glow instantly?<span class="tag">2 M · A–R</span></p>
+<div class="a"><p>The electric field is set up throughout the circuit almost at the speed of light, so electrons <em>everywhere</em> in the wire start drifting at once; electrons do not have to travel from the switch to the bulb. (A–R tip: "n is very high (~10²⁸ m⁻³)" is true but is not the explanation.)</p></div></div>
+
+<div class="qa"><p class="q">Q. Define mobility. Does it change if the potential difference is doubled?<span class="tag">2 M</span></p>
+<div class="a"><div class="formula">μ = v<sub>d</sub>/E = eτ/m &nbsp;&nbsp;(SI: m² V⁻¹ s⁻¹)</div>
+<p>Doubling V doubles E and v<sub>d</sub>, but μ = eτ/m is unchanged (it depends only on the material and temperature).</p></div></div>
+
+<div class="qa"><p class="q">Q. Ratio of drift velocities in two wires of the same material (a) in series, (b) in parallel.<span class="tag">2–3 M · repeated</span></p>
+<div class="a">
+<p><strong>Series</strong> (same I): v<sub>d</sub> = I/(neA) → v₁/v₂ = A₂/A₁ = (r₂/r₁)². Radii 3 : 2 → v₁ : v₂ = 4 : 9.</p>
+<p><strong>Parallel</strong> (same V): v<sub>d</sub> = eEτ/m = eVτ/(mL) → v ∝ 1/L, independent of area. Lengths L and 2L → 2 : 1.</p>
+<p>Different materials in series with n<sub>X</sub> = 2n<sub>Y</sub>, same area → v<sub>X</sub>/v<sub>Y</sub> = n<sub>Y</sub>/n<sub>X</sub> = 1 : 2.</p>
+<div class="tip"><strong>A tapering wire:</strong> current is the same everywhere (charge conservation), but v<sub>d</sub> is larger at the thinner end.</div></div></div>
+
+<h2 id="temp">2. Temperature dependence</h2>
+
+<div class="qa"><p class="q">Q. Plot resistivity vs temperature for copper, nichrome and a semiconductor. Explain using ρ = m/(ne²τ).<span class="tag">3–5 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 520 170" width="520" role="img" aria-label="Resistivity versus temperature graphs">
+  <g transform="translate(20,10)">
+    <line class="ln" x1="20" y1="130" x2="150" y2="130"/><line class="ln" x1="20" y1="130" x2="20" y2="10"/>
+    <path class="acc" d="M25 122 Q 60 120 90 95 T 145 30"/><text x="30" y="150" class="s">Copper (metal)</text><text x="0" y="16">ρ</text><text x="140" y="146">T</text>
+  </g>
+  <g transform="translate(190,10)">
+    <line class="ln" x1="20" y1="130" x2="150" y2="130"/><line class="ln" x1="20" y1="130" x2="20" y2="10"/>
+    <path class="acc" d="M25 70 L145 58"/><text x="30" y="150" class="s">Nichrome (alloy)</text><text x="0" y="16">ρ</text><text x="140" y="146">T</text>
+  </g>
+  <g transform="translate(360,10)">
+    <line class="ln" x1="20" y1="130" x2="150" y2="130"/><line class="ln" x1="20" y1="130" x2="20" y2="10"/>
+    <path class="acc2" d="M25 20 Q 45 100 145 122"/><text x="30" y="150" class="s">Semiconductor</text><text x="0" y="16">ρ</text><text x="140" y="146">T</text>
+  </g>
+</svg>
+</figure>
+<ul>
+<li><strong>Metals:</strong> n is nearly constant; with rising T, ions vibrate more, collisions are more frequent → τ decreases → ρ increases. ρ<sub>T</sub> = ρ₀[1 + α(T − T₀)], α positive.</li>
+<li><strong>Nichrome / manganin / constantan:</strong> very small α → used in standard resistors.</li>
+<li><strong>Semiconductors:</strong> n increases rapidly with T (outweighs the fall in τ) → ρ decreases; α negative (Si, Ge, carbon).</li>
+</ul>
+<p><em>Example:</em> 20% increase from 27 °C with α = 2×10⁻⁴ °C⁻¹: 0.2 = αΔT → ΔT = 1000 °C → T = <strong>1027 °C</strong>.</p></div></div>
+
+<h2 id="cells">3. EMF, internal resistance, cell combinations</h2>
+
+<div class="qa"><p class="q">Q. Distinguish EMF and terminal voltage. What is the terminal voltage while (a) discharging, (b) charging?<span class="tag">2 M</span></p>
+<div class="a">
+<div class="formula">Discharging: V = E − Ir &nbsp;&nbsp;|&nbsp;&nbsp; Charging: V = E + Ir</div>
+<p>I = E/(R + r). V = E only when no current flows (open circuit, R → ∞). Max current = E/r (short circuit).</p>
+<p><em>Example (charging):</em> 8 V, r = 0.5 Ω, charged from 120 V through 15.5 Ω: I = (120 − 8)/16 = 7 A → V = 8 + 7×0.5 = <strong>11.5 V</strong>.</p>
+<p>Internal resistance from two readings: E = I₁(R₁ + r) = I₂(R₂ + r) → r = (I₂R₂ − I₁R₁)/(I₁ − I₂).</p>
+<p>Power to load is maximum when R = r: P<sub>max</sub> = E²/4r. Efficiency = R/(R + r).</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the equivalent EMF and internal resistance of two cells in parallel.<span class="tag">3 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 320 150" width="320" role="img" aria-label="Two cells in parallel between points A and B">
+  <line class="ln" x1="40" y1="30" x2="40" y2="120"/><line class="ln" x1="280" y1="30" x2="280" y2="120"/>
+  <circle class="dot" cx="40" cy="75" r="4"/><text x="18" y="80">A</text><circle class="dot" cx="280" cy="75" r="4"/><text x="290" y="80">B</text>
+  <line class="ln" x1="40" y1="30" x2="140" y2="30"/><line class="ln" x1="140" y1="18" x2="140" y2="42"/><line class="ln" x1="152" y1="24" x2="152" y2="36"/><line class="ln" x1="152" y1="30" x2="280" y2="30"/>
+  <text x="128" y="14">E₁, r₁</text><text x="80" y="24" class="s">I₁ →</text>
+  <line class="ln" x1="40" y1="120" x2="140" y2="120"/><line class="ln" x1="140" y1="108" x2="140" y2="132"/><line class="ln" x1="152" y1="114" x2="152" y2="126"/><line class="ln" x1="152" y1="120" x2="280" y2="120"/>
+  <text x="128" y="148">E₂, r₂</text><text x="80" y="114" class="s">I₂ →</text>
+</svg>
+</figure>
+<p>V = E₁ − I₁r₁ = E₂ − I₂r₂, and I = I₁ + I₂ = (E₁ − V)/r₁ + (E₂ − V)/r₂.</p>
+<p>Solving: V = (E₁r₂ + E₂r₁)/(r₁ + r₂) − I · r₁r₂/(r₁ + r₂). Comparing with V = E<sub>eq</sub> − I r<sub>eq</sub>:</p>
+<div class="formula">E<sub>eq</sub> = (E₁r₂ + E₂r₁)/(r₁ + r₂), &nbsp;&nbsp; r<sub>eq</sub> = r₁r₂/(r₁ + r₂)</div>
+<p>Series: E<sub>eq</sub> = E₁ + E₂, r<sub>eq</sub> = r₁ + r₂.</p>
+<p><em>Example:</em> 1.5 V (0.2 Ω) ∥ 2.0 V (0.3 Ω): E = (0.45 + 0.4)/0.5 = <strong>1.7 V</strong>, r = 0.06/0.5 = <strong>0.12 Ω</strong>.</p>
+<p>Two identical cells (E, r) — same current through R in series and parallel when <strong>R = r</strong>.</p></div></div>
+
+<h2 id="kirchhoff">4. Kirchhoff's rules &amp; Wheatstone bridge</h2>
+
+<div class="qa"><p class="q">Q. State Kirchhoff's rules. On which conservation laws are they based?<span class="tag">2 M</span></p>
+<div class="a">
+<ol><li><strong>Junction rule:</strong> ΣI at any junction = 0 (current in = current out) → conservation of <em>charge</em>.</li>
+<li><strong>Loop rule:</strong> algebraic sum of changes in potential around any closed loop = 0 (ΣE = ΣIR) → conservation of <em>energy</em>.</li></ol>
+<p>Sign convention: going through a resistor along the current → −IR; going from − to + terminal of a cell → +E.</p></div></div>
+
+<div class="qa"><p class="q">Q. Using Kirchhoff's rules, derive the balance condition of a Wheatstone bridge.<span class="tag">3 M · ~8 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 320 240" width="320" role="img" aria-label="Wheatstone bridge">
+  <polygon points="160,20 280,120 160,220 40,120" class="thin"/>
+  <circle class="dot" cx="160" cy="20" r="4"/><text x="155" y="12">B</text>
+  <circle class="dot" cx="280" cy="120" r="4"/><text x="288" y="125">C</text>
+  <circle class="dot" cx="160" cy="220" r="4"/><text x="155" y="236">D</text>
+  <circle class="dot" cx="40" cy="120" r="4"/><text x="22" y="125">A</text>
+  <rect x="82" y="56" width="36" height="14" class="fillb" transform="rotate(-40 100 63)"/><text x="78" y="52">P (I₁)</text>
+  <rect x="202" y="56" width="36" height="14" class="fillb" transform="rotate(40 220 63)"/><text x="226" y="52">Q</text>
+  <rect x="82" y="170" width="36" height="14" class="fillb" transform="rotate(40 100 177)"/><text x="58" y="200">R (I₂)</text>
+  <rect x="202" y="170" width="36" height="14" class="fillb" transform="rotate(-40 220 177)"/><text x="232" y="200">S</text>
+  <line class="thin" x1="160" y1="20" x2="160" y2="220"/>
+  <circle cx="160" cy="120" r="14" class="fillb"/><text x="155" y="125">G</text>
+</svg>
+<figcaption>Battery between A and C; galvanometer between B and D.</figcaption>
+</figure>
+<p>Loop ABDA: −I₁P − I<sub>g</sub>G + I₂R = 0. Loop BCDB: −(I₁ − I<sub>g</sub>)Q + (I₂ + I<sub>g</sub>)S + I<sub>g</sub>G = 0.</p>
+<p>At balance I<sub>g</sub> = 0: I₁P = I₂R and I₁Q = I₂S. Dividing:</p>
+<div class="formula">P/Q = R/S</div>
+<p><strong>Meter bridge:</strong> R/S = l/(100 − l). <em>Example:</em> null at 40 cm, then 10 Ω added in series with R₁ gives null at 60 cm: R₁/R₂ = 2/3 and (R₁ + 10)/R₂ = 3/2 → R₂ = 12 Ω, R₁ = 8 Ω.</p></div></div>
+
+<div class="qa"><p class="q">Q. Why should a voltmeter have very high resistance and an ammeter very low resistance?<span class="tag">2 M</span></p>
+<div class="a"><p>A voltmeter is connected in parallel; if its resistance were low it would draw current and lower the very p.d. it measures. An ammeter is in series; a high resistance would reduce the current it measures. Ideal: R<sub>V</sub> = ∞, R<sub>A</sub> = 0.</p></div></div>
+
+<div class="qa"><p class="q">Q. A 12 Ω wire is stretched to twice its length and bent into a circle. Find the resistance between diametrically opposite points.<span class="tag">2 M</span></p>
+<div class="a"><p>Stretching to 2L (volume constant): R' = n²R = 4 × 12 = 48 Ω. Two halves of 24 Ω in parallel → <strong>12 Ω</strong>.</p>
+<div class="tip"><strong>Remember:</strong> same material, Q has double diameter and half length → R<sub>Q</sub> = R × (½)/(4) = R/8.</div></div></div>
+
+<h2 id="quick">5. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Three 4 Ω resistors in a triangle, between any two corners</td><td>8/3 Ω</td></tr>
+<tr><td>Bulbs 220 V 40 W and 220 V 100 W: R₄₀ : R₁₀₀</td><td>5 : 2 (R = V²/P)</td></tr>
+<tr><td>Two heaters P₁ and P₂ in series — total power</td><td>P₁P₂/(P₁ + P₂), less than either</td></tr>
+<tr><td>Power ratio, two equal R in parallel vs series (same E)</td><td>4 : 1</td></tr>
+<tr><td>Copper and germanium cooled to 80 K</td><td>ρ<sub>Cu</sub> decreases, ρ<sub>Ge</sub> increases</td></tr>
+<tr><td>Positive temperature coefficient</td><td>Copper</td></tr>
+<tr><td>Coil of N turns, wire diameter d on cylinder D: R</td><td>4ρND/d²</td></tr>
+<tr><td>Cell supplies 0.9 A through 2 Ω and 0.3 A through 7 Ω: r</td><td>0.5 Ω</td></tr>
+<tr><td>Terminal V when R increases</td><td>increases towards E</td></tr>
+<tr><td>n<sub>X</sub> : n<sub>Y</sub> = 1 : 4 and ρ<sub>X</sub> : ρ<sub>Y</sub> = 2 : 1: τ<sub>X</sub> : τ<sub>Y</sub></td><td>2 : 1 (τ ∝ 1/nρ)</td></tr>
+</table>
+
+<div class="pager"><a href="01-electrostatics.html">← Electrostatics</a><a href="03-magnetism.html">Magnetism →</a></div>
+</main>
+<footer>Study notes compiled from patterns in 20 KV Ernakulam Region Pre-Board 1 (2026–27) papers. Verify against NCERT.</footer>
+</body>
+</html>

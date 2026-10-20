@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electrostatics Notes</title>
+<meta name="description" content="CBSE Class 12 Physics: Electric Charges and Fields, Electrostatic Potential and Capacitance – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="../index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="01-electrostatics.html">Electrostatics</a>
+    <a href="02-current.html">Current</a>
+    <a href="03-magnetism.html">Magnetism</a>
+    <a href="04-emi-ac.html">EMI &amp; AC</a>
+    <a href="05-optics.html">EM Waves &amp; Optics</a>
+    <a href="06-modern.html">Modern</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Unit 1 · Electrostatics</h1>
+<p class="lead">Ch 1 Electric Charges &amp; Fields · Ch 2 Electrostatic Potential &amp; Capacitance. Section E Q31 is from this unit in almost every pre-board paper.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#basics">Charges, field lines, flux</a></li>
+<li><a href="#dipole">Electric dipole</a></li>
+<li><a href="#gauss">Gauss's law – sheet, wire, shell</a></li>
+<li><a href="#potential">Potential &amp; equipotential surfaces</a></li>
+<li><a href="#capacitor">Capacitors &amp; dielectrics</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="basics">1. Charges, field lines, flux</h2>
+
+<div class="qa"><p class="q">Q. State Coulomb's law in vector form.<span class="tag">1–2 M</span></p>
+<div class="a"><div class="formula">F⃗₁₂ = (1/4πε₀) · q₁q₂ / r² · r̂₂₁</div>
+<p>Force is along the line joining the charges; like charges repel, unlike attract. 1/4πε₀ = 9 × 10⁹ N m² C⁻².</p></div></div>
+
+<div class="qa"><p class="q">Q. Why do two electric field lines never cross?<span class="tag">1 M · A–R favourite</span></p>
+<div class="a"><p>At the point of intersection there would be two tangents, i.e. two directions of E at one point — impossible, since the net field at a point has a unique direction.</p></div></div>
+
+<div class="qa"><p class="q">Q. Define electric flux. A charge q is placed at the centre of a cube. Find the flux through (a) the whole cube, (b) one face, (c) two opposite faces.<span class="tag">1–2 M</span></p>
+<div class="a"><div class="formula">Φ = ∮ E⃗ · dA⃗ &nbsp;&nbsp;(SI unit N m² C⁻¹ or V m)</div>
+<p>(a) q/ε₀ &nbsp; (b) q/6ε₀ &nbsp; (c) 2 × q/6ε₀ = q/3ε₀.</p>
+<p>Charge <em>outside</em> a closed surface → net flux = 0. Moving a charge inside the surface or changing its radius does <strong>not</strong> change the flux.</p>
+<div class="tip"><strong>Uniform field + closed cube:</strong> flux in = flux out, so total flux = 0.</div></div></div>
+
+<div class="qa"><p class="q">Q. Two charges +2 μC and +8 μC are 30 cm apart. Where is the field zero?<span class="tag">1 M</span></p>
+<div class="a"><p>Between them, at x from 2 μC: 2/x² = 8/(30−x)² → (30−x)/x = 2 → <strong>x = 10 cm</strong>.</p>
+<div class="tip"><strong>Rule:</strong> for like charges the null point is between them, nearer the smaller charge; for unlike charges it is outside, nearer the smaller charge.</div></div></div>
+
+<h2 id="dipole">2. Electric dipole</h2>
+
+<div class="qa"><p class="q">Q. Derive the electric field on the equatorial line of a dipole.<span class="tag">3–5 M · very frequent</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 360 230" width="360" role="img" aria-label="Electric dipole with point P on equatorial line">
+  <line class="thin" x1="60" y1="180" x2="300" y2="180"/>
+  <circle class="dota2" cx="80" cy="180" r="9"/><text x="76" y="204">−q</text>
+  <circle class="dota" cx="280" cy="180" r="9"/><text x="274" y="204">+q</text>
+  <text x="104" y="174" class="s">a</text><text x="246" y="174" class="s">a</text>
+  <circle class="dot" cx="180" cy="180" r="3"/><text x="172" y="198">O</text>
+  <line class="dash" x1="180" y1="180" x2="180" y2="40"/>
+  <text x="186" y="120">r</text>
+  <line class="thin" x1="80" y1="180" x2="180" y2="50"/>
+  <line class="thin" x1="280" y1="180" x2="180" y2="50"/>
+  <circle class="dot" cx="180" cy="50" r="4"/><text x="186" y="44">P</text>
+  <line class="acc2" x1="180" y1="50" x2="146" y2="94"/><text x="122" y="104" class="a2">E₋</text>
+  <line class="acc2" x1="180" y1="50" x2="146" y2="6"/><text x="124" y="12" class="a2">E₊</text>
+  <line class="acc" x1="180" y1="50" x2="100" y2="50"/><text x="40" y="46" class="a">E (net)</text>
+  <polygon class="dota" points="100,50 110,45 110,55"/>
+</svg>
+<figcaption>E₊ and E₋ have equal magnitude; vertical components cancel, horizontal components add (pointing from +q to −q, i.e. opposite to p⃗).</figcaption>
+</figure>
+<ol>
+<li>|E₊| = |E₋| = (1/4πε₀) · q/(r² + a²)</li>
+<li>Components ⟂ to the axis cancel; components ∥ to the axis add: E = 2E₊ cos θ, with cos θ = a/√(r² + a²).</li>
+<li><div class="formula">E = (1/4πε₀) · 2qa/(r² + a²)^{3/2} = (1/4πε₀) · p/(r² + a²)^{3/2}</div></li>
+<li>For r ≫ a: <div class="formula">E⃗ = − (1/4πε₀) · p⃗ / r³</div></li>
+</ol>
+<p>Compare: on the axial line E = (1/4πε₀)·2p/r³ (along p⃗). So E<sub>axial</sub> = 2E<sub>equatorial</sub>, and both ∝ 1/r³ (halving r → field becomes 8×).</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the potential due to a dipole at a point on its axis.<span class="tag">3 M</span></p>
+<div class="a">
+<p>Point P at distance r from centre, on the side of +q: V = (1/4πε₀)[q/(r−a) − q/(r+a)] = (1/4πε₀) · 2qa/(r² − a²).</p>
+<div class="formula">V = (1/4πε₀) · p/(r² − a²) &nbsp;≈&nbsp; (1/4πε₀) · p/r² &nbsp;(r ≫ a)</div>
+<p>General point: V = (1/4πε₀)·p cos θ / r². On the equatorial line θ = 90° → <strong>V = 0</strong> (but E ≠ 0).</p></div></div>
+
+<div class="qa"><p class="q">Q. Torque and potential energy of a dipole in a uniform field. When is it in stable / unstable equilibrium?<span class="tag">2–3 M</span></p>
+<div class="a">
+<div class="formula">τ⃗ = p⃗ × E⃗, &nbsp; τ = pE sin θ &nbsp;&nbsp;|&nbsp;&nbsp; U = −p⃗ · E⃗ = −pE cos θ</div>
+<p>Derivation of U: work done in rotating from θ₀ = 90° to θ: W = ∫ pE sin θ dθ = −pE cos θ.</p>
+<ul><li>θ = 0°: U = −pE (minimum) → <strong>stable</strong>.</li><li>θ = 180°: U = +pE (maximum) → <strong>unstable</strong>.</li>
+<li>Net force in a uniform field = 0; only a torque acts. In a non-uniform field there is a net force too.</li>
+<li>Torque is half the maximum when sin θ = ½ → θ = 30°.</li></ul>
+<p><em>Example:</em> p = 4 × 10⁻⁹ C m at 30° to E = 5 × 10⁴ N/C → τ = 4×10⁻⁹ × 5×10⁴ × ½ = <strong>10⁻⁴ N m</strong>.</p></div></div>
+
+<h2 id="gauss">3. Gauss's law</h2>
+
+<div class="qa"><p class="q">Q. State Gauss's law.<span class="tag">1 M</span></p>
+<div class="a"><div class="formula">∮ E⃗ · dA⃗ = q<sub>enclosed</sub> / ε₀</div>
+<p>The total flux through any closed surface equals 1/ε₀ times the net charge enclosed. A zero net flux does <strong>not</strong> mean E = 0 at every point of the surface (a classic A–R trap).</p></div></div>
+
+<div class="qa"><p class="q">Q. Using Gauss's law, find E due to an infinitely long straight uniformly charged wire (linear charge density λ).<span class="tag">3–5 M · very frequent</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 340 170" width="340" role="img" aria-label="Cylindrical Gaussian surface around a line charge">
+  <line class="ln" x1="20" y1="85" x2="320" y2="85"/>
+  <text x="290" y="78">λ</text>
+  <ellipse class="fillb" cx="100" cy="85" rx="18" ry="55" opacity="0.7"/>
+  <ellipse class="thin" cx="240" cy="85" rx="18" ry="55"/>
+  <line class="thin" x1="100" y1="30" x2="240" y2="30"/>
+  <line class="thin" x1="100" y1="140" x2="240" y2="140"/>
+  <line class="acc" x1="170" y1="30" x2="170" y2="5"/><polygon class="dota" points="170,2 165,12 175,12"/>
+  <line class="acc" x1="170" y1="140" x2="170" y2="165"/><polygon class="dota" points="170,168 165,158 175,158"/>
+  <text x="176" y="18" class="a">E</text>
+  <line class="dash" x1="240" y1="85" x2="240" y2="30"/><text x="246" y="62">r</text>
+  <text x="150" y="105" class="s">length l</text>
+</svg>
+<figcaption>Cylindrical Gaussian surface of radius r and length l. E is radial, so flux through the flat ends is zero.</figcaption>
+</figure>
+<p>Flux only through the curved surface: E · 2πrl = λl/ε₀</p>
+<div class="formula">E = λ / (2πε₀ r) &nbsp;&nbsp;⇒&nbsp; E ∝ 1/r</div>
+<p>Direction: radially outward for λ &gt; 0. Graph of E vs r is a rectangular hyperbola.</p></div></div>
+
+<div class="qa"><p class="q">Q. Using Gauss's law, find E due to an infinite plane sheet (surface charge density σ). Does it depend on distance?<span class="tag">3–5 M · very frequent</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 340 170" width="340" role="img" aria-label="Pillbox Gaussian surface through a plane sheet">
+  <rect x="160" y="10" width="14" height="150" class="fillb"/>
+  <text x="150" y="168" class="s">sheet σ</text>
+  <rect x="90" y="60" width="154" height="50" class="thin" rx="4"/>
+  <line class="acc" x1="244" y1="85" x2="300" y2="85"/><polygon class="dota" points="306,85 296,80 296,90"/>
+  <line class="acc" x1="90" y1="85" x2="34" y2="85"/><polygon class="dota" points="28,85 38,80 38,90"/>
+  <text x="292" y="76" class="a">E</text><text x="30" y="76" class="a">E</text>
+  <text x="250" y="122" class="s">area A</text><text x="58" y="122" class="s">area A</text>
+</svg>
+<figcaption>Cylindrical "pill-box" piercing the sheet. Flux only through the two flat faces.</figcaption>
+</figure>
+<p>Flux = EA + EA = 2EA; charge enclosed = σA → 2EA = σA/ε₀</p>
+<div class="formula">E = σ / 2ε₀ &nbsp;&nbsp;(independent of distance)</div>
+<p>It is independent of distance because field lines are parallel and do not spread out (the sheet is infinite).</p>
+<p><strong>Two parallel sheets +σ and −σ:</strong> between them E = σ/ε₀; outside E = 0.
+<strong>Sheets +σ and −2σ:</strong> superpose each sheet's σ/2ε₀ field with direction (away from +, towards −).</p></div></div>
+
+<div class="qa"><p class="q">Q. Using Gauss's law, find E due to a uniformly charged thin spherical shell (a) outside, (b) inside. Plot E vs r.<span class="tag">3–5 M · very frequent</span></p>
+<div class="a">
+<p>(a) r &gt; R: Gaussian sphere of radius r encloses q → E·4πr² = q/ε₀ → <strong>E = q/(4πε₀r²)</strong> — same as if all charge were at the centre.</p>
+<p>(b) r &lt; R: encloses no charge → <strong>E = 0</strong>.</p>
+<figure>
+<svg viewBox="0 0 320 190" width="320" role="img" aria-label="Graph of E versus r for a charged spherical shell">
+  <line class="ln" x1="40" y1="160" x2="300" y2="160"/><line class="ln" x1="40" y1="160" x2="40" y2="15"/>
+  <text x="290" y="178">r</text><text x="20" y="22">E</text>
+  <line class="acc" x1="40" y1="158" x2="110" y2="158"/>
+  <line class="dash" x1="110" y1="160" x2="110" y2="35"/>
+  <path class="acc" d="M110 35 Q 140 110 180 128 T 290 150"/>
+  <text x="104" y="178">R</text>
+  <text x="50" y="148" class="s">E = 0 inside</text><text x="180" y="118" class="a">E ∝ 1/r²</text>
+</svg>
+<figcaption>E jumps to its maximum at r = R and then falls as 1/r².</figcaption>
+</figure>
+<p>Potential: V = q/(4πε₀R) everywhere inside (constant, <em>not</em> zero) and q/(4πε₀r) outside.</p></div></div>
+
+<div class="qa"><p class="q">Q. Why is the electric field inside a conductor zero in electrostatic equilibrium?<span class="tag">A–R · 7 papers</span></p>
+<div class="a"><p>If any field existed inside, the free electrons would move (current would flow) until their redistribution cancels it. Consequences:</p>
+<ul><li>Net charge resides on the outer surface.</li><li>Potential is constant throughout the volume and equal to its surface value.</li><li>E just outside is normal to the surface (a tangential component would move charges): E = σ/ε₀.</li><li>Electrostatic shielding: the cavity in a conductor is field-free.</li></ul></div></div>
+
+<h2 id="potential">4. Potential &amp; equipotential surfaces</h2>
+
+<div class="qa"><p class="q">Q. Relation between E and V. Find E if V = 3x, or V = x² − 2y².<span class="tag">1–2 M</span></p>
+<div class="a"><div class="formula">E = − dV/dr &nbsp;&nbsp;(E⃗ = −∇V)</div>
+<p>V = 3x → E = −3 V/m, i.e. 3 V/m along −x.<br>V = x² − 2y² → Eₓ = −2x, E<sub>y</sub> = 4y. At (2, 1): E = (−4, 4) → 135° with +x axis.</p>
+<p>E points in the direction of <em>decreasing</em> potential. In a uniform field along +x, V<sub>A</sub> &gt; V<sub>B</sub> for B further along x; points on a line ⟂ to E have equal potential.</p></div></div>
+
+<div class="qa"><p class="q">Q. Define equipotential surface. Draw them for (i) a point charge, (ii) a uniform field, (iii) a dipole, (iv) two equal positive charges.<span class="tag">2–3 M</span></p>
+<div class="a">
+<p>A surface on which every point has the same potential. Properties: no work is done moving a charge on it; E is always ⟂ to it; two equipotentials never intersect.</p>
+<figure>
+<svg viewBox="0 0 560 180" width="560" role="img" aria-label="Equipotential surfaces for point charge, uniform field, dipole, two positive charges">
+  <g transform="translate(70,90)">
+    <circle class="dota" r="5"/><circle class="dash" r="20"/><circle class="dash" r="38"/><circle class="dash" r="62"/>
+    <text x="-30" y="85" class="s">(i) point charge</text>
+  </g>
+  <g transform="translate(150,25)">
+    <line class="dash" x1="0" y1="10" x2="90" y2="10"/><line class="dash" x1="0" y1="45" x2="90" y2="45"/><line class="dash" x1="0" y1="80" x2="90" y2="80"/><line class="dash" x1="0" y1="115" x2="90" y2="115"/>
+    <line class="acc" x1="45" y1="0" x2="45" y2="130"/><polygon class="dota" points="45,135 40,125 50,125"/>
+    <text x="50" y="132" class="a">E (z)</text>
+    <text x="0" y="150" class="s">(ii) uniform field</text>
+  </g>
+  <g transform="translate(330,90)">
+    <circle class="dota" cx="-25" r="5"/><circle class="dota2" cx="25" r="5"/>
+    <ellipse class="dash" cx="-30" rx="18" ry="16"/><ellipse class="dash" cx="-36" rx="34" ry="34"/>
+    <ellipse class="dash" cx="30" rx="18" ry="16"/><ellipse class="dash" cx="36" rx="34" ry="34"/>
+    <line class="dash" x1="0" y1="-70" x2="0" y2="70"/>
+    <text x="-30" y="85" class="s">(iii) dipole</text>
+  </g>
+  <g transform="translate(480,90)">
+    <circle class="dota" cx="-22" r="5"/><circle class="dota" cx="22" r="5"/>
+    <circle class="dash" cx="-22" r="14"/><circle class="dash" cx="22" r="14"/>
+    <path class="dash" d="M0 -30 C -40 -40 -60 -20 -60 0 C -60 20 -40 40 0 30 C 40 40 60 20 60 0 C 60 -20 40 -40 0 -30 Z"/>
+    <ellipse class="dash" rx="72" ry="55"/>
+    <text x="-50" y="85" class="s">(iv) +q, +q</text>
+  </g>
+</svg>
+<figcaption>Dashed = equipotentials. For a point charge they are concentric spheres, closer together near the charge (not equidistant, since V ∝ 1/r).</figcaption>
+</figure>
+<p>Why not equidistant for a point charge? E is stronger near the charge, so a fixed ΔV is covered in a smaller Δr (Δr = ΔV/E).</p>
+<p>E need not be constant on an equipotential surface — e.g. for two equal charges the outer surface is crowded near the charges and spread out between them.</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the potential energy of a system of charges. Three charges q, 2q, 3q at the corners of an equilateral triangle of side a.<span class="tag">2–3 M</span></p>
+<div class="a"><div class="formula">U = (1/4πε₀) Σ<sub>pairs</sub> q<sub>i</sub>q<sub>j</sub>/r<sub>ij</sub></div>
+<p>Bring q₁ (no work), then q₂ (W = kq₁q₂/r₁₂), then q₃ (W = kq₁q₃/r₁₃ + kq₂q₃/r₂₃).</p>
+<p>q, 2q, 3q: U = k(2q² + 3q² + 6q²)/a = <strong>11kq²/a</strong>.</p>
+<p>For q, 2q, nq with U = 0: 2 + n + 2n = 0 → <strong>n = −2/3</strong>. For −q, Q, −q equally spaced (d) with U = 0: −Qq/d − Qq/d + q²/2d = 0 → <strong>Q:q = 1:4</strong>.</p></div></div>
+
+<div class="qa"><p class="q">Q. Is it true that if V = 0 at a point then E = 0 there?<span class="tag">2 M</span></p>
+<div class="a"><p>No. At the midpoint of a dipole, V = kq/a − kq/a = 0 but E = 2kq/a² ≠ 0 (towards −q). Conversely, inside a charged shell E = 0 but V ≠ 0.</p></div></div>
+
+<h2 id="capacitor">5. Capacitors &amp; dielectrics</h2>
+
+<div class="qa"><p class="q">Q. Derive the capacitance of a parallel plate capacitor (a) with air, (b) with a dielectric slab of thickness t &lt; d.<span class="tag">3–5 M · very frequent</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 320 170" width="320" role="img" aria-label="Parallel plate capacitor with dielectric slab">
+  <rect x="60" y="20" width="10" height="130" class="fillb"/><rect x="250" y="20" width="10" height="130" class="fillb"/>
+  <text x="54" y="14">+Q</text><text x="246" y="14">−Q</text>
+  <rect x="130" y="20" width="60" height="130" fill="var(--svg-accent)" opacity="0.18" stroke="var(--svg-accent)"/>
+  <text x="148" y="90" class="a">K</text>
+  <line class="thin" x1="70" y1="160" x2="250" y2="160"/><text x="152" y="174" class="s">d</text>
+  <line class="thin" x1="130" y1="35" x2="190" y2="35"/><text x="156" y="31" class="s">t</text>
+  <text x="80" y="90" class="s">E₀</text><text x="200" y="90" class="s">E₀</text><text x="146" y="110" class="s">E₀/K</text>
+</svg>
+<figcaption>Field in air E₀ = σ/ε₀; inside the dielectric E = E₀/K.</figcaption>
+</figure>
+<p>(a) E = σ/ε₀ = Q/(ε₀A), V = Ed = Qd/(ε₀A)</p>
+<div class="formula">C₀ = Q/V = ε₀A/d</div>
+<p>(b) V = E₀(d − t) + (E₀/K)t = (Q/ε₀A)[d − t + t/K]</p>
+<div class="formula">C = ε₀A / (d − t + t/K)</div>
+<p>Slab fills the gap (t = d): C = Kε₀A/d = KC₀. Metal slab (K = ∞) of thickness t: C = ε₀A/(d − t).</p>
+<p><em>Example:</em> K = 4 slab, t = d/2 → C = ε₀A/(d/2 + d/8) = <strong>8C₀/5 = 1.6 C₀</strong>.</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the energy stored in a capacitor. Express it in terms of field (energy density).<span class="tag">3 M</span></p>
+<div class="a"><p>Work to move dq against potential q/C: dW = (q/C)dq → W = ∫₀^Q q/C dq = Q²/2C.</p>
+<div class="formula">U = Q²/2C = ½CV² = ½QV &nbsp;&nbsp;|&nbsp;&nbsp; u = U/(Ad) = ½ ε₀E²</div>
+<p><em>Camera flash case:</em> C = 500 μF, V = 300 V → U = ½ × 500×10⁻⁶ × 9×10⁴ = <strong>22.5 J</strong>; released in 1 ms → P = 22.5 kW. A capacitor delivers huge power in a short burst, which a battery cannot.</p></div></div>
+
+<div class="qa"><p class="q">Q. A dielectric slab (K) is inserted fully into a charged capacitor. How do C, Q, V, E, U change if the battery is (a) disconnected, (b) connected?<span class="tag">2–3 M · ~12 papers</span></p>
+<div class="a">
+<table>
+<tr><th>Quantity</th><th>(a) Battery disconnected (Q fixed)</th><th>(b) Battery connected (V fixed)</th></tr>
+<tr><td>C</td><td>KC</td><td>KC</td></tr>
+<tr><td>Q</td><td>same</td><td>KQ</td></tr>
+<tr><td>V</td><td>V/K</td><td>same</td></tr>
+<tr><td>E</td><td>E/K</td><td>same</td></tr>
+<tr><td>U</td><td>U/K (decreases)</td><td>KU (increases)</td></tr>
+</table>
+<p><em>Example (a):</em> 4 μF at 100 V, K = 3 → C = 12 μF, Q = 400 μC, V = 33.3 V, U: 0.02 J → 0.0067 J, so ΔU = −0.0133 J.</p>
+<div class="tip"><strong>Plate separation doubled, battery disconnected:</strong> Q same, C halves, V doubles, E = σ/ε₀ unchanged, U doubles.</div></div></div>
+
+<div class="qa"><p class="q">Q. Capacitors 2 μF, 3 μF, 6 μF across 12 V in series and then in parallel. Find energy in each case.<span class="tag">3 M · repeated</span></p>
+<div class="a"><p>Series: 1/C = ½ + ⅓ + ⅙ = 1 → C = 1 μF, U = ½ × 1×10⁻⁶ × 144 = <strong>72 μJ</strong>.<br>
+Parallel: C = 11 μF, U = ½ × 11×10⁻⁶ × 144 = <strong>792 μJ</strong>. Ratio parallel : series = 11 : 1.</p></div></div>
+
+<div class="qa"><p class="q">Q. Two identical capacitors C₁, C₂ (in parallel) are charged by a battery; the switch is opened and slabs of K are inserted in both. What happens?<span class="tag">2–3 M</span></p>
+<div class="a"><p>If C₁ stays connected to the battery and C₂ is isolated after the switch opens: C₁ → V same, Q₁ = K × CV. C₂ → Q same, V₂ = V/K. (Read the figure: whichever capacitor remains connected keeps V.)</p></div></div>
+
+<div class="qa"><p class="q">Q. A charged capacitor (5 μF, 100 V) is connected to an identical uncharged capacitor. Find the common potential and energy loss.<span class="tag">2 M</span></p>
+<div class="a"><p>V = Q/(2C) = 50 V. U<sub>i</sub> = ½ × 5×10⁻⁶ × 10⁴ = 0.025 J; U<sub>f</sub> = ½ × 10×10⁻⁶ × 2500 = 0.0125 J → half the energy is lost as heat/radiation.</p></div></div>
+
+<h2 id="quick">6. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Charge −1 μC on a body means</td><td>gain of 6.25 × 10¹² electrons</td></tr>
+<tr><td>Flux through Gaussian sphere if radius is tripled</td><td>unchanged</td></tr>
+<tr><td>Potential on the equatorial line of a dipole</td><td>zero</td></tr>
+<tr><td>Work done moving a charge on an equipotential</td><td>zero</td></tr>
+<tr><td>Spheres of radii r₁, r₂ connected by wire: E₁/E₂</td><td>r₂/r₁ (same V, σ ∝ 1/r)</td></tr>
+<tr><td>Capacitance halved d, K = 4</td><td>8C</td></tr>
+<tr><td>Metal sheet of thickness d/2 inserted</td><td>C doubles (2 : 1)</td></tr>
+<tr><td>Electric field due to static charges is</td><td>conservative; lines do not form closed loops</td></tr>
+<tr><td>Three charges +2q, −q, −q at vertices of equilateral triangle, centroid</td><td>E ≠ 0, V = 0</td></tr>
+<tr><td>Charge q at centre of conducting shell; charge on inner surface</td><td>−q (outer surface gets Q + q)</td></tr>
+</table>
+
+<div class="pager"><a href="../index.html">← Home</a><a href="02-current.html">Current Electricity →</a></div>
+</main>
+<footer>Study notes compiled from patterns in 20 KV Ernakulam Region Pre-Board 1 (2026–27) papers. Verify against NCERT.</footer>
+</body>
+</html>

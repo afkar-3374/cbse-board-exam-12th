@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EM Waves and Optics Notes</title>
+<meta name="description" content="CBSE Class 12 Physics: Electromagnetic Waves, Ray Optics, Wave Optics – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="../index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="01-electrostatics.html">Electrostatics</a>
+    <a href="02-current.html">Current</a>
+    <a href="03-magnetism.html">Magnetism</a>
+    <a href="04-emi-ac.html">EMI &amp; AC</a>
+    <a href="05-optics.html">EM Waves &amp; Optics</a>
+    <a href="06-modern.html">Modern</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Unit 5 · EM Waves &amp; Optics</h1>
+<p class="lead">Ch 8 EM Waves · Ch 9 Ray Optics · Ch 10 Wave Optics. The highest-weightage unit: prism, lens maker, telescope/microscope, YDSE and TIR appear in almost every paper.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#emw">Electromagnetic waves</a></li>
+<li><a href="#mirror">Mirrors &amp; refraction basics</a></li>
+<li><a href="#tir">Total internal reflection &amp; optical fibre</a></li>
+<li><a href="#spherical">Refraction at a spherical surface &amp; lens maker's formula</a></li>
+<li><a href="#prism">Prism</a></li>
+<li><a href="#instruments">Microscope &amp; telescope</a></li>
+<li><a href="#huygens">Wavefronts &amp; Huygens' principle</a></li>
+<li><a href="#ydse">Interference – YDSE</a></li>
+<li><a href="#diffraction">Single-slit diffraction</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="emw">1. Electromagnetic waves</h2>
+
+<div class="qa"><p class="q">Q. What is displacement current? Why was it needed?<span class="tag">2 M</span></p>
+<div class="a">
+<div class="formula">I<sub>d</sub> = ε₀ dΦ<sub>E</sub>/dt &nbsp;&nbsp;|&nbsp;&nbsp; ∮B⃗·dl⃗ = μ₀(I<sub>c</sub> + I<sub>d</sub>)</div>
+<p>For a charging capacitor, Ampere's law gives different answers for a surface through the wire (I) and a surface passing between the plates (0) — an inconsistency. Maxwell added the displacement current, produced by the changing electric field between the plates. It equals the conduction current in the wires (C = 20 μF, dV/dt = 3 V/s → I<sub>c</sub> = I<sub>d</sub> = 60 μA). It can exist in empty space where no charges flow.</p></div></div>
+
+<div class="qa"><p class="q">Q. Write the characteristics of EM waves. Draw an EM wave travelling along z.<span class="tag">2–3 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 380 170" width="380" role="img" aria-label="Electromagnetic wave with E and B perpendicular to each other and to direction of travel">
+  <line class="ln" x1="20" y1="90" x2="360" y2="90"/><polygon class="dot" points="366,90 356,85 356,95"/><text x="340" y="110">z (c)</text>
+  <path class="acc" d="M20 90 C 50 10, 80 10, 100 90 C 120 170, 150 170, 180 90 C 210 10, 240 10, 260 90 C 280 170, 310 170, 340 90"/>
+  <text x="56" y="16" class="a">E (along x)</text>
+  <path class="acc2" d="M20 90 C 40 120, 70 130, 100 90 C 130 50, 160 50, 180 90 C 200 130, 230 130, 260 90 C 290 50, 320 50, 340 90" opacity="0.9"/>
+  <text x="200" y="146" class="a2">B (along y, drawn in perspective)</text>
+</svg>
+</figure>
+<ul><li>Produced by <strong>accelerated</strong> (oscillating) charges; a charge at constant velocity does not radiate.</li>
+<li>Transverse: E⃗ ⟂ B⃗ ⟂ direction of propagation (E⃗ × B⃗ gives direction); E and B are <strong>in phase</strong>.</li>
+<li>Speed c = 1/√(μ₀ε₀) = E₀/B₀ in vacuum; v = c/n in a medium.</li>
+<li>Need no medium; carry energy and momentum.</li></ul>
+<p><em>Examples:</em> E₀ = 60 V/m → B₀ = 2 × 10⁻⁷ T. E along +y, travelling along +x → B along +z. E along +z, travelling +x → B along −y. B = 4×10⁻⁸ sin(6π×10⁸t + 2πx) → travels along −x (signs of ωt and kx same).</p>
+<p>From B = B₀ sin(kx − ωt): λ = 2π/k, f = ω/2π. With k = 1.5π×10⁷: λ = 1.33×10⁻⁷ m (UV). In a medium the wave speed is v = ω/k = E₀/B₀ and the refractive index is n = c/v.</p></div></div>
+
+<div class="qa"><p class="q">Q. EM spectrum: order, production, uses.<span class="tag">2–3 M · ~9 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 560 90" width="560" role="img" aria-label="Electromagnetic spectrum from radio to gamma">
+  <defs><linearGradient id="spec" x1="0" x2="1"><stop offset="0" stop-color="#7b8bd6"/><stop offset="0.5" stop-color="#7bd69a"/><stop offset="1" stop-color="#d67b7b"/></linearGradient></defs>
+  <rect x="10" y="20" width="540" height="30" fill="url(#spec)" opacity="0.55" stroke="var(--svg-line)"/>
+  <g font-size="11">
+    <text x="18" y="40">Radio</text><text x="88" y="40">Micro</text><text x="158" y="40">IR</text><text x="216" y="40">Visible</text><text x="290" y="40">UV</text><text x="360" y="40">X-rays</text><text x="450" y="40">γ-rays</text>
+  </g>
+  <text x="10" y="70" class="s">λ &gt; 0.1 m</text><text x="150" y="70" class="s">1 mm–700 nm</text><text x="216" y="70" class="s">700–400 nm</text><text x="350" y="70" class="s">10 nm–10⁻³ nm</text><text x="460" y="70" class="s">&lt; 10⁻³ nm</text>
+  <text x="160" y="14" class="s">← increasing λ &nbsp;·&nbsp; increasing frequency / energy / penetration →</text>
+</svg>
+</figure>
+<table>
+<tr><th>Wave</th><th>Production</th><th>Uses (the ones exams ask)</th></tr>
+<tr><td>Radio</td><td>oscillating electrons in aerials</td><td>broadcasting, FM, TV</td></tr>
+<tr><td>Microwave</td><td>klystron, magnetron, Gunn diode</td><td>radar, aircraft navigation, satellite communication, microwave oven (resonates water molecules — food must contain water)</td></tr>
+<tr><td>Infrared</td><td>hot bodies, vibrating molecules</td><td>"heat waves", physiotherapy (muscle strain), thermal imaging, TV remotes, seeing through fog/mist, greenhouse effect / global warming, heat leaks in buildings</td></tr>
+<tr><td>Visible</td><td>electron transitions in atoms</td><td>vision</td></tr>
+<tr><td>Ultraviolet</td><td>sun, very hot bodies, arcs</td><td>sterilising water/killing germs, LASIK eye surgery; absorbed by ozone; welders wear goggles</td></tr>
+<tr><td>X-rays</td><td>fast electrons hitting a metal target</td><td>detecting bone fractures, studying crystal structure</td></tr>
+<tr><td>Gamma</td><td>radioactive nuclei</td><td>cancer treatment, industrial radiography, highest penetration</td></tr>
+</table>
+<p>f = 6 × 10¹⁴ Hz → λ = c/f = 500 nm (visible, green). Radio waves diffract more than IR because of their longer wavelength (lower frequency).</p></div></div>
+
+<h2 id="mirror">2. Mirrors &amp; refraction basics</h2>
+
+<div class="qa"><p class="q">Q. Derive the mirror formula 1/v + 1/u = 1/f for a concave mirror.<span class="tag">3 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 400 200" width="400" role="img" aria-label="Concave mirror forming a real image">
+  <path class="ln" d="M340 20 Q 365 100 340 180"/>
+  <line class="dash" x1="20" y1="100" x2="360" y2="100"/>
+  <line class="ln" x1="80" y1="100" x2="80" y2="50"/><polygon class="dot" points="80,44 75,54 85,54"/><text x="70" y="40">A</text><text x="76" y="116">B</text>
+  <circle class="dot" cx="250" cy="100" r="3"/><text x="246" y="116">F</text>
+  <circle class="dot" cx="170" cy="100" r="3"/><text x="166" y="116">C</text>
+  <line class="acc" x1="80" y1="50" x2="345" y2="50"/><line class="acc" x1="345" y1="50" x2="140" y2="148"/>
+  <line class="acc2" x1="80" y1="50" x2="352" y2="100"/><line class="acc2" x1="352" y1="100" x2="140" y2="148"/>
+  <line class="ln" x1="140" y1="100" x2="140" y2="148"/><text x="128" y="164">A′</text><text x="134" y="92">B′</text>
+  <text x="356" y="94">P</text>
+</svg>
+<figcaption>Ray parallel to axis reflects through F; ray to the pole P reflects symmetrically.</figcaption>
+</figure>
+<p>Triangles A′B′P and ABP (similar): A′B′/AB = B′P/BP. Triangles A′B′F and MPF (MP = AB, for small aperture): A′B′/AB = B′F/FP.</p>
+<p>So B′P/BP = B′F/FP = (B′P − FP)/FP. With sign convention B′P = −v, BP = −u, FP = −f: (−v)/(−u) = (−v + f)/(−f) → vf = uv − uf → divide by uvf:</p>
+<div class="formula">1/v + 1/u = 1/f, &nbsp; m = −v/u</div>
+<p><em>Example:</em> h = 2 cm at u = −30 cm, f = −20 cm: v = −60 cm, m = −2, image 4 cm, real and inverted. Mirror image n times, real: u = −(n + 1)f/n.</p>
+<p>A ray along the principal axis retraces its path because it hits the mirror normally (along the radius).</p></div></div>
+
+<div class="qa"><p class="q">Q. Apparent depth and speed of light: a tank 30 cm deep appears 16 cm deep.<span class="tag">1 M</span></p>
+<div class="a"><p>n = real/apparent = 30/16 = 1.875 → v = c/n = 1.6 × 10⁸ m/s. Wavelength in a medium: λ<sub>m</sub> = λ/n (600 → 400 nm gives n = 1.5); frequency does not change on refraction (it is fixed by the source). Sodium light 5893 Å in water (n = 1.33): λ = 4431 Å, v = 2.26×10⁸ m/s, f = 5.09×10¹⁴ Hz.</p></div></div>
+
+<h2 id="tir">3. Total internal reflection &amp; optical fibre</h2>
+
+<div class="qa"><p class="q">Q. Define critical angle and TIR. Derive n = 1/sin C. State the conditions for TIR.<span class="tag">3–5 M · case study in 7 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 180" width="420" role="img" aria-label="Rays from denser medium: refraction, critical angle, total internal reflection">
+  <rect x="10" y="90" width="400" height="80" fill="var(--svg-fill)" opacity="0.6"/>
+  <line class="ln" x1="10" y1="90" x2="410" y2="90"/><text x="16" y="84" class="s">rarer (air)</text><text x="16" y="164" class="s">denser (glass)</text>
+  <circle class="dot" cx="210" cy="165" r="4"/><text x="214" y="178">O</text>
+  <line class="acc" x1="210" y1="165" x2="170" y2="90"/><line class="acc" x1="170" y1="90" x2="120" y2="20"/>
+  <line class="acc2" x1="210" y1="165" x2="250" y2="90"/><line class="acc2" x1="250" y1="90" x2="370" y2="90"/><text x="320" y="84" class="a2">r = 90°</text>
+  <line class="dash" x1="250" y1="40" x2="250" y2="170"/><text x="232" y="132" class="a2">C</text>
+  <line class="ln" x1="210" y1="165" x2="320" y2="90"/><line class="ln" x1="320" y1="90" x2="400" y2="150"/><text x="340" y="140">TIR (i &gt; C)</text>
+</svg>
+</figure>
+<p>Critical angle C: the angle of incidence in the denser medium for which the angle of refraction in the rarer medium is 90°. Snell's law n sin C = 1 · sin 90° →</p>
+<div class="formula">n = 1 / sin C &nbsp;(for denser medium relative to rarer: <sup>r</sup>n<sub>d</sub> = 1/sin C)</div>
+<p><strong>Conditions:</strong> (1) light travels from denser to rarer; (2) angle of incidence &gt; C.</p>
+<p><strong>Optical fibre:</strong> core of higher n surrounded by cladding of lower n. Light entering at a suitable angle strikes the core–cladding boundary at i &gt; C and undergoes repeated TIR, so it travels long distances with negligible loss even when bent. Cladding must have lower n, otherwise TIR is impossible. Uses: communication, endoscopy.</p>
+<p><em>Examples:</em> n = 1.5 → C = sin⁻¹(2/3) ≈ 42° (TIR at 50°, not at 30° or 40°). Core 1.5, cladding 1.2 → C = sin⁻¹(0.8); a ray at 60° (sin 60 = 0.87 &gt; 0.8) is totally reflected. Core 1.50, cladding 1.40: n<sub>rel</sub> = 1.07, C = sin⁻¹(14/15). C = 45° → n = √2. C = 30° → n = 2, v = 1.5×10⁸ m/s. Diamond C = 24.4° → n = 2.42 (sparkle from multiple TIR). Water n = 4/3 → C = sin⁻¹(3/4) ≈ 48.6°.</p>
+<p><em>Looming / mirage:</em> TIR in air layers of varying density; the image is virtual.</p></div></div>
+
+<h2 id="spherical">4. Refraction at a spherical surface &amp; lens maker's formula</h2>
+
+<div class="qa"><p class="q">Q. Derive the relation n₂/v − n₁/u = (n₂ − n₁)/R for refraction at a convex spherical surface. State the assumptions.<span class="tag">3–5 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 180" width="420" role="img" aria-label="Refraction at a convex spherical surface">
+  <path class="ln" d="M210 20 Q 180 90 210 160"/>
+  <rect x="210" y="0" width="0" height="0"/>
+  <line class="dash" x1="10" y1="90" x2="410" y2="90"/>
+  <circle class="dot" cx="40" cy="90" r="4"/><text x="34" y="110">O</text>
+  <circle class="dot" cx="290" cy="90" r="3"/><text x="286" y="110">C</text>
+  <circle class="dot" cx="380" cy="90" r="4"/><text x="376" y="110">I</text>
+  <circle class="dot" cx="194" cy="45" r="3"/><text x="180" y="38">N</text>
+  <line class="acc" x1="40" y1="90" x2="194" y2="45"/><line class="acc" x1="194" y1="45" x2="380" y2="90"/>
+  <line class="dash" x1="194" y1="45" x2="290" y2="90"/><line class="dash" x1="194" y1="45" x2="140" y2="20"/>
+  <text x="190" y="104" class="s">M</text>
+  <text x="90" y="160" class="s">n₁ (rarer)</text><text x="300" y="160" class="s">n₂ (denser)</text>
+  <text x="96" y="80" class="s">α</text><text x="270" y="82" class="s">γ</text><text x="330" y="82" class="s">β</text>
+</svg>
+<figcaption>Object O in medium n₁; real image I in medium n₂; C = centre of curvature.</figcaption>
+</figure>
+<p><strong>Assumptions:</strong> point object on the principal axis; small aperture; paraxial rays (angles small, tan θ ≈ sin θ ≈ θ); M close to the pole.</p>
+<p>From the triangles: i = α + γ, r = γ − β. With tan α ≈ MN/OM, tan γ ≈ MN/MC, tan β ≈ MN/MI.</p>
+<p>Snell (small angles): n₁ i = n₂ r → n₁(MN/OM + MN/MC) = n₂(MN/MC − MN/MI).</p>
+<p>Using OM = −u, MI = +v, MC = +R:</p>
+<div class="formula">n₂/v − n₁/u = (n₂ − n₁)/R</div>
+<p><em>Example:</em> glass sphere R = 6 cm, n = 1.5, air bubble 3 cm from centre (u = −3 cm from the near surface, light going glass → air): n₁ = 1.5, n₂ = 1, R = −6 cm (centre on the incoming side): 1/v + 1.5/3 = (−0.5)/(−6) → 1/v = 1/12 − 1/2 → <strong>v = −2.4 cm</strong>. The bubble appears 2.4 cm inside the surface (3.6 cm from the centre).</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the lens maker's formula for a thin double convex lens.<span class="tag">3–5 M · 9 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 170" width="420" role="img" aria-label="Thin double convex lens with object and image">
+  <path class="fillb" d="M200 20 Q 240 85 200 150 Q 160 85 200 20 Z" opacity="0.7"/>
+  <line class="dash" x1="10" y1="85" x2="410" y2="85"/>
+  <circle class="dot" cx="40" cy="85" r="4"/><text x="34" y="104">O</text>
+  <circle class="dot" cx="380" cy="85" r="4"/><text x="376" y="104">I</text>
+  <line class="acc" x1="40" y1="85" x2="190" y2="52"/><line class="acc" x1="190" y1="52" x2="210" y2="52"/><line class="acc" x1="210" y1="52" x2="380" y2="85"/>
+  <line class="dash" x1="190" y1="52" x2="320" y2="95"/><circle class="dot" cx="320" cy="95" r="0"/>
+  <text x="300" y="118" class="s">I₁ (image by surface 1)</text>
+  <text x="168" y="16">R₁</text><text x="220" y="16">R₂</text><text x="185" y="166" class="s">n₂ (lens) in n₁</text>
+</svg>
+<figcaption>Surface 1 forms image I₁; it acts as a virtual object for surface 2, which forms the final image I.</figcaption>
+</figure>
+<p>Surface 1 (n₁ → n₂): n₂/v₁ − n₁/u = (n₂ − n₁)/R₁ … (1)</p>
+<p>Surface 2 (n₂ → n₁), object at I₁ (thin lens): n₁/v − n₂/v₁ = (n₁ − n₂)/R₂ … (2)</p>
+<p>Adding: n₁(1/v − 1/u) = (n₂ − n₁)(1/R₁ − 1/R₂). For u = ∞, v = f:</p>
+<div class="formula">1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂) &nbsp;&nbsp;and&nbsp;&nbsp; 1/v − 1/u = 1/f</div>
+<p>In air with refractive index n: 1/f = (n − 1)(1/R₁ − 1/R₂). Equiconvex (R₁ = R, R₂ = −R): f = R/2(n − 1); for n = 1.5, f = R. Plano-convex: 1/f = (n − 1)/R.</p></div></div>
+
+<div class="qa"><p class="q">Q. A lens (n = 1.5) is placed in a liquid. Find the new focal length / nature. (~12 papers)<span class="tag">2–3 M</span></p>
+<div class="a">
+<div class="formula">f<sub>liquid</sub>/f<sub>air</sub> = (n − 1) / (n/n<sub>l</sub> − 1)</div>
+<ul><li>Water (4/3): (0.5)/(1.125 − 1) = 4 → f = 4 × 20 = <strong>80 cm</strong>.</li>
+<li>n<sub>l</sub> = 1.25: ratio 0.5/0.2 = 2.5 → 20 cm lens becomes 50 cm.</li>
+<li>n<sub>l</sub> = 1.5 (same as lens): 1/f = 0 → <strong>f = ∞</strong>, behaves like a plane glass sheet.</li>
+<li>n<sub>l</sub> = 1.6 or 1.65 &gt; n: f negative → convex lens becomes <strong>diverging</strong>. f = 20 cm in 1.65: (0.5)/(1.5/1.65 − 1) = −5.5 → f = −110 cm. A concave lens in a denser liquid becomes converging.</li>
+<li>Glass lens of +5 D acts as diverging lens of f = −100 cm in liquid n: (0.5)/(1.5/n − 1) = −100/20 → n = 5/3.</li></ul>
+<p>A lens becomes less powerful as the liquid's n approaches the lens's n. Blue light: n higher → f shorter than for red (chromatic aberration). n<sub>v</sub> = 1.55, n<sub>r</sub> = 1.50, f<sub>v</sub> = 20 cm → f<sub>r</sub> = 20 × 0.55/0.50 = 22 cm.</p></div></div>
+
+<div class="qa"><p class="q">Q. Power and combination of lenses.<span class="tag">1–2 M</span></p>
+<div class="a"><div class="formula">P = 1/f (m) dioptre; &nbsp; P = P₁ + P₂, &nbsp; 1/F = 1/f₁ + 1/f₂</div>
+<p>+10 cm and +15 cm in contact: F = 6 cm, P = 16.7 D. +20 cm and −15 cm: P = 5 − 6.67 = −1.67 D (diverging). +5 D and −2 D: f = 33.3 cm. +40 and −20: F = −40 cm → image of an object at infinity is 40 cm in front (virtual). Convex f₁ with concave f₂ (f₁ &gt; f₂): P = (f₂ − f₁)/(f₁f₂), diverging.</p>
+<p>An equiconvex lens of power P cut perpendicular to the axis → each half has P/2; recombined → P. Covering half a lens: full image, reduced intensity.</p>
+<p>Plano-convex lens, light enters the curved face, <strong>plane face silvered</strong>: behaves as a concave mirror with f = R/2(n − 1). n = 1.5, R = 10 cm → <strong>f = 10 cm</strong>. If instead the <em>curved</em> face is silvered: f = R/2n.</p></div></div>
+
+<div class="qa"><p class="q">Q. Displacement method: screen fixed at distance D from object; two lens positions separated by d give sharp images.<span class="tag">case study</span></p>
+<div class="a"><div class="formula">f = (D² − d²)/4D, &nbsp; d = √(D(D − 4f)), &nbsp; requires D ≥ 4f</div>
+<p>D = 80 cm, d = 20 cm → f = 18.75 cm. First position gives an enlarged image, the second a diminished image. For f = 15 cm, D must exceed 60 cm (65 cm works).</p></div></div>
+
+<h2 id="prism">5. Prism</h2>
+
+<div class="qa"><p class="q">Q. Trace a ray through a prism. Show i + e = A + δ and derive n = sin((A + δ<sub>m</sub>)/2)/sin(A/2). Plot δ vs i.<span class="tag">3–5 M · 11 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 220" width="420" role="img" aria-label="Refraction through a triangular prism">
+  <polygon points="210,20 330,200 90,200" class="fillb" opacity="0.8"/>
+  <text x="204" y="14">A</text>
+  <line class="acc" x1="40" y1="160" x2="155" y2="118"/><line class="acc" x1="155" y1="118" x2="268" y2="118"/><line class="acc" x1="268" y1="118" x2="390" y2="160"/>
+  <line class="dash" x1="110" y1="88" x2="200" y2="150"/><line class="dash" x1="310" y1="88" x2="220" y2="150"/>
+  <line class="dash" x1="155" y1="118" x2="300" y2="65"/>
+  <text x="104" y="124" class="s">i</text><text x="180" y="134" class="s">r₁</text><text x="232" y="134" class="s">r₂</text><text x="300" y="128" class="s">e</text>
+  <text x="296" y="78" class="a2">δ</text>
+  <text x="196" y="160" class="s">r₁ + r₂ = A</text>
+</svg>
+<figcaption>Deviation δ = (i − r₁) + (e − r₂).</figcaption>
+</figure>
+<p>In the quadrilateral formed by the two normals: r₁ + r₂ = A. Total deviation δ = (i − r₁) + (e − r₂) = i + e − A → <strong>i + e = A + δ</strong>.</p>
+<p>At minimum deviation the ray passes symmetrically: i = e, r₁ = r₂ = A/2, so i = (A + δ<sub>m</sub>)/2. Snell: n = sin i / sin r₁ →</p>
+<div class="formula">n = sin[(A + δ<sub>m</sub>)/2] / sin(A/2)</div>
+<figure>
+<svg viewBox="0 0 280 150" width="280" role="img" aria-label="Angle of deviation versus angle of incidence">
+  <line class="ln" x1="30" y1="125" x2="270" y2="125"/><line class="ln" x1="30" y1="125" x2="30" y2="10"/><text x="260" y="142">i</text><text x="12" y="18">δ</text>
+  <path class="acc" d="M45 20 Q 120 150 260 40"/><line class="dash" x1="128" y1="86" x2="128" y2="125"/><line class="dash" x1="30" y1="86" x2="128" y2="86"/>
+  <text x="2" y="90" class="s">δm</text><text x="120" y="140" class="s">i = e</text>
+</svg>
+</figure>
+<p><em>Examples:</em> A = 60°, δ<sub>m</sub> = 30° → n = sin 45°/sin 30° = <strong>√2</strong> (in 4 papers!). Then v = c/√2 = 2.12×10⁸ m/s. A = 60°, n = 1.5 → sin((60 + δ)/2) = 0.75 → (60 + δ)/2 = 49° → δ<sub>m</sub> = 38°. n = √2, A = 60° → δ<sub>m</sub> = 30°, i = 45°. If i = (3/4)A = 45° at minimum deviation → δ<sub>m</sub> = 30°, n = √2. If δ<sub>m</sub> = A: n = 2 cos(A/2).</p>
+<p><strong>Thin prism:</strong> δ = (n − 1)A. Ray emerging normally from the second face: r₂ = 0, r₁ = A → i ≈ nA.</p>
+<p><strong>Grazing emergence / just TIR at the second face:</strong> r₂ = C → r₁ = A − C. For A = 60°, n = √2: C = 45°, r₁ = 15°, sin i = √2 sin 15° → i ≈ 21.5°.</p>
+<p><strong>Dispersion:</strong> violet deviates more than red because n<sub>violet</sub> &gt; n<sub>red</sub> (shorter wavelength).</p>
+<p><strong>Right-angled isosceles prism (45°):</strong> TIR at the hypotenuse if n &gt; √2 = 1.414. Rays with n = 1.39 refract out; 1.47 and 1.52 are totally reflected.</p></div></div>
+
+<h2 id="instruments">6. Microscope &amp; telescope</h2>
+
+<div class="qa"><p class="q">Q. Draw a labelled ray diagram of a compound microscope. Derive its magnifying power (a) at the near point, (b) at infinity.<span class="tag">5 M · 9 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 460 210" width="460" role="img" aria-label="Compound microscope ray diagram">
+  <line class="dash" x1="10" y1="100" x2="450" y2="100"/>
+  <path class="fillb" d="M90 70 Q 102 100 90 130 Q 78 100 90 70 Z"/><text x="76" y="62">Objective</text>
+  <path class="fillb" d="M330 40 Q 346 100 330 160 Q 314 100 330 40 Z"/><text x="308" y="32">Eyepiece</text>
+  <line class="ln" x1="60" y1="100" x2="60" y2="82"/><polygon class="dot" points="60,78 56,86 64,86"/><text x="52" y="116">AB</text>
+  <line class="acc" x1="60" y1="82" x2="90" y2="82"/><line class="acc" x1="90" y1="82" x2="270" y2="160"/>
+  <line class="acc" x1="60" y1="82" x2="270" y2="160"/>
+  <line class="ln" x1="270" y1="100" x2="270" y2="160"/><text x="262" y="176">A′B′</text>
+  <line class="acc2" x1="270" y1="160" x2="330" y2="160"/><line class="acc2" x1="330" y1="160" x2="440" y2="70"/>
+  <line class="acc2" x1="270" y1="160" x2="440" y2="60" opacity="0.5"/>
+  <line class="dash" x1="330" y1="160" x2="150" y2="200"/>
+  <text x="14" y="196" class="s">final image A″B″ at D (virtual, inverted, highly magnified)</text>
+  <circle class="dot" cx="120" cy="100" r="2.5"/><text x="114" y="94" class="s">F₀</text>
+  <circle class="dot" cx="290" cy="100" r="2.5"/><text x="284" y="94" class="s">Fₑ</text>
+</svg>
+<figcaption>Objective forms a real, inverted, magnified image A′B′ just inside the eyepiece's focus; the eyepiece acts as a simple magnifier.</figcaption>
+</figure>
+<div class="formula">M = m₀ × mₑ, &nbsp; m₀ = v₀/|u₀| ≈ L/f₀</div>
+<p>(a) Final image at D: mₑ = 1 + D/fₑ → <strong>M = (L/f₀)(1 + D/fₑ)</strong>.</p>
+<p>(b) Final image at infinity (normal adjustment): mₑ = D/fₑ → <strong>M = (L/f₀)(D/fₑ)</strong>.</p>
+<p>Both f₀ and fₑ should be small (f₀ &lt; fₑ); the objective has a short focal length and small aperture to bring the object close and form a large real image.</p>
+<p><em>Examples:</em> f₀ = 1 cm, fₑ = 5 cm, L = 20 cm, image at infinity: M = 20 × 5 = 100. f₀ = 1, fₑ = 2, L = 20, near point: M = 20 × 13.5 = 270. Combination P (1 cm, 5 cm) beats Q (2 cm, 10 cm) by a factor of 4.</p>
+<p><strong>Simple microscope:</strong> m = 1 + D/f at D; m = D/f at infinity. f = 15 cm, image at 25 cm: u = −9.4 cm, m = 2.67; at infinity m = 1.67.</p></div></div>
+
+<div class="qa"><p class="q">Q. Draw a ray diagram of a refracting astronomical telescope in normal adjustment and derive its magnifying power. Why is the objective large? Advantages of a reflecting telescope?<span class="tag">5 M · ~13 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 460 200" width="460" role="img" aria-label="Refracting telescope in normal adjustment">
+  <line class="dash" x1="10" y1="100" x2="450" y2="100"/>
+  <path class="fillb" d="M80 30 Q 104 100 80 170 Q 56 100 80 30 Z"/><text x="56" y="22">Objective f₀</text>
+  <path class="fillb" d="M380 70 Q 392 100 380 130 Q 368 100 380 70 Z"/><text x="356" y="62">Eyepiece fₑ</text>
+  <line class="acc" x1="10" y1="40" x2="80" y2="60"/><line class="acc" x1="80" y1="60" x2="320" y2="128"/>
+  <line class="acc" x1="10" y1="80" x2="80" y2="100"/><line class="acc" x1="80" y1="100" x2="320" y2="128"/>
+  <line class="ln" x1="320" y1="100" x2="320" y2="128"/><text x="304" y="146" class="s">image at F₀ = Fₑ</text>
+  <line class="acc2" x1="320" y1="128" x2="380" y2="118"/><line class="acc2" x1="380" y1="118" x2="450" y2="70"/>
+  <line class="acc2" x1="320" y1="128" x2="380" y2="128"/><line class="acc2" x1="380" y1="128" x2="450" y2="80"/>
+  <line class="thin" x1="80" y1="180" x2="380" y2="180"/><text x="190" y="194" class="s">L = f₀ + fₑ</text>
+  <text x="20" y="34" class="s">rays from distant object</text><text x="400" y="66" class="s">to eye</text>
+</svg>
+<figcaption>Parallel rays from a distant object focus at the common focus; the eyepiece sends them out parallel again (final image at infinity).</figcaption>
+</figure>
+<p>M = β/α. α ≈ h/f₀ (angle at objective), β ≈ h/fₑ (angle at eyepiece) →</p>
+<div class="formula">M = f₀/fₑ (normal adjustment), &nbsp; L = f₀ + fₑ</div>
+<p>Final image at D: M = (f₀/fₑ)(1 + fₑ/D).</p>
+<p><strong>Objective:</strong> large focal length (high M) and large aperture (gathers more light, better resolving power). Choose the lens with largest f and aperture as objective, smallest f as eyepiece.</p>
+<p><strong>Reflecting telescope (Cassegrain) advantages:</strong> no chromatic aberration (mirror), spherical aberration removed with a parabolic mirror, a mirror is lighter/easier to support than a huge lens, cheaper to make large → more light and higher resolution.</p>
+<figure>
+<svg viewBox="0 0 400 160" width="400" role="img" aria-label="Cassegrain reflecting telescope">
+  <path class="ln" d="M340 20 Q 370 80 340 140" stroke-width="3"/><text x="344" y="156" class="s">primary (concave)</text>
+  <line class="ln" x1="350" y1="74" x2="350" y2="86" stroke="var(--bg)" stroke-width="6"/>
+  <path class="ln" d="M150 62 Q 142 80 150 98" stroke-width="3"/><text x="110" y="56" class="s">secondary (convex)</text>
+  <line class="acc" x1="10" y1="35" x2="345" y2="35"/><line class="acc" x1="345" y1="35" x2="150" y2="70"/>
+  <line class="acc" x1="10" y1="125" x2="345" y2="125"/><line class="acc" x1="345" y1="125" x2="150" y2="90"/>
+  <line class="acc2" x1="150" y1="70" x2="390" y2="82"/><line class="acc2" x1="150" y1="90" x2="390" y2="78"/>
+  <circle cx="392" cy="80" r="4" class="dota2"/><text x="360" y="104" class="s">eyepiece</text>
+</svg>
+</figure>
+<p><em>Examples:</em> f₀ = 100 cm, fₑ = 5 cm → M = 20, L = 105 cm. f₀ = 120, fₑ = 6 → 20. A (100, 5): M = 20, L = 105; B (80, 10): M = 8, L = 90. f₀ = 50fₑ with L = 102 cm → fₑ = 2 cm, f₀ = 100 cm.</p></div></div>
+
+<h2 id="huygens">7. Wavefronts &amp; Huygens' principle</h2>
+
+<div class="qa"><p class="q">Q. What is a wavefront? State Huygens' principle. Draw the wavefronts for a point source, a distant source, after a prism, convex lens, concave mirror.<span class="tag">2 M</span></p>
+<div class="a">
+<p><strong>Wavefront:</strong> locus of points oscillating in the same phase. Rays are ⟂ to wavefronts.</p>
+<p><strong>Huygens' principle:</strong> (1) every point on a wavefront is a source of secondary wavelets spreading forward with the speed of the wave; (2) the new wavefront is the forward envelope (common tangent) of these wavelets.</p>
+<ul><li>Point source → spherical (diverging). Source at infinity / distant star / small part of a large spherical wavefront → plane.</li>
+<li>Lamp at focus of concave mirror → reflected plane wavefront. Plane wavefront on concave mirror (radius R) → converging spherical of radius R/2.</li>
+<li>Plane wavefront through a prism → plane but tilted (lower part, which travels through thicker glass, is delayed). Through a convex lens → converging spherical; reflected from a convex mirror → diverging spherical.</li></ul>
+<p>Huygens' theory explains reflection, refraction, interference and diffraction, but <strong>not</strong> the photoelectric effect or the origin of spectra.</p></div></div>
+
+<div class="qa"><p class="q">Q. Using Huygens' principle, prove the laws of refraction (Snell's law).<span class="tag">3–5 M · 9 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 400 230" width="400" role="img" aria-label="Huygens construction for refraction of a plane wavefront">
+  <line class="ln" x1="10" y1="120" x2="390" y2="120"/><text x="12" y="112" class="s">medium 1 (v₁)</text><text x="12" y="140" class="s">medium 2 (v₂ &lt; v₁)</text>
+  <circle class="dot" cx="100" cy="120" r="3"/><text x="90" y="136">A</text>
+  <circle class="dot" cx="280" cy="120" r="3"/><text x="282" y="136">C</text>
+  <line class="acc" x1="100" y1="120" x2="190" y2="30"/><text x="192" y="28" class="a">B</text>
+  <line class="dash" x1="190" y1="30" x2="280" y2="120"/><text x="244" y="68" class="s">v₁t</text>
+  <path class="acc2" d="M100 120 m -80 0 a 80 80 0 0 0 80 80" />
+  <circle class="dot" cx="140" cy="190" r="3"/><text x="130" y="208">E</text>
+  <line class="acc2" x1="140" y1="190" x2="280" y2="120"/>
+  <line class="dash" x1="100" y1="120" x2="140" y2="190"/><text x="100" y="164" class="s">v₂t</text>
+  <text x="122" y="106" class="s">i</text><text x="236" y="136" class="s">r</text>
+  <text x="200" y="190" class="a2">refracted wavefront CE</text>
+</svg>
+<figcaption>Incident wavefront AB; while B travels BC = v₁t, the wavelet from A travels AE = v₂t. CE is tangent to that wavelet.</figcaption>
+</figure>
+<p>In ΔABC: sin i = BC/AC = v₁t/AC. In ΔAEC: sin r = AE/AC = v₂t/AC.</p>
+<div class="formula">sin i / sin r = v₁/v₂ = n₂/n₁ = constant (Snell's law)</div>
+<p>Incident ray, normal and refracted ray lie in one plane (second law). If v₂ &lt; v₁ the ray bends towards the normal. Frequency stays the same; wavelength scales with speed: λ₂ = λ₁v₂/v₁.</p>
+<p><strong>Reflection:</strong> same construction with the wavelet in the same medium: AE = BC = vt, triangles ABC and AEC are congruent → <strong>i = r</strong>.</p>
+<p><em>Example:</em> 60° from air into glass n = 1.5, t = 2×10⁻¹⁰ s: BC = ct = 6 cm; AE = (c/1.5)t = 4 cm.</p></div></div>
+
+<h2 id="ydse">8. Interference – Young's double slit</h2>
+
+<div class="qa"><p class="q">Q. What are coherent sources? Why can't two independent sodium lamps produce sustained interference? How are coherent sources obtained in YDSE?<span class="tag">2 M</span></p>
+<div class="a"><p>Coherent sources emit waves of the same frequency with a constant (time-independent) phase difference. Independent lamps emit random wave-trains whose phase changes ~10⁻⁸ s, so the pattern shifts too fast to see. In YDSE both slits are illuminated by the same single slit (division of wavefront), so their phase difference is fixed. Conditions for sustained interference: coherent sources, same/similar amplitude, narrow slits close together, monochromatic light.</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the resultant intensity of two coherent waves; hence conditions for constructive and destructive interference.<span class="tag">3 M</span></p>
+<div class="a">
+<p>y₁ = a cos ωt, y₂ = a cos(ωt + φ) → y = 2a cos(φ/2) cos(ωt + φ/2). Amplitude A = 2a cos(φ/2):</p>
+<div class="formula">I = 4I₀ cos²(φ/2) &nbsp;&nbsp;|&nbsp;&nbsp; I = I₁ + I₂ + 2√(I₁I₂) cos φ</div>
+<ul><li>Constructive: φ = 2nπ, path difference Δ = nλ → I = 4I₀.</li>
+<li>Destructive: φ = (2n − 1)π, Δ = (2n − 1)λ/2 → I = 0.</li></ul>
+<p>Intensity varies between 0 and 4a². Path diff λ/4 → φ = π/2 → I = 2I₀; λ/3 → φ = 2π/3 → I = I₀ (so Q is <em>not</em> dark). I and 4I gives resultant 5I where cos φ = 0 → φ = π/2. Energy is conserved — it is only redistributed ("light + light = darkness" at minima).</p></div></div>
+
+<div class="qa"><p class="q">Q. Derive the fringe width in YDSE.<span class="tag">3–5 M · ~18 papers (with numericals)</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 210" width="420" role="img" aria-label="Young's double slit geometry">
+  <line class="ln" x1="80" y1="20" x2="80" y2="80"/><line class="ln" x1="80" y1="90" x2="80" y2="120"/><line class="ln" x1="80" y1="130" x2="80" y2="190"/>
+  <text x="64" y="90">S₁</text><text x="64" y="138">S₂</text>
+  <line class="ln" x1="380" y1="10" x2="380" y2="200"/><text x="384" y="20" class="s">screen</text>
+  <line class="dash" x1="80" y1="105" x2="380" y2="105"/><circle class="dot" cx="380" cy="105" r="3"/><text x="386" y="110">O</text>
+  <circle class="dot" cx="380" cy="45" r="3"/><text x="386" y="48">P</text>
+  <line class="acc" x1="80" y1="85" x2="380" y2="45"/><line class="acc2" x1="80" y1="125" x2="380" y2="45"/>
+  <line class="thin" x1="60" y1="85" x2="60" y2="125"/><text x="44" y="110" class="s">d</text>
+  <line class="thin" x1="80" y1="200" x2="380" y2="200"/><text x="222" y="196" class="s">D</text>
+  <line class="thin" x1="396" y1="45" x2="396" y2="105"/><text x="400" y="80" class="s">y</text>
+</svg>
+</figure>
+<p>Path difference at P: S₂P − S₁P ≈ d sin θ ≈ d tan θ = <strong>yd/D</strong>.</p>
+<ul><li>Bright: yd/D = nλ → y<sub>n</sub> = nλD/d.</li>
+<li>Dark: yd/D = (2n − 1)λ/2 → y<sub>n</sub> = (2n − 1)λD/2d.</li></ul>
+<div class="formula">β = y<sub>n+1</sub> − y<sub>n</sub> = λD/d &nbsp; (same for bright and dark fringes)</div>
+<p>All fringes are equally wide (for small θ). β ∝ λ, β ∝ D, β ∝ 1/d. In a medium of n: β/n. Angular fringe width = λ/d.</p>
+<p><strong>White light:</strong> central fringe is white (Δ = 0 for all λ); next fringes are coloured — violet/blue nearest the centre, red farthest; after a few fringes, uniform illumination. Fringe width order: red &gt; orange &gt; green.</p>
+<p><em>Examples:</em></p>
+<ul>
+<li>λ = 500 nm, d = 1 mm, D = 1 m → β = 0.5 mm.</li>
+<li>600 nm, 1.2 m, 0.2 mm → β = 3.6 mm (A–R: assertion true, reason "β ∝ d" false → C).</li>
+<li>d doubled and D halved → β/4. d halved, D doubled → 4β.</li>
+<li>β = 0.4 mm; d × 2, D × ½ → 0.1 mm.</li>
+<li>4th bright at 1.2 cm with d = 0.28 mm, D = 1.4 m → λ = 1.2×10⁻² × 0.28×10⁻³/(4 × 1.4) = 600 nm. (If 4th <em>dark</em>: use 3.5β → λ ≈ 686 nm.)</li>
+<li>Two wavelengths coincide: n₁λ₁ = n₂λ₂. 500 &amp; 600 nm → 6×500 = 5×600 = 3000 nm → y = 3000 nm × D/d. (D = 1.8 m, d = 0.3 mm → 18 mm.) 650 &amp; 520 nm → 4×650 = 5×520 → y = 2600 nm × 1.2/2×10⁻³ = 1.56 mm.</li>
+<li>Bright fringe at 6 mm with β = 3 mm (1.5 m, 0.3 mm, 600 nm) → 2nd order.</li>
+<li>Slits infinitely close (d → 0): β → ∞, no visible pattern.</li></ul>
+<p>Replacing water by a denser liquid: v and λ decrease, frequency unchanged; β decreases; fringes remain straight; central maximum does not shift.</p></div></div>
+
+<h2 id="diffraction">9. Single-slit diffraction</h2>
+
+<div class="qa"><p class="q">Q. Explain single-slit diffraction. Show that the central maximum is twice as wide as the others. Sketch the intensity pattern.<span class="tag">3 M · ~11 papers</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 400 160" width="400" role="img" aria-label="Single slit diffraction intensity pattern">
+  <line class="ln" x1="10" y1="135" x2="390" y2="135"/>
+  <path class="acc" d="M10 134 Q 30 125 45 134 Q 75 115 100 134 Q 130 100 150 134 Q 200 -40 250 134 Q 270 100 300 134 Q 325 115 355 134 Q 370 125 390 134"/>
+  <text x="140" y="152" class="s">−λ/a</text><text x="240" y="152" class="s">+λ/a</text><text x="194" y="152" class="s">0</text>
+  <text x="300" y="30" class="s">I</text><text x="372" y="152" class="s">θ</text>
+</svg>
+<figcaption>Bright, wide central maximum; secondary maxima of rapidly decreasing intensity.</figcaption>
+</figure>
+<p>Divide the slit (width a) into two halves. At angle θ with a sin θ = λ, each point in the upper half has a partner in the lower half with path difference λ/2 → they cancel → first minimum.</p>
+<div class="formula">Minima: a sin θ = nλ &nbsp;&nbsp; Secondary maxima: a sin θ ≈ (n + ½)λ</div>
+<p>Angular width of central maximum = 2λ/a; linear width = 2λD/a, which is twice the width of the secondary fringes (λD/a). Intensity of secondary maxima falls because a smaller and smaller fraction of the slit contributes.</p>
+<p><strong>Effects:</strong> narrower slit → wider central maximum (and dimmer); red → blue: bands narrower and more crowded; immersing in water → width ÷ n. Diffraction is noticeable when the slit width is comparable to λ. Pinhole widened → pattern shrinks but intensity increases.</p>
+<p><em>Examples:</em></p>
+<ul>
+<li>λ = 600 nm, a = 0.3 mm → angular width 2λ/a = 4×10⁻³ rad.</li>
+<li>λ = 600 nm, a = 0.2 mm, D = 1.5 m → width = 9 mm; with a = 0.1 mm → 18 mm.</li>
+<li>λ = 500 nm, a = 0.2 mm, D = 2 m → distance between first minima = 10⁻² m.</li>
+<li>a = 0.1 mm, λ = 6000 Å, D = 0.5 m → 3rd dark band at 3λD/a = 9 mm.</li>
+<li>First minimum at 2.5 mm, λ = 500 nm, D = 1 m → a = 0.2 mm; first secondary max at 1.5λD/a = 3.75 mm.</li>
+</ul>
+<p>Diffraction can be treated as interference of waves from many point sources on the same wavefront. Colours of thin oil films are due to interference.</p></div></div>
+
+<h2 id="quick">10. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Phase difference between E and B in an EM wave</td><td>zero</td></tr>
+<tr><td>E₀/B₀ in vacuum</td><td>c = 1/√(μ₀ε₀)</td></tr>
+<tr><td>Highest penetrating power</td><td>gamma rays</td></tr>
+<tr><td>Rays from the Sun responsible for global warming</td><td>infrared</td></tr>
+<tr><td>Convex lens f = 20 cm, object at 30 cm</td><td>real, inverted, magnified (v = 60 cm)</td></tr>
+<tr><td>Convex lens f = 15 cm, virtual image 3× size</td><td>u = 10 cm</td></tr>
+<tr><td>Wavefront from a star detected on Earth</td><td>plane</td></tr>
+<tr><td>Lamp at focus of a large concave mirror</td><td>plane wavefront</td></tr>
+<tr><td>Phenomenon showing wave nature of light</td><td>interference / diffraction</td></tr>
+<tr><td>YDSE in liquid n = 1.5</td><td>β/1.5</td></tr>
+<tr><td>1/u vs 1/v graph intercept 0.1 cm⁻¹, n = 1.5, equiconvex</td><td>f = 10 cm → R = 10 cm</td></tr>
+<tr><td>Two lenses 3 D and −1 D</td><td>f = 50 cm, convex</td></tr>
+</table>
+
+<div class="pager"><a href="04-emi-ac.html">← EMI &amp; AC</a><a href="06-modern.html">Modern Physics →</a></div>
+</main>
+<footer>Study notes compiled from patterns in 20 KV Ernakulam Region Pre-Board 1 (2026–27) papers. Verify against NCERT.</footer>
+</body>
+</html>
