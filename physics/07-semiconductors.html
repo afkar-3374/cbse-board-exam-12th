@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semiconductors Notes</title>
+<meta name="description" content="CBSE Class 12 Physics: Semiconductor Electronics – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="01-electrostatics.html">Electrostatics</a>
+    <a href="02-current.html">Current</a>
+    <a href="03-magnetism.html">Magnetism</a>
+    <a href="04-emi-ac.html">EMI &amp; AC</a>
+    <a href="05-optics.html">EM Waves &amp; Optics</a>
+    <a href="06-modern.html">Modern</a>
+    <a href="07-semiconductors.html">Semiconductors</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Unit 7 · Semiconductor Electronics</h1>
+<p class="lead">Ch 14. Not tested in Pre-Board 1, but it is in the board syllabus (about 7 marks). Energy bands, p–n junction and the rectifier are the core.</p>
+<div class="tip"><strong>Not in Pre-Board 1:</strong> none of the 20 papers asked this chapter, so there is no frequency data — questions here follow the standard CBSE pattern.</div>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#bands">Energy bands</a></li>
+<li><a href="#intrinsic">Intrinsic &amp; extrinsic semiconductors</a></li>
+<li><a href="#junction">p–n junction formation</a></li>
+<li><a href="#bias">Forward &amp; reverse bias, I–V characteristics</a></li>
+<li><a href="#rectifier">Rectifiers</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="bands">1. Energy bands</h2>
+<div class="qa"><p class="q">Q. Distinguish conductors, semiconductors and insulators on the basis of energy bands.<span class="tag">3 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 480 190" width="480" role="img" aria-label="Energy band diagrams for conductor, semiconductor, insulator">
+  <g transform="translate(20,10)">
+    <rect x="0" y="20" width="110" height="50" class="fillb"/><rect x="0" y="55" width="110" height="60" fill="var(--svg-accent)" opacity="0.35" stroke="var(--svg-line)"/>
+    <text x="10" y="40" class="s">CB</text><text x="10" y="100" class="s">VB (overlap)</text>
+    <text x="10" y="150">Conductor</text><text x="10" y="166" class="s">Eg = 0</text>
+  </g>
+  <g transform="translate(180,10)">
+    <rect x="0" y="10" width="110" height="40" class="fillb"/><rect x="0" y="80" width="110" height="40" fill="var(--svg-accent)" opacity="0.35" stroke="var(--svg-line)"/>
+    <text x="10" y="34" class="s">CB</text><text x="10" y="104" class="s">VB</text><text x="30" y="70" class="a2">Eg ≈ 1 eV</text>
+    <text x="10" y="150">Semiconductor</text><text x="10" y="166" class="s">Si 1.1 eV, Ge 0.7 eV</text>
+  </g>
+  <g transform="translate(340,10)">
+    <rect x="0" y="0" width="110" height="30" class="fillb"/><rect x="0" y="95" width="110" height="30" fill="var(--svg-accent)" opacity="0.35" stroke="var(--svg-line)"/>
+    <text x="10" y="20" class="s">CB</text><text x="10" y="115" class="s">VB</text><text x="30" y="66" class="a2">Eg &gt; 3 eV</text>
+    <text x="10" y="150">Insulator</text><text x="10" y="166" class="s">diamond 5.4 eV</text>
+  </g>
+</svg>
+</figure>
+<ul><li><strong>Conductor:</strong> valence and conduction bands overlap (or CB partly filled) → many free electrons.</li>
+<li><strong>Semiconductor:</strong> small gap (&lt; 3 eV). At 0 K it is an insulator; at room temperature some electrons jump to CB.</li>
+<li><strong>Insulator:</strong> large gap, so thermal energy cannot lift electrons to CB.</li></ul></div></div>
+
+<h2 id="intrinsic">2. Intrinsic &amp; extrinsic semiconductors</h2>
+<div class="qa"><p class="q">Q. What is an intrinsic semiconductor? Explain n-type and p-type doping with diagrams.<span class="tag">3 M</span></p>
+<div class="a">
+<p><strong>Intrinsic:</strong> pure Si/Ge. Each electron that breaks a bond leaves a hole: n<sub>e</sub> = n<sub>h</sub> = n<sub>i</sub>.</p>
+<table>
+<tr><th></th><th>n-type</th><th>p-type</th></tr>
+<tr><td>Dopant</td><td>pentavalent (P, As, Sb) — <em>donor</em></td><td>trivalent (B, Al, In, Ga) — <em>acceptor</em></td></tr>
+<tr><td>Majority carriers</td><td>electrons</td><td>holes</td></tr>
+<tr><td>Energy level</td><td>donor level just below CB (~0.01 eV)</td><td>acceptor level just above VB</td></tr>
+<tr><td>Relation</td><td>n<sub>e</sub> ≫ n<sub>h</sub></td><td>n<sub>h</sub> ≫ n<sub>e</sub></td></tr>
+</table>
+<div class="formula">n<sub>e</sub> · n<sub>h</sub> = n<sub>i</sub>²</div>
+<p>Both n- and p-type crystals are electrically <strong>neutral</strong> — the dopant atom is neutral; only the carrier balance changes.</p>
+<p><em>Example:</em> n<sub>i</sub> = 1.5×10¹⁶ m⁻³, doped with 4.5×10²² m⁻³ pentavalent atoms → n<sub>e</sub> ≈ 4.5×10²², n<sub>h</sub> = n<sub>i</sub>²/n<sub>e</sub> = 5×10⁹ m⁻³.</p></div></div>
+
+<h2 id="junction">3. p–n junction formation</h2>
+<div class="qa"><p class="q">Q. Explain the formation of the depletion layer and potential barrier in a p–n junction.<span class="tag">3 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 420 170" width="420" role="img" aria-label="p-n junction with depletion region and barrier potential">
+  <rect x="30" y="20" width="360" height="70" class="fillb"/>
+  <rect x="180" y="20" width="60" height="70" fill="var(--svg-accent2)" opacity="0.18" stroke="var(--svg-accent2)"/>
+  <text x="90" y="16">p</text><text x="320" y="16">n</text><text x="186" y="104" class="a2">depletion</text>
+  <g class="s"><text x="50" y="50">○ ○ ○ ○</text><text x="50" y="74">○ ○ ○ ○</text><text x="260" y="50">• • • •</text><text x="260" y="74">• • • •</text></g>
+  <text x="188" y="50">− −</text><text x="188" y="74">− −</text><text x="216" y="50">+ +</text><text x="216" y="74">+ +</text>
+  <line class="acc" x1="236" y1="35" x2="186" y2="35"/><polygon class="dota" points="182,35 190,31 190,39"/><text x="194" y="32" class="a" font-size="10">E</text>
+  <path class="acc" d="M30 150 L180 150 C 200 150, 220 120, 240 120 L390 120"/><text x="250" y="114" class="a">V₀ (barrier)</text>
+  <text x="30" y="166" class="s">potential</text>
+</svg>
+<figcaption>○ holes, • electrons. Immobile ions (− on p-side, + on n-side) form the depletion layer.</figcaption>
+</figure>
+<ol><li><strong>Diffusion:</strong> holes diffuse p → n and electrons n → p (concentration gradient) → diffusion current.</li>
+<li>They leave behind immobile ions: negative acceptor ions on the p-side, positive donor ions on the n-side → a <strong>depletion region</strong> free of mobile carriers.</li>
+<li>These ions create an electric field from n to p, which drives minority carriers across → <strong>drift current</strong>.</li>
+<li>Equilibrium: diffusion current = drift current; the potential difference across the junction is the <strong>barrier potential</strong> (≈ 0.7 V Si, 0.3 V Ge).</li></ol></div></div>
+
+<h2 id="bias">4. Forward &amp; reverse bias, I–V characteristics</h2>
+<div class="qa"><p class="q">Q. Draw circuit diagrams for forward and reverse bias and the I–V characteristic of a p–n junction diode. What is knee/threshold voltage?<span class="tag">3–5 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 320 220" width="320" role="img" aria-label="Diode I-V characteristics">
+  <line class="ln" x1="10" y1="120" x2="310" y2="120"/><line class="ln" x1="170" y1="10" x2="170" y2="210"/>
+  <text x="290" y="114">V</text><text x="176" y="20">I (mA)</text><text x="176" y="206" class="s">I (μA)</text>
+  <path class="acc" d="M170 120 L 220 118 C 240 115, 250 80, 262 15"/>
+  <line class="dash" x1="230" y1="120" x2="230" y2="130"/><text x="216" y="142" class="s">knee ~0.7 V</text>
+  <path class="acc2" d="M170 120 L 60 126 L 52 210"/>
+  <text x="20" y="200" class="a2">breakdown</text><text x="70" y="146" class="s">reverse saturation</text>
+  <text x="250" y="60" class="a">forward</text>
+</svg>
+</figure>
+<ul><li><strong>Forward bias</strong> (p to +, n to −): applied V opposes V₀ → barrier lowers, depletion layer narrows; current rises sharply after the <strong>knee voltage</strong> (current in mA, due to majority carriers).</li>
+<li><strong>Reverse bias</strong>: barrier increases, depletion layer widens; only a tiny reverse saturation current (μA) from minority carriers, nearly independent of voltage, until <strong>breakdown</strong>.</li></ul>
+<p>Dynamic resistance r<sub>d</sub> = ΔV/ΔI. E.g. ΔV = 0.1 V, ΔI = 20 mA → 5 Ω.</p></div></div>
+
+<h2 id="rectifier">5. Rectifiers</h2>
+<div class="qa"><p class="q">Q. With a circuit diagram, explain the working of a full-wave rectifier. Draw input and output waveforms.<span class="tag">3–5 M · most asked</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 440 210" width="440" role="img" aria-label="Centre-tap full wave rectifier and waveforms">
+  <g transform="translate(10,10)">
+    <path class="ln" d="M40 20 C 50 30, 50 40, 40 50 C 50 60, 50 70, 40 80 C 50 90, 50 100, 40 110"/>
+    <path class="ln" d="M60 20 C 50 30, 50 40, 60 50 C 50 60, 50 70, 60 80 C 50 90, 50 100, 60 110"/>
+    <line class="ln" x1="0" y1="30" x2="40" y2="30"/><line class="ln" x1="0" y1="100" x2="40" y2="100"/><text x="0" y="70" class="s">AC in</text>
+    <line class="ln" x1="60" y1="20" x2="120" y2="20"/><polygon class="fillb" points="120,12 120,28 136,20"/><line class="ln" x1="136" y1="12" x2="136" y2="28"/><text x="116" y="8">D₁</text>
+    <line class="ln" x1="60" y1="110" x2="120" y2="110"/><polygon class="fillb" points="120,102 120,118 136,110"/><line class="ln" x1="136" y1="102" x2="136" y2="118"/><text x="116" y="132">D₂</text>
+    <line class="ln" x1="136" y1="20" x2="170" y2="20"/><line class="ln" x1="136" y1="110" x2="170" y2="110"/><line class="ln" x1="170" y1="20" x2="170" y2="110"/>
+    <line class="ln" x1="170" y1="65" x2="200" y2="65"/><rect x="200" y="55" width="16" height="50" class="fillb"/><text x="220" y="84">R<tspan dy="3">L</tspan></text>
+    <line class="ln" x1="208" y1="105" x2="208" y2="150"/><line class="ln" x1="60" y1="65" x2="90" y2="65"/><line class="ln" x1="90" y1="65" x2="90" y2="150"/><line class="ln" x1="90" y1="150" x2="208" y2="150"/>
+    <text x="64" y="62" class="s">centre tap</text>
+  </g>
+  <g transform="translate(270,20)">
+    <line class="thin" x1="0" y1="40" x2="160" y2="40"/>
+    <path class="acc" d="M0 40 Q 20 0 40 40 Q 60 80 80 40 Q 100 0 120 40 Q 140 80 160 40"/><text x="0" y="12" class="s">input</text>
+    <line class="thin" x1="0" y1="150" x2="160" y2="150"/>
+    <path class="acc2" d="M0 150 Q 20 110 40 150 Q 60 110 80 150 Q 100 110 120 150 Q 140 110 160 150"/><text x="0" y="104" class="s">output (both halves)</text>
+  </g>
+</svg>
+</figure>
+<p><strong>Principle:</strong> a diode conducts only in forward bias.</p>
+<p><strong>Working:</strong> during the positive half-cycle, the top end of the secondary is +, D₁ is forward biased and conducts; D₂ is reverse biased. In the negative half-cycle, D₂ conducts and D₁ is off. In both halves the current through R<sub>L</sub> flows in the <em>same</em> direction → unidirectional (pulsating DC) output.</p>
+<ul><li>Half-wave: only one diode; output for one half-cycle. Output frequency = input frequency (50 Hz).</li>
+<li>Full-wave: output frequency = 2 × input (100 Hz for 50 Hz mains).</li>
+<li>A capacitor filter across R<sub>L</sub> smooths the ripple (charges at peaks, discharges slowly between them).</li></ul></div></div>
+
+<h2 id="quick">6. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Majority carriers in n-type</td><td>electrons</td></tr>
+<tr><td>Doping Si with boron gives</td><td>p-type</td></tr>
+<tr><td>Is an n-type semiconductor negatively charged?</td><td>No — neutral</td></tr>
+<tr><td>Width of depletion layer in forward bias</td><td>decreases</td></tr>
+<tr><td>Resistivity of a semiconductor with temperature</td><td>decreases</td></tr>
+<tr><td>Current in reverse bias is due to</td><td>minority carriers (drift)</td></tr>
+<tr><td>Output frequency of FWR for 50 Hz input</td><td>100 Hz</td></tr>
+<tr><td>Barrier potential of Si</td><td>≈ 0.7 V</td></tr>
+</table>
+
+<div class="pager"><a href="06-modern.html">← Modern Physics</a><a href="00-exam-pattern.html">Exam Pattern →</a></div>
+</main>
+<footer>Study notes · CBSE Class 12 Physics. Verify against NCERT.</footer>
+</body>
+</html>

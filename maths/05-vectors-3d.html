@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectors and 3D Notes</title>
+<meta name="description" content="CBSE Class 12 Maths: Vector Algebra and Three-Dimensional Geometry – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="index.html">CBSE 12 · Maths</a>
+  <nav>
+    <a href="01-relations-functions.html">Relations &amp; ITF</a>
+    <a href="02-matrices.html">Matrices</a>
+    <a href="03-differentiation.html">Differentiation</a>
+    <a href="04-integration.html">Integration &amp; DE</a>
+    <a href="05-vectors-3d.html">Vectors &amp; 3D</a>
+    <a href="06-lpp-probability.html">LPP &amp; Probability</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Vectors &amp; Three-Dimensional Geometry</h1>
+<p class="lead">Ch 10 &amp; 11. Expect MCQs on projection and angle, a 2-mark cross-product question, and a 5-mark or case-study question on shortest distance / foot of perpendicular.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#dot">Dot product, angle, projection</a></li>
+<li><a href="#cross">Cross product &amp; area</a></li>
+<li><a href="#lines">Lines: equations, direction cosines, angle</a></li>
+<li><a href="#foot">Foot of perpendicular &amp; image</a></li>
+<li><a href="#sd">Shortest distance</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="dot">1. Dot product, angle, projection</h2>
+<div class="qa"><p class="q">Q. Formulae for angle, projection and perpendicularity.<span class="tag">1–2 M</span></p>
+<div class="a">
+<div class="formula">a⃗·b⃗ = |a||b| cos θ = a₁b₁ + a₂b₂ + a₃b₃ &nbsp;|&nbsp; projection of a⃗ on b⃗ = (a⃗·b⃗)/|b⃗|</div>
+<ul>
+<li>|a| = √3, |b| = 2, a·b = √6 ⇒ cos θ = √6/(2√3) = 1/√2 ⇒ θ = π/4.</li>
+<li>Projection of i + 2j + 3k on 2i + j + 2k = (2 + 2 + 6)/3 = 10/3.</li>
+<li>Projection of 2i − j + k on i + 2j − 2k = (2 − 2 − 2)/3 = −2/3.</li>
+<li>2i + λj + k ⟂ i − 2j + 3k ⇒ 2 − 2λ + 3 = 0 ⇒ λ = 5/2.</li>
+<li>|a − b|² = |a|² + |b|² − 2a·b: |a| = 3, |b| = 4, a·b = 6 ⇒ |a − b| = √13.</li>
+<li>|a| = |b| = |a + b| = 1 ⇒ a·b = −½ ⇒ |a − b| = √3.</li>
+<li>a + b + c = 0, all unit ⇒ a·b + b·c + c·a = −3/2.</li>
+<li>√3 a − b unit (a, b unit) ⇒ 3 + 1 − 2√3 cos θ = 1 ⇒ cos θ = √3/2 ⇒ θ = 30°.</li>
+</ul></div></div>
+
+<h2 id="cross">2. Cross product &amp; area</h2>
+<div class="qa"><p class="q">Q. Find a unit vector perpendicular to a = 2i − j + k and b = i + j − 2k.<span class="tag">2 M · repeated</span></p>
+<div class="a">
+<p>a × b = |i j k; 2 −1 1; 1 1 −2| = i(2 − 1) − j(−4 − 1) + k(2 + 1) = i + 5j + 3k; |a × b| = √35.</p>
+<div class="formula">n̂ = ±(i + 5j + 3k)/√35</div>
+<p>Vector ⟂ to i + j and i − j: (i + j) × (i − j) = −2k → any multiple of k, e.g. 3k.</p>
+<p>|a × b| = |a||b| sin θ: |a| = 3, |b| = √2/3, unit ⇒ sin θ = 1/√2 ⇒ θ = π/4. |a × b| = |a·b| ⇒ tan θ = 1 ⇒ θ = π/4.</p>
+<p>|a| = 3, |b| = 4, |a × b| = 6 ⇒ sin θ = ½ ⇒ a·b = 12 cos θ = ±6√3.</p></div></div>
+
+<div class="qa"><p class="q">Q. Area of a triangle and parallelogram using vectors.<span class="tag">2–3 M</span></p>
+<div class="a">
+<div class="formula">Parallelogram (sides a, b) = |a × b|; (diagonals d₁, d₂) = ½|d₁ × d₂|; triangle ABC = ½|AB × AC|</div>
+<p>A(2, 3, 1), B(4, 1, 3), C(−1, 2, 0): AB = 2i − 2j + 2k, AC = −3i − j − k. AB × AC = i(2 + 2) − j(−2 + 6) + k(−2 − 6) = 4i − 4j − 8k. Area = ½√96 = <strong>2√6 sq units</strong>.</p>
+<p>Unit vector along the diagonal of a parallelogram with sides 2i − 4j + 5k and i − 2j − 3k: d = 3i − 6j + 2k, |d| = 7 ⇒ (3i − 6j + 2k)/7.</p></div></div>
+
+<h2 id="lines">3. Lines: equations, direction cosines, angle</h2>
+<div class="qa"><p class="q">Q. Vector and Cartesian equations of a line; direction cosines.<span class="tag">1–2 M</span></p>
+<div class="a">
+<div class="formula">r⃗ = a⃗ + λb⃗ &nbsp;⇔&nbsp; (x − x₁)/a = (y − y₁)/b = (z − z₁)/c</div>
+<ul>
+<li>DCs: l = a/√(a² + b² + c²) etc., with l² + m² + n² = 1. So (½, ½, ½) cannot be DCs.</li>
+<li>(x − 1)/2 = (1 − y)/3 = (z − 2)/6 → rewrite (y − 1)/(−3) → DRs 2, −3, 6 → DCs 2/7, −3/7, 6/7.</li>
+<li>Flight path r = (2i − j + 3k) + λ(3i + 4j + 12k): DCs 3/13, 4/13, 12/13; λ from 0 to 2 covers 2 × 13 = 26 km.</li>
+<li>Line makes 60° with y- and z-axes: cos²α + ¼ + ¼ = 1 ⇒ α = 45°. sin²α + sin²β + sin²γ = 2.</li>
+<li>Missile x = 3t, y = −4t, z = t: distance at t = 5 = 5√26 km.</li>
+</ul></div></div>
+
+<div class="qa"><p class="q">Q. Angle between two lines; condition for perpendicular / parallel.<span class="tag">1–3 M</span></p>
+<div class="a">
+<div class="formula">cos θ = |a₁a₂ + b₁b₂ + c₁c₂| / (√(a₁² + b₁² + c₁²) √(a₂² + b₂² + c₂²))</div>
+<ul>
+<li>Pipes along (i + j) and (j + k): cos θ = 1/(√2·√2) = ½ ⇒ θ = 60°.</li>
+<li>(2, 2, 1) and (4, 1, 8): cos θ = (8 + 2 + 8)/(3 × 9) = 2/3.</li>
+<li>Lines (2, 5, 4) and (1, 2, −3): 2 + 10 − 12 = 0 ⇒ 90°. (A–R: reason "skew lines are parallel and intersecting" is false.)</li>
+<li>(1 − x)/3 = (7y − 14)/(2λ) = (5z − 10)/11 and (7 − 7x)/(3λ) = (y − 5)/1 = (6 − z)/5 perpendicular: DRs (−3, 2λ/7, 11/5) and (−3λ/7, 1, −5) ⇒ 9λ/7 + 2λ/7 − 11 = 0 ⇒ λ = 7.</li>
+<li>Parallel: DRs proportional, e.g. (−2, μ, −1) ∥ (−μ, 2, 1)… solve the ratio.</li>
+</ul></div></div>
+
+<h2 id="foot">4. Foot of perpendicular &amp; image</h2>
+<div class="qa"><p class="q">Q. Find the foot of the perpendicular from P(4, 2, 2) to the line (x − 1)/2 = (y + 1)/1 = (z − 2)/2, the length, and the image of P.<span class="tag">3–5 M · case study</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 320 170" width="320" role="img" aria-label="Foot of perpendicular from a point to a line">
+  <line class="ln" x1="10" y1="140" x2="310" y2="60"/>
+  <circle class="dot" cx="140" cy="20" r="4"/><text x="146" y="20">P</text>
+  <circle class="dota" cx="170" cy="97" r="4"/><text x="176" y="114" class="a">Q (foot)</text>
+  <line class="acc2" x1="140" y1="20" x2="200" y2="174"/>
+  <circle class="dot" cx="200" cy="174" r="0"/><text x="206" y="168">P′ (image)</text>
+  <text x="270" y="60" class="s">line L</text>
+</svg>
+</figure>
+<p><strong>Step 1:</strong> general point Q = (2λ + 1, λ − 1, 2λ + 2).</p>
+<p><strong>Step 2:</strong> PQ = (2λ − 3, λ − 3, 2λ). PQ ⟂ line: 2(2λ − 3) + (λ − 3) + 2(2λ) = 0 ⇒ 9λ − 9 = 0 ⇒ λ = 1.</p>
+<p><strong>Step 3:</strong> foot <strong>Q = (3, 0, 4)</strong>; length PQ = √(1 + 4 + 4) = 3 units (= 30 m if 1 unit = 10 m).</p>
+<p><strong>Step 4:</strong> image P′ = 2Q − P = <strong>(2, −2, 6)</strong>.</p>
+<p><em>Also asked:</em> A(−1, 8, 4) to line BC through B(0, −1, 3), C(2, −3, −1): line (x)/2 = (y + 1)/(−2) = (z − 3)/(−4); foot (−2, 1, 7), image (−3, −6, 10).</p>
+<p>Points on a line at a given distance: write the general point, set distance² = d², solve the quadratic in λ.</p></div></div>
+
+<h2 id="sd">5. Shortest distance</h2>
+<div class="qa"><p class="q">Q. Find the shortest distance between r = (i + 2j + k) + λ(i − j + k) and r = (2i − j − k) + μ(2i + j + 2k).<span class="tag">3–5 M · repeated</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 320 160" width="320" role="img" aria-label="Two skew lines with common perpendicular">
+  <line class="ln" x1="20" y1="40" x2="300" y2="40"/><line class="acc" x1="60" y1="150" x2="260" y2="90"/>
+  <line class="acc2" x1="170" y1="40" x2="170" y2="117"/><text x="176" y="84" class="a2">d</text>
+  <text x="280" y="34">L₁ (a₁, b₁)</text><text x="200" y="138" class="a">L₂ (a₂, b₂)</text>
+</svg>
+</figure>
+<div class="formula">Skew: d = |(a₂ − a₁)·(b₁ × b₂)| / |b₁ × b₂|</div>
+<div class="formula">Parallel (b): d = |b × (a₂ − a₁)| / |b|</div>
+<p>a₂ − a₁ = i − 3j − 2k. b₁ × b₂ = |i j k; 1 −1 1; 2 1 2| = i(−2 − 1) − j(2 − 2) + k(1 + 2) = −3i + 0j + 3k, |·| = 3√2.</p>
+<p>d = |(1)(−3) + 0 + (−2)(3)|/(3√2) = 9/(3√2) = <strong>3/√2 units</strong>.</p>
+<p><strong>Parallel lines</strong> r = (i + j) + λ(i + 2j + 2k), r = (4i + j) + μ(i + 2j + 2k): a₂ − a₁ = 3i; b × (3i) = |i j k; 1 2 2; 3 0 0| = 0i + 6j − 6k, |·| = 6√2; |b| = 3 ⇒ d = <strong>2√2</strong>.</p>
+<p><strong>Drone paths</strong> (x − 1)/2 = y/1 = (z − 2)/2 and (x − 2)/1 = (y − 4)/2 = (z − 2)/(−2): angle cos θ = |2 + 2 − 4|/9 = 0 ⇒ 90°. b₁ × b₂ = (−6, 6, 3), |·| = 9; a₂ − a₁ = (1, 4, 0) ⇒ d = |−6 + 24|/9 = 2 km ≥ 1.5 km ⇒ safety rule satisfied.</p>
+<p><strong>Intersecting lines</strong> give d = 0; to find the point of intersection equate the general points.</p></div></div>
+
+<h2 id="quick">6. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Unit vector ⟂ to i − j and i + j (right-handed)</td><td>k</td></tr>
+<tr><td>Unit vector along PQ, P(1, 2, 3), Q(3, −1, 9)</td><td>(2i − 3j + 6k)/7</td></tr>
+<tr><td>Projection of a on b if a·b = 8, b = 2i + 6j + 3k</td><td>8/7</td></tr>
+<tr><td>P(2, 3, −1) to line (x − 1)/1 = (y + 1)/(−1) = (z − 2)/2: value of 2(PQ)²</td><td>foot at λ = −3/2, PQ² = 25/2 → 25</td></tr>
+<tr><td>sin²α + sin²β + sin²γ</td><td>2</td></tr>
+<tr><td>a·(a × b)</td><td>0</td></tr>
+</table>
+
+<div class="pager"><a href="04-integration.html">← Integration &amp; DE</a><a href="06-lpp-probability.html">LPP &amp; Probability →</a></div>
+</main>
+<footer>Study notes · CBSE Class 12 Maths. Verify against NCERT.</footer>
+</body>
+</html>

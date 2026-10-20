@@ -1,19 +1,15 @@
 # CBSE Board Exam — Class 12
 
-Question-and-answer revision notes with diagrams for the CBSE Class 12 board exam, published as a static website with GitHub Pages.
+Question-and-answer revision notes with diagrams for the CBSE Class 12 board exam, published with GitHub Pages:
+**https://afkar-3374.github.io/cbse-board-exam-12th/**
 
-## Physics (042)
-
-| Page | Contents |
+| Subject | Pages |
 |---|---|
-| [Exam pattern](physics/00-exam-pattern.html) | Paper structure, most-repeated derivations, question families, assertion–reason traps |
-| [1 · Electrostatics](physics/01-electrostatics.html) | Dipole, Gauss's law, potential, capacitors and dielectrics |
-| [2 · Current Electricity](physics/02-current.html) | Drift velocity, resistivity, cells, Kirchhoff, Wheatstone bridge |
-| [3 · Magnetism](physics/03-magnetism.html) | Lorentz force, Biot–Savart, Ampere, galvanometer, magnetic materials |
-| [4 · EMI & AC](physics/04-emi-ac.html) | Faraday & Lenz, inductance, AC generator, LCR, transformer |
-| [5 · EM Waves & Optics](physics/05-optics.html) | Spectrum, TIR, lens maker, prism, instruments, Huygens, YDSE, diffraction |
-| [6 · Modern Physics](physics/06-modern.html) | Photoelectric effect, de Broglie, Bohr, nuclei, binding energy |
+| [Physics (042)](physics/index.html) | Exam pattern + 7 units (Electrostatics → Semiconductors) |
+| [Mathematics (041)](maths/index.html) | Exam pattern + 6 units (Relations → LPP & Probability) |
+| [Biology (044)](biology/index.html) | Exam pattern + 5 units (Reproduction → Ecology) |
+| [English Core (301)](english/index.html) | Exam pattern, reading & writing formats, Flamingo prose & poetry, Vistas |
 
-Topic priorities come from an analysis of 20 KV Ernakulam Region First Pre-Board (2026–27) papers. The notes are original summaries; cross-check with NCERT.
+Topic priorities come from analysing Pre-Board 1 (2026–27) papers from KV Ernakulam Region schools (20 Physics, 20 Maths, 19 Biology, 17 English). Chapters that Pre-Board 1 skipped (Semiconductors, Probability, Ecosystem/Biodiversity) are included and marked, since they are in the board syllabus. The notes are original summaries; cross-check with NCERT.
 
-Diagrams are inline SVG and adapt to light/dark mode. The pages are plain HTML + CSS with no build step — open `index.html` locally or visit the published site.
+Plain HTML + CSS with inline SVG diagrams (light/dark mode), no build step — open `index.html` locally or visit the site.

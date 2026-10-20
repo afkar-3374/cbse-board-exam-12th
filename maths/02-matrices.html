@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matrices and Determinants</title>
+<meta name="description" content="CBSE Class 12 Maths: Matrices and Determinants – Q&A notes.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="index.html">CBSE 12 · Maths</a>
+  <nav>
+    <a href="01-relations-functions.html">Relations &amp; ITF</a>
+    <a href="02-matrices.html">Matrices</a>
+    <a href="03-differentiation.html">Differentiation</a>
+    <a href="04-integration.html">Integration &amp; DE</a>
+    <a href="05-vectors-3d.html">Vectors &amp; 3D</a>
+    <a href="06-lpp-probability.html">LPP &amp; Probability</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Matrices &amp; Determinants</h1>
+<p class="lead">Ch 3 &amp; 4. MCQs on |adj A| and |kA| are almost certain; a 5-mark "solve the system using A⁻¹" or a matrix case study appears in most papers.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#basics">Types, operations, transpose</a></li>
+<li><a href="#det">Determinant properties &amp; area</a></li>
+<li><a href="#adj">Adjoint &amp; inverse</a></li>
+<li><a href="#cayley">A² − kA + lI = O type</a></li>
+<li><a href="#system">Solving a system (AX = B)</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="basics">1. Types, operations, transpose</h2>
+<div class="qa"><p class="q">Q. Construct a 2 × 2 matrix with a<sub>ij</sub> = (i + 2j)²/2.<span class="tag">2 M</span></p>
+<div class="a"><p>a₁₁ = 9/2, a₁₂ = 25/2, a₂₁ = 16/2 = 8, a₂₂ = 36/2 = 18 → A = [[9/2, 25/2], [8, 18]].</p></div></div>
+
+<div class="qa"><p class="q">Q. Define symmetric and skew-symmetric matrices. Express any square matrix as their sum.<span class="tag">2–3 M</span></p>
+<div class="a">
+<p>Symmetric: A′ = A. Skew-symmetric: A′ = −A (so all diagonal elements are 0).</p>
+<div class="formula">A = ½(A + A′) + ½(A − A′)</div>
+<p>First part is symmetric, second is skew-symmetric.</p>
+<p><em>Example:</em> [[0, a, 3], [2, b, −1], [c, 1, 0]] skew-symmetric ⇒ a = −2, b = 0, c = −3 ⇒ a + b + c = −5.</p></div></div>
+
+<div class="qa"><p class="q">Q. When is AB defined? Find A²⁰²⁵ for A = [[0, 1], [−1, 0]].<span class="tag">1 M</span></p>
+<div class="a"><p>A<sub>m×n</sub>B<sub>p×q</sub> is defined iff n = p; result is m × q. A (2×3) and B (3×2): both AB and BA defined.</p>
+<p>A² = −I ⇒ A⁴ = I ⇒ A²⁰²⁵ = A^{4·506 + 1} = <strong>A</strong>.</p>
+<p>[[−a, b], [c, a]]² = I ⇒ a² + bc = 1 ⇒ 1 − a² − bc = 0.</p></div></div>
+
+<h2 id="det">2. Determinant properties &amp; area</h2>
+<div class="qa"><p class="q">Q. Key determinant results for a square matrix A of order n.<span class="tag">1 M · every paper</span></p>
+<div class="a">
+<div class="formula">|kA| = kⁿ|A| &nbsp;|&nbsp; |AB| = |A||B| &nbsp;|&nbsp; |A′| = |A| &nbsp;|&nbsp; |A⁻¹| = 1/|A| &nbsp;|&nbsp; |adj A| = |A|ⁿ⁻¹</div>
+<ul>
+<li>n = 3, |A| = 4: |adj A| = 16, |2A| = 32, |(3A)⁻¹| = 1/(27|A|).</li>
+<li>|A| = −1, |B| = 3, order 3: |2AB| = 8(−3) = −24.</li>
+<li>Order 2, |P| = 2, |Q| = 3: |adj(PQ)| = |PQ| = 6.</li>
+<li>|A′| = 5, order 3: |5A⁻¹| = 125/5 = 25.</li>
+<li>|A³| = 27 for [[x, 2], [2, x]] ⇒ |A| = 3 ⇒ x² − 4 = 3 ⇒ x = ±√7.</li>
+<li>Sum of products of elements of one row with cofactors of <em>another</em> row = 0.</li>
+</ul></div></div>
+
+<div class="qa"><p class="q">Q. Find the area of a triangle using determinants; find k or the equation of a line.<span class="tag">2–3 M</span></p>
+<div class="a">
+<div class="formula">Area = ½ |x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|</div>
+<p>P(3, 1), Q(9, 3), R(5, 7): ½|3(−4) + 9(6) + 5(−2)| = ½|−12 + 54 − 10| = <strong>16 sq units</strong>.</p>
+<p>Equation of PQ: |x y 1; 3 1 1; 9 3 1| = 0 ⇒ x(1 − 3) − y(3 − 9) + (9 − 9) = 0 ⇒ <strong>x − 3y = 0</strong>.</p>
+<p>(−3, 0), (3, 0), (0, k) with area 9: ½ × 6 × |k| = 9 ⇒ k = ±3. Collinear points: area = 0.</p></div></div>
+
+<h2 id="adj">3. Adjoint &amp; inverse</h2>
+<div class="qa"><p class="q">Q. Define adjoint and write the formula for A⁻¹. When does A⁻¹ exist?<span class="tag">1–2 M</span></p>
+<div class="a">
+<p>adj A = transpose of the cofactor matrix. A(adj A) = (adj A)A = |A| I.</p>
+<div class="formula">A⁻¹ = adj A / |A| &nbsp; (exists iff |A| ≠ 0, i.e. A is non-singular)</div>
+<p>For 2 × 2: A = [[a, b], [c, d]] ⇒ adj A = [[d, −b], [−c, a]].</p>
+<p>(AB)⁻¹ = B⁻¹A⁻¹, (A′)⁻¹ = (A⁻¹)′.</p>
+<p>Example: [[1, 1, −2], [λ, 1, −3], [5, 4, −9]]: |A| = 1(−9 + 12) − 1(−9λ + 15) − 2(4λ − 5) = 3 + 9λ − 15 − 8λ + 10 = λ − 2 → A⁻¹ exists iff <strong>λ ≠ 2</strong>.</p></div></div>
+
+<h2 id="cayley">4. A² − kA + lI = O type</h2>
+<div class="qa"><p class="q">Q. If A = [[3, 1], [−1, 2]], show A² − 5A + 7I = O. Hence find A⁻¹.<span class="tag">3 M · repeated</span></p>
+<div class="a">
+<p>A² = [[9 − 1, 3 + 2], [−3 − 2, −1 + 4]] = [[8, 5], [−5, 3]].</p>
+<p>A² − 5A + 7I = [[8 − 15 + 7, 5 − 5], [−5 + 5, 3 − 10 + 7]] = O ✓.</p>
+<p>Multiply by A⁻¹: A − 5I + 7A⁻¹ = O ⇒ <strong>A⁻¹ = (5I − A)/7 = (1/7)[[2, −1], [1, 3]]</strong>.</p>
+<p>Same method: A = [[2, 3], [1, 3]] ⇒ A² − 5A + 3I = O ⇒ A⁻¹ = (5I − A)/3. (Always check the given equation numerically first.)</p></div></div>
+
+<h2 id="system">5. Solving a system using A⁻¹</h2>
+<div class="qa"><p class="q">Q. Solve x + y + 2z = 1, 3x + 2y + z = 7, 2x + y + 3z = 2 using the product of A = [[−5, 1, 3], [7, 1, −5], [1, −1, 1]] and B = [[1, 1, 2], [3, 2, 1], [2, 1, 3]].<span class="tag">5 M · repeated</span></p>
+<div class="a">
+<p><strong>Step 1:</strong> AB = [[−5 + 3 + 6, −5 + 2 + 3, −10 + 1 + 9], [7 + 3 − 10, 7 + 2 − 5, 14 + 1 − 15], [1 − 3 + 2, 1 − 2 + 1, 2 − 1 + 3]] = [[4, 0, 0], [0, 4, 0], [0, 0, 4]] = 4I.</p>
+<p><strong>Step 2:</strong> AB = 4I ⇒ B⁻¹ = A/4.</p>
+<p><strong>Step 3:</strong> The system is BX = C with C = [1, 7, 2]ᵀ ⇒ X = B⁻¹C = (1/4)A C.</p>
+<p>AC = [−5 + 7 + 6, 7 + 7 − 10, 1 − 7 + 2] = [8, 4, −4] ⇒ X = [2, 1, −1].</p>
+<p><strong>x = 2, y = 1, z = −1.</strong> ✓ (check: 2 + 1 − 2 = 1)</p>
+<div class="tip"><strong>Pattern:</strong> the coefficient matrix of the system is one of the two given matrices (sometimes its transpose). Find the product, which is kI, so the other matrix divided by k is the inverse.</div></div></div>
+
+<div class="qa"><p class="q">Q. Case study: bundles of pens, notebooks and erasers — write AX = B, find |A| and solve.<span class="tag">4 M case</span></p>
+<div class="a">
+<p>x + y + z = 40, 2x + y + 3z = 60, x + 2y + z = 65.</p>
+<p>A = [[1, 1, 1], [2, 1, 3], [1, 2, 1]], |A| = 1(1 − 6) − 1(2 − 3) + 1(4 − 1) = −5 + 1 + 3 = −1 ≠ 0 ⇒ unique solution.</p>
+<p>adj A = [[−5, 1, 2], [1, 0, −1], [3, −1, −1]] ⇒ A⁻¹ = −adj A.</p>
+<p>X = A⁻¹B = −[−200 + 60 + 130, 40 + 0 − 65, 120 − 60 − 65] = −[−10, −25, −5] = [10, 25, 5]. Pen ₹10, notebook ₹25, eraser ₹5.</p>
+<p><strong>Steps to remember:</strong> |A| ≠ 0 → unique solution (consistent). |A| = 0 and (adj A)B ≠ O → inconsistent; |A| = 0 and (adj A)B = O → infinitely many or none (check further).</p></div></div>
+
+<h2 id="quick">6. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Order 3, |A| = 4: |adj A|</td><td>16</td></tr>
+<tr><td>Order 3, |A| = 4: |2A|</td><td>32</td></tr>
+<tr><td>|A⁻¹| when |A| = 4</td><td>1/4</td></tr>
+<tr><td>[[x, 2], [18, x]] = [[6, 2], [18, 6]] as determinants equal</td><td>x² − 36 = 36 − 36 → x = ±6</td></tr>
+<tr><td>Diagonal of a skew-symmetric matrix</td><td>all zero</td></tr>
+<tr><td>Matrix that is both symmetric and skew-symmetric</td><td>zero matrix</td></tr>
+<tr><td>(AB)′</td><td>B′A′</td></tr>
+<tr><td>A system with |A| ≠ 0 is</td><td>consistent with a unique solution</td></tr>
+</table>
+
+<div class="pager"><a href="01-relations-functions.html">← Relations &amp; ITF</a><a href="03-differentiation.html">Differentiation →</a></div>
+</main>
+<footer>Study notes · CBSE Class 12 Maths. Verify against NCERT.</footer>
+</body>
+</html>

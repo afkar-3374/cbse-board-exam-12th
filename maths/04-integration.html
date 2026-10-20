@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integration and DE Notes</title>
+<meta name="description" content="CBSE Class 12 Maths: Integrals, Application of Integrals, Differential Equations – Q&A notes with diagrams.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="index.html">CBSE 12 · Maths</a>
+  <nav>
+    <a href="01-relations-functions.html">Relations &amp; ITF</a>
+    <a href="02-matrices.html">Matrices</a>
+    <a href="03-differentiation.html">Differentiation</a>
+    <a href="04-integration.html">Integration &amp; DE</a>
+    <a href="05-vectors-3d.html">Vectors &amp; 3D</a>
+    <a href="06-lpp-probability.html">LPP &amp; Probability</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Integration, Area &amp; Differential Equations</h1>
+<p class="lead">Ch 7, 8, 9 — the heaviest block (~35 marks). Every paper had an integral, an area question and a differential equation.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#std">Standard integrals</a></li>
+<li><a href="#tech">Techniques: substitution, partial fractions, by parts</a></li>
+<li><a href="#special">Special forms (quadratic)</a></li>
+<li><a href="#def">Definite integrals &amp; properties</a></li>
+<li><a href="#area">Area under curves</a></li>
+<li><a href="#de">Differential equations</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="std">1. Standard integrals</h2>
+<div class="qa"><p class="q">Q. Formulae you must know.<span class="tag">reference</span></p>
+<div class="a">
+<table>
+<tr><th>∫</th><th>Result</th><th>∫</th><th>Result</th></tr>
+<tr><td>dx/(x² + a²)</td><td>(1/a) tan⁻¹(x/a)</td><td>dx/√(a² − x²)</td><td>sin⁻¹(x/a)</td></tr>
+<tr><td>dx/(x² − a²)</td><td>(1/2a) log|(x − a)/(x + a)|</td><td>dx/√(x² + a²)</td><td>log|x + √(x² + a²)|</td></tr>
+<tr><td>dx/(a² − x²)</td><td>(1/2a) log|(a + x)/(a − x)|</td><td>dx/√(x² − a²)</td><td>log|x + √(x² − a²)|</td></tr>
+<tr><td>√(a² − x²)</td><td>(x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a)</td><td>√(x² ± a²)</td><td>(x/2)√(x² ± a²) ± (a²/2) log|x + √(x² ± a²)|</td></tr>
+<tr><td>eˣ[f(x) + f′(x)]</td><td>eˣ f(x)</td><td>sec x</td><td>log|sec x + tan x|</td></tr>
+</table>
+<ul>
+<li>∫eˣ(sin x + cos x)dx = eˣ sin x + C.</li>
+<li>∫dx/(sin²x cos²x) = ∫(sec²x + cosec²x)dx = tan x − cot x + C.</li>
+<li>∫e^{tan⁻¹x}/(1 + x²) dx = e^{tan⁻¹x} + C.</li>
+<li>∫dx/(2ˣ + 2⁻ˣ) = ∫2ˣ/(4ˣ + 1) dx = tan⁻¹(2ˣ)/log 2 + C.</li>
+<li>∫eˣ(1 + x)/cos²(xeˣ) dx = tan(xeˣ) + C (put t = xeˣ).</li>
+<li>∫dx/(1 + e^{2x}) = x − ½ log(1 + e^{2x}) + C → P = ½.</li>
+</ul></div></div>
+
+<h2 id="tech">2. Techniques</h2>
+<div class="qa"><p class="q">Q. Partial fractions: ∫x/((x + 1)(x + 2)) dx and ∫x²/((x² + 1)(x² + 4)) dx.<span class="tag">3–5 M · repeated</span></p>
+<div class="a">
+<p>x/((x + 1)(x + 2)) = A/(x + 1) + B/(x + 2): A = −1, B = 2 → <strong>−log|x + 1| + 2 log|x + 2| + C</strong>.</p>
+<p>Put x² = y: y/((y + 1)(y + 4)) = (−1/3)/(y + 1) + (4/3)/(y + 4) →</p>
+<div class="formula">∫ = −(1/3) tan⁻¹x + (2/3) tan⁻¹(x/2) + C</div>
+<p>2x/((x² + 1)(x² + 2)): put t = x² → ∫dt/((t + 1)(t + 2)) = log|(x² + 1)/(x² + 2)| + C.</p>
+<div class="tip"><strong>A–R:</strong> partial fractions need deg P &lt; deg Q; otherwise divide first.</div></div></div>
+
+<div class="qa"><p class="q">Q. Integration by parts: ∫x²eˣ dx, ∫sin⁻¹x/x² dx.<span class="tag">3 M</span></p>
+<div class="a">
+<div class="formula">∫u v dx = u∫v dx − ∫[u′ ∫v dx] dx &nbsp; (ILATE order for u)</div>
+<p>∫x²eˣ dx = eˣ(x² − 2x + 2) + C.</p>
+<p>∫sin⁻¹x · x⁻² dx = −sin⁻¹x/x + ∫dx/(x√(1 − x²)). The second integral (put x = sin θ, giving ∫cosec θ dθ) equals −log|(1 + √(1 − x²))/x|. Total: <strong>−sin⁻¹x/x − log|(1 + √(1 − x²))/x| + C</strong>.</p></div></div>
+
+<h2 id="special">3. Special forms (quadratic)</h2>
+<div class="qa"><p class="q">Q. ∫dx/√(5 − 8x − x²), ∫(3x + 1)/√(5 − 2x − x²) dx, ∫x²/(x² + 6x + 12) dx.<span class="tag">3 M</span></p>
+<div class="a">
+<p><strong>Complete the square:</strong> 5 − 8x − x² = 21 − (x + 4)² ⇒ ∫ = <strong>sin⁻¹((x + 4)/√21) + C</strong>.</p>
+<p><strong>Linear over root:</strong> write 3x + 1 = A·d/dx(5 − 2x − x²) + B = A(−2 − 2x) + B ⇒ A = −3/2, B = −2. Then</p>
+<div class="formula">∫ = −3√(5 − 2x − x²) − 2 sin⁻¹((x + 1)/√6) + C</div>
+<p><strong>Improper fraction:</strong> x²/(x² + 6x + 12) = 1 − (6x + 12)/(x² + 6x + 12) = 1 − 3(2x + 6)/(…) + 6/((x + 3)² + 3) ⇒ x − 3 log|x² + 6x + 12| + 2√3 tan⁻¹((x + 3)/√3) + C.</p></div></div>
+
+<h2 id="def">4. Definite integrals &amp; properties</h2>
+<div class="qa"><p class="q">Q. List the properties of definite integrals.<span class="tag">reference</span></p>
+<div class="a">
+<div class="formula">P1: ∫₀ᵃ f(x)dx = ∫₀ᵃ f(a − x)dx</div>
+<div class="formula">P2: ∫₋ₐᵃ f = 2∫₀ᵃ f (f even), 0 (f odd)</div>
+<div class="formula">P3: ∫₀^{2a} f = 2∫₀ᵃ f if f(2a − x) = f(x), else 0 if f(2a − x) = −f(x)</div>
+<p>∫₀¹ dx/(1 + x²) = π/4. ∫ₑ^{e²} dx/(x log x) = [log log x] = log 2. ∫₋₂²(x⁵ + x³ + 1)dx = 0 + 4 = 4.</p></div></div>
+
+<div class="qa"><p class="q">Q. Evaluate ∫₀^{π/4} log(1 + tan x) dx.<span class="tag">5 M · repeated</span></p>
+<div class="a">
+<p>I = ∫₀^{π/4} log(1 + tan x)dx. Using P1: tan(π/4 − x) = (1 − tan x)/(1 + tan x), so 1 + tan(π/4 − x) = 2/(1 + tan x).</p>
+<p>I = ∫₀^{π/4} [log 2 − log(1 + tan x)]dx = (π/4) log 2 − I ⇒ <strong>I = (π/8) log 2</strong>.</p>
+<p>∫₀^{π/2} log(tan x) dx: P1 gives I = ∫log(cot x) = −I ⇒ <strong>I = 0</strong>.</p>
+<p>∫₀^{π/2} dx/(1 + √tan x) = π/4 (add I and its P1 form). ∫₀^{π/2} dx/(1 + tan x) = π/4.</p>
+<p>∫₋₁²|x³ − x|dx: split at −1, 0, 1: ∫₋₁⁰(x³ − x) + ∫₀¹(x − x³) + ∫₁²(x³ − x) = ¼ + ¼ + 9/4 = <strong>11/4</strong>.</p>
+<p>∫₋ₐᵃ √((a − x)/(a + x)) dx = ∫(a − x)/√(a² − x²) = a·π − 0 = <strong>aπ</strong> (second part odd).</p>
+<p>∫₀^{π/2} sin²x/(1 + sin x cos x) dx: add with cos²x version: 2I = ∫dx/(1 + sin x cos x) = ∫sec²x/(1 + tan x + tan²x) → 2I = 2π/(3√3) ⇒ <strong>I = π/(3√3)</strong>.</p></div></div>
+
+<h2 id="area">5. Area under curves</h2>
+<div class="qa"><p class="q">Q. Find the area enclosed by y² = 4x and y = x.<span class="tag">3–5 M · every paper</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 300 220" width="300" role="img" aria-label="Region between parabola y squared = 4x and line y = x">
+  <line class="thin" x1="20" y1="180" x2="290" y2="180"/><line class="thin" x1="40" y1="10" x2="40" y2="210"/>
+  <path class="acc" d="M40 180 Q 60 120 100 105 T 260 50"/>
+  <path class="acc" d="M40 180 Q 60 240 80 210" opacity="0.5"/>
+  <line class="acc2" x1="40" y1="180" x2="230" y2="10"/>
+  <path d="M40 180 Q 60 120 100 105 Q 150 85 200 40 L 40 180 Z" fill="var(--svg-accent)" opacity="0.2"/>
+  <circle class="dot" cx="200" cy="40" r="4"/><text x="206" y="40">(4, 4)</text>
+  <text x="250" y="66" class="a">y² = 4x</text><text x="214" y="18" class="a2">y = x</text>
+</svg>
+</figure>
+<p>Intersection: x² = 4x ⇒ x = 0, 4.</p>
+<div class="formula">A = ∫₀⁴ (2√x − x) dx = [(4/3)x^{3/2} − x²/2]₀⁴ = 32/3 − 8 = 8/3 sq units</div>
+<p><strong>y² = 2x and x − 2y = 0</strong>: intersect at y = 0, 4 (x = 8). A = ∫₀⁸(√(2x) − x/2)dx = (2√2/3)·8^{3/2} − 16 = 64/3 − 16 = 16/3.</p>
+<p><strong>y = √x, x = 4, x-axis</strong>: ∫₀⁴√x dx = 16/3.</p></div></div>
+
+<div class="qa"><p class="q">Q. Circle and line: area in the first quadrant enclosed by x² + y² = 4, the line x = √3y and the x-axis (pizza case).<span class="tag">4–5 M</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 260 220" width="260" role="img" aria-label="Sector of circle between x-axis and line x = root 3 y">
+  <line class="thin" x1="10" y1="190" x2="250" y2="190"/><line class="thin" x1="30" y1="10" x2="30" y2="210"/>
+  <path class="acc" d="M210 190 A 180 180 0 0 0 30 10"/>
+  <line class="acc2" x1="30" y1="190" x2="186" y2="100"/>
+  <path d="M30 190 L186 100 A 180 180 0 0 1 210 190 Z" fill="var(--svg-accent)" opacity="0.22"/>
+  <circle class="dot" cx="186" cy="100" r="4"/><text x="150" y="92">(√3, 1)</text><text x="200" y="206">2</text>
+</svg>
+</figure>
+<p>Intersection: 3y² + y² = 4 ⇒ y = 1, x = √3.</p>
+<p>A = ∫₀^{√3} (x/√3) dx + ∫_{√3}^{2} √(4 − x²) dx = √3/2 + [ (x/2)√(4 − x²) + 2 sin⁻¹(x/2) ]_{√3}^{2} = √3/2 + (π − √3/2 − 2π/3) = <strong>π/3 sq units</strong> (a 30° sector of radius 2 ✓).</p>
+<p>Region {0 ≤ y ≤ √(4 − x²), x ≥ 2 − y}: quarter circle minus triangle = π − 2.</p>
+<p>x² + y² = 8, y² = 2x, x-axis (first quadrant): meet at (2, 2). A = ∫₀²√(2x)dx + ∫₂^{2√2}√(8 − x²)dx = 8/3 + (2π − 2 − π) = π + 2/3.</p></div></div>
+
+<div class="qa"><p class="q">Q. Area of a triangle with vertices A(−1, 1), B(1, 5), C(4, 2) using integration.<span class="tag">5 M</span></p>
+<div class="a"><p>AB: y = 2x + 3; BC: y = 6 − x; AC: y = (x + 6)/5.</p>
+<p>A = ∫₋₁¹(2x + 3)dx + ∫₁⁴(6 − x)dx − ∫₋₁⁴ (x + 6)/5 dx = 6 + 10.5 − 7.5 = <strong>9 sq units</strong> (check with the determinant formula: ½|−3 + 1 − 16| = 9 ✓).</p>
+<p>Region under y = 2 + |x + 1| from −4 to 3: split at x = −1. ∫₋₄⁻¹(1 − x)dx = 10.5 and ∫₋₁³(x + 3)dx = 16 → <strong>26.5 sq units</strong>.</p></div></div>
+
+<h2 id="de">6. Differential equations</h2>
+<div class="qa"><p class="q">Q. Order and degree.<span class="tag">1 M · every paper</span></p>
+<div class="a"><p>Order = highest derivative; degree = power of the highest derivative after making the equation polynomial in derivatives.</p>
+<ul><li>(y″)³ + (y′)⁵ + x³y = 0: order 2, degree 3.</li><li>d/dx[(dy/dx)⁴] = 0 ⇒ 4(y′)³y″ = 0: order 2, degree 1 ⇒ m + n = 3.</li>
+<li>√(1 − y′) = y″ ⇒ 1 − y′ = (y″)²: order 2, degree 2.</li><li>y − x(y′)³ = a(y + y″)²: order 2, degree 2.</li>
+<li>y‴ + sin(y′) = 0: degree not defined.</li></ul></div></div>
+
+<div class="qa"><p class="q">Q. Variable separable: dy/dx = 1 + x² + y² + x²y², y(1) = 0.<span class="tag">3 M</span></p>
+<div class="a"><p>dy/dx = (1 + x²)(1 + y²) ⇒ ∫dy/(1 + y²) = ∫(1 + x²)dx ⇒ tan⁻¹y = x + x³/3 + C. y(1) = 0 ⇒ C = −4/3 ⇒ <strong>tan⁻¹y = x + x³/3 − 4/3</strong>.</p>
+<p>dy/dx = y tan x, y(0) = 1: log y = −log cos x + C ⇒ y = sec x. y dx − x dy = 0 ⇒ y = Cx.</p></div></div>
+
+<div class="qa"><p class="q">Q. Homogeneous: x cos(y/x) dy/dx = y cos(y/x) + x; and 2xy dy/dx = x² + 3y².<span class="tag">3–5 M</span></p>
+<div class="a">
+<p>Put y = vx, dy/dx = v + x dv/dx.</p>
+<p>(1) cos v (v + x v′) = v cos v + 1 ⇒ x cos v v′ = 1 ⇒ ∫cos v dv = ∫dx/x ⇒ <strong>sin(y/x) = log|x| + C</strong>.</p>
+<p>(2) 2v(v + xv′) = 1 + 3v² ⇒ 2vx v′ = 1 + v² ⇒ ∫2v/(1 + v²) dv = ∫dx/x ⇒ log(1 + v²) = log|x| + C ⇒ <strong>x² + y² = Cx³</strong>.</p>
+<p>(3) dy/dx − y/x + cosec(y/x) = 0, y(1) = 0: x v′ = −cosec v ⇒ −∫sin v dv = ∫dx/x ⇒ cos v = log|x| + C; y(1) = 0 ⇒ C = 1 ⇒ <strong>cos(y/x) = log|x| + 1</strong>.</p></div></div>
+
+<div class="qa"><p class="q">Q. Linear DE: dy/dx + Py = Q. Solve dy/dx − y = cos x; (1 + x²)dy/dx + y = tan⁻¹x; dy/dx + y cot x = 2 cos x.<span class="tag">3–5 M · very frequent</span></p>
+<div class="a">
+<div class="formula">IF = e^{∫P dx}, &nbsp; y·IF = ∫Q·IF dx + C</div>
+<p>(1) P = −1, IF = e⁻ˣ: y e⁻ˣ = ∫e⁻ˣ cos x dx = e⁻ˣ(sin x − cos x)/2 ⇒ <strong>y = (sin x − cos x)/2 + Ceˣ</strong>.</p>
+<p>(2) P = 1/(1 + x²), IF = e^{tan⁻¹x}: y e^{tan⁻¹x} = ∫ tan⁻¹x e^{tan⁻¹x}/(1 + x²) dx = e^{tan⁻¹x}(tan⁻¹x − 1) + C ⇒ <strong>y = tan⁻¹x − 1 + Ce^{−tan⁻¹x}</strong>.</p>
+<p>(3) IF = sin x: y sin x = ∫2 sin x cos x dx = sin²x + C; y(π/2) = 0 ⇒ C = −1 ⇒ <strong>y = sin x − cosec x</strong>.</p>
+<p>cos x dy/dx + y = sin x: P = sec x, IF = sec x + tan x.</p>
+<p><strong>In x (dx/dy + Px = Q):</strong> (1 − y²)dx/dy + yx = ay ⇒ P = y/(1 − y²), IF = 1/√(1 − y²). y dx = (x + 2y²)dy ⇒ dx/dy − x/y = 2y, IF = 1/y ⇒ x/y = 2y + C ⇒ x = 2y² + Cy. (1 + y²)dx = (tan⁻¹y − x)dy ⇒ IF = e^{tan⁻¹y}.</p></div></div>
+
+<h2 id="quick">7. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>∫₀^{π/2} dx/(1 + tan x)</td><td>π/4</td></tr>
+<tr><td>Area under y = x from 0 to 2</td><td>2</td></tr>
+<tr><td>IF of dy/dx + y/x = 2</td><td>x (not log x)</td></tr>
+<tr><td>General solution of y dx − x dy = 0</td><td>y = Cx</td></tr>
+<tr><td>∫x² e^{x³} dx</td><td>e^{x³}/3 + C</td></tr>
+<tr><td>Number of arbitrary constants in general solution of order-3 DE</td><td>3</td></tr>
+</table>
+
+<div class="pager"><a href="03-differentiation.html">← Differentiation</a><a href="05-vectors-3d.html">Vectors &amp; 3D →</a></div>
+</main>
+<footer>Study notes · CBSE Class 12 Maths. Verify against NCERT.</footer>
+</body>
+</html>

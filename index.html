@@ -4,41 +4,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CBSE Class 12 Notes</title>
-<meta name="description" content="CBSE Class 12 board exam notes – Physics question-and-answer notes with diagrams, organised by unit, plus exam patterns from 20 pre-board papers.">
+<meta name="description" content="CBSE Class 12 board exam revision notes — Physics, Maths, Biology and English as question-and-answer notes with diagrams, built from an analysis of 20 pre-board papers per subject.">
 <link rel="stylesheet" href="style.css">
+<style>
+.hero { padding: 28px 0 8px; }
+.hero h1 { font-size: 2.2rem; margin-bottom: 6px; }
+.hero p { color: var(--muted); font-size: 1.08rem; max-width: 640px; margin: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 18px 0 6px; color: var(--muted); font-size: 0.92rem; }
+.stats b { color: var(--text); font-size: 1.15rem; display: block; }
+.subjects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 22px 0; }
+.subject { display: block; text-decoration: none; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px 16px; border-top: 5px solid var(--c); transition: border-color .15s, transform .15s; }
+.subject:hover { border-color: var(--c); transform: translateY(-2px); }
+.subject .icon { font-size: 1.9rem; line-height: 1; }
+.subject h2 { border: 0; margin: 10px 0 2px; padding: 0; font-size: 1.3rem; color: var(--c); }
+.subject .code { font-size: 0.8rem; color: var(--muted); }
+.subject ul { margin: 10px 0 12px; padding-left: 18px; font-size: 0.9rem; color: var(--muted); }
+.subject .go { font-weight: 600; color: var(--c); font-size: 0.92rem; }
+.s-phy { --c: #2b6cc4; } .s-mat { --c: #8a3fc0; } .s-bio { --c: #1f8a54; } .s-eng { --c: #c0621f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .s-phy { --c: #7aa7ee; } :root:not([data-theme="light"]) .s-mat { --c: #c39af0; } :root:not([data-theme="light"]) .s-bio { --c: #5cc48a; } :root:not([data-theme="light"]) .s-eng { --c: #f0a066; } }
+:root[data-theme="dark"] .s-phy { --c: #7aa7ee; } :root[data-theme="dark"] .s-mat { --c: #c39af0; } :root[data-theme="dark"] .s-bio { --c: #5cc48a; } :root[data-theme="dark"] .s-eng { --c: #f0a066; }
+.quick { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; }
+.quick a { text-decoration: none; background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; }
+</style>
 </head>
 <body>
 <header class="site"><div class="inner">
   <a class="brand" href="index.html">CBSE Board Exam · Class 12</a>
-  <nav><a href="physics/00-exam-pattern.html">Physics pattern</a></nav>
+  <nav>
+    <a href="physics/index.html">Physics</a>
+    <a href="maths/index.html">Maths</a>
+    <a href="biology/index.html">Biology</a>
+    <a href="english/index.html">English</a>
+  </nav>
 </div></header>
 <main>
-<h1>CBSE Board Exam — Class 12</h1>
-<p class="lead">Question-and-answer revision notes with diagrams. Physics is complete; the topics and question styles are based on an analysis of 20 Pre-Board 1 (2026–27) papers.</p>
+<section class="hero">
+  <h1>CBSE Class 12 — Board Exam Notes</h1>
+  <p>Question-and-answer revision notes with diagrams for every chapter. Topic priorities come from analysing about 20 Pre-Board 1 (2026–27) papers per subject.</p>
+  <div class="stats">
+    <div><b>4</b>subjects</div>
+    <div><b>26</b>note pages</div>
+    <div><b>76</b>question papers analysed</div>
+  </div>
+</section>
 
-<h2>Physics (042)</h2>
-<div class="cards">
-  <a class="card" href="physics/00-exam-pattern.html"><h3>Start here: Exam pattern</h3><p>Paper structure, most-repeated derivations, question families, A–R traps.</p></a>
-  <a class="card" href="physics/01-electrostatics.html"><h3>1 · Electrostatics</h3><p>Dipole, Gauss's law, potential, equipotentials, capacitors &amp; dielectrics.</p></a>
-  <a class="card" href="physics/02-current.html"><h3>2 · Current Electricity</h3><p>Drift velocity, resistivity vs T, cells, Kirchhoff, Wheatstone bridge.</p></a>
-  <a class="card" href="physics/03-magnetism.html"><h3>3 · Magnetism</h3><p>Lorentz force, Biot–Savart, Ampere, parallel wires, galvanometer, magnetic materials.</p></a>
-  <a class="card" href="physics/04-emi-ac.html"><h3>4 · EMI &amp; AC</h3><p>Faraday &amp; Lenz, inductance, AC generator, LCR &amp; resonance, transformer.</p></a>
-  <a class="card" href="physics/05-optics.html"><h3>5 · EM Waves &amp; Optics</h3><p>Spectrum, TIR, lens maker, prism, microscope, telescope, Huygens, YDSE, diffraction.</p></a>
-  <a class="card" href="physics/06-modern.html"><h3>6 · Modern Physics</h3><p>Photoelectric effect, de Broglie, Rutherford, Bohr, nuclear force, binding energy.</p></a>
+<div class="subjects">
+  <a class="subject s-phy" href="physics/index.html">
+    <div class="icon">⚛️</div>
+    <h2>Physics</h2><div class="code">Code 042 · 70 marks</div>
+    <ul><li>Electrostatics, Current, Magnetism</li><li>EMI &amp; AC, EM Waves &amp; Optics</li><li>Modern Physics, Semiconductors</li></ul>
+    <span class="go">Open Physics →</span>
+  </a>
+  <a class="subject s-mat" href="maths/index.html">
+    <div class="icon">∑</div>
+    <h2>Mathematics</h2><div class="code">Code 041 · 80 marks</div>
+    <ul><li>Relations, ITF, Matrices</li><li>Differentiation, Integration, DE</li><li>Vectors &amp; 3D, LPP, Probability</li></ul>
+    <span class="go">Open Maths →</span>
+  </a>
+  <a class="subject s-bio" href="biology/index.html">
+    <div class="icon">🧬</div>
+    <h2>Biology</h2><div class="code">Code 044 · 70 marks</div>
+    <ul><li>Reproduction, Genetics</li><li>Evolution, Human Health</li><li>Microbes, Biotechnology, Ecology</li></ul>
+    <span class="go">Open Biology →</span>
+  </a>
+  <a class="subject s-eng" href="english/index.html">
+    <div class="icon">📖</div>
+    <h2>English Core</h2><div class="code">Code 301 · 80 marks</div>
+    <ul><li>Reading &amp; writing formats</li><li>Flamingo prose &amp; poetry</li><li>Vistas</li></ul>
+    <span class="go">Open English →</span>
+  </a>
 </div>
 
-<h2>Other subjects</h2>
-<p>Maths, Biology and English notes — coming next.</p>
+<h2>Start with the exam patterns</h2>
+<p>Each subject has a pattern page: paper structure, most-repeated questions and Assertion–Reason traps.</p>
+<div class="quick">
+  <a href="physics/00-exam-pattern.html">Physics pattern</a>
+  <a href="maths/00-exam-pattern.html">Maths pattern</a>
+  <a href="biology/00-exam-pattern.html">Biology pattern</a>
+  <a href="english/00-exam-pattern.html">English pattern</a>
+</div>
 
 <h2>How to use these notes</h2>
 <ol>
-<li>Read the <a href="physics/00-exam-pattern.html">exam pattern</a> first to know what matters most.</li>
-<li>For each unit, practise the derivations and redraw every diagram from memory.</li>
-<li>Work the numerical examples without looking, then check.</li>
-<li>Use the quick-fire tables at the end of each unit for last-day revision.</li>
+<li>Read the subject's <strong>exam pattern</strong> page first to know what matters most.</li>
+<li>Work through each chapter's questions; cover the answer and try first.</li>
+<li>Redraw every diagram and graph from memory.</li>
+<li>Use the quick-fire tables at the end of chapters for last-day revision.</li>
 </ol>
 <p class="tip"><strong>Note:</strong> these are independent study notes. Always cross-check with NCERT and the latest CBSE syllabus.</p>
 </main>
-<footer>CBSE Board Exam Class 12 · study notes</footer>
+<footer>CBSE Board Exam · Class 12 · study notes</footer>
 </body>
 </html>

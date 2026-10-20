@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Differentiation Notes</title>
+<meta name="description" content="CBSE Class 12 Maths: Continuity, Differentiability, Applications of Derivatives – Q&A notes.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="index.html">CBSE 12 · Maths</a>
+  <nav>
+    <a href="01-relations-functions.html">Relations &amp; ITF</a>
+    <a href="02-matrices.html">Matrices</a>
+    <a href="03-differentiation.html">Differentiation</a>
+    <a href="04-integration.html">Integration &amp; DE</a>
+    <a href="05-vectors-3d.html">Vectors &amp; 3D</a>
+    <a href="06-lpp-probability.html">LPP &amp; Probability</a>
+    <a href="00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Continuity, Differentiability &amp; AOD</h1>
+<p class="lead">Ch 5 &amp; 6. A maxima/minima case study appears in every paper; continuity-constant MCQs and second-derivative proofs are routine.</p>
+
+<div class="toc"><strong>Contents</strong>
+<ol>
+<li><a href="#cont">Continuity &amp; differentiability</a></li>
+<li><a href="#diff">Differentiation techniques</a></li>
+<li><a href="#second">Second-order derivatives (prove-that)</a></li>
+<li><a href="#rate">Rate of change</a></li>
+<li><a href="#aod">Increasing / decreasing</a></li>
+<li><a href="#maxmin">Maxima &amp; minima</a></li>
+<li><a href="#quick">Quick-fire 1-markers</a></li>
+</ol></div>
+
+<h2 id="cont">1. Continuity &amp; differentiability</h2>
+<div class="qa"><p class="q">Q. When is f continuous at x = a? Find k so that f is continuous.<span class="tag">1–3 M · 19 papers</span></p>
+<div class="a">
+<div class="formula">lim<sub>x→a⁻</sub> f(x) = lim<sub>x→a⁺</sub> f(x) = f(a)</div>
+<ul>
+<li>f = kx + 1 (x ≤ 5), 3x − 5 (x &gt; 5): 5k + 1 = 10 ⇒ <strong>k = 9/5</strong>.</li>
+<li>f = sin 5x/3x (x ≠ 0), k (x = 0): lim = 5/3 ⇒ <strong>k = 5/3</strong>.</li>
+<li>f = k cos x/(π − 2x) (x ≠ π/2), 3 (x = π/2): limit = k/2 ⇒ k = 6.</li>
+</ul></div></div>
+
+<div class="qa"><p class="q">Q. Show that f(x) = |x − 3| is continuous but not differentiable at x = 3. Is every differentiable function continuous?<span class="tag">2–3 M · A–R</span></p>
+<div class="a">
+<p>Continuity: LHL = RHL = f(3) = 0 ✓.</p>
+<p>LHD = lim<sub>h→0</sub> [|−h| − 0]/(−h) = −1; RHD = lim [|h|]/h = 1 → LHD ≠ RHD → not differentiable (sharp corner).</p>
+<p><strong>Differentiability ⇒ continuity</strong>, but not conversely.</p>
+<p>f = 2x + 3 (x ≤ 4), x² − 5 (x &gt; 4): both give 11 at 4 (continuous); LHD = 2, RHD = 8 → not differentiable.</p></div></div>
+
+<h2 id="diff">2. Differentiation techniques</h2>
+<div class="qa"><p class="q">Q. Standard derivatives to memorise.<span class="tag">reference</span></p>
+<div class="a">
+<table>
+<tr><th>f(x)</th><th>f′(x)</th><th>f(x)</th><th>f′(x)</th></tr>
+<tr><td>sin⁻¹x</td><td>1/√(1 − x²)</td><td>tan⁻¹x</td><td>1/(1 + x²)</td></tr>
+<tr><td>cos⁻¹x</td><td>−1/√(1 − x²)</td><td>sec⁻¹x</td><td>1/(|x|√(x² − 1))</td></tr>
+<tr><td>log(sec x + tan x)</td><td>sec x</td><td>aˣ</td><td>aˣ log a</td></tr>
+</table>
+<ul>
+<li>y = cos √x + e^{3x}: dy/dx = −sin √x/(2√x) + 3e^{3x}.</li>
+<li>tan⁻¹(eˣ) at x = 0: eˣ/(1 + e^{2x}) = 1/2.</li>
+<li>Derivative of cos⁻¹(2x² − 1) w.r.t. cos⁻¹x: cos⁻¹(2x² − 1) = 2cos⁻¹x (for x ∈ [0, 1]) ⇒ answer 2.</li>
+</ul></div></div>
+
+<div class="qa"><p class="q">Q. Logarithmic differentiation: differentiate x^{sin x}, (cos x)^x + x^{sin x}, xˣ, 5ˣ/x⁵.<span class="tag">3 M · very frequent</span></p>
+<div class="a">
+<p>y = x^{sin x} ⇒ log y = sin x log x ⇒ (1/y)y′ = cos x log x + sin x/x ⇒</p>
+<div class="formula">dy/dx = x^{sin x}[cos x log x + (sin x)/x]</div>
+<p>For a <strong>sum</strong> like (cos x)ˣ + x^{sin x}: put u = (cos x)ˣ, v = x^{sin x}, differentiate each separately, add.</p>
+<p>u = (cos x)ˣ: u′ = (cos x)ˣ[log cos x − x tan x].</p>
+<p>xʸ = e^{x−y}: take logs: y log x = x − y ⇒ y = x/(1 + log x) ⇒ <strong>dy/dx = log x/(1 + log x)²</strong> (quotient rule).</p></div></div>
+
+<div class="qa"><p class="q">Q. Parametric and implicit differentiation.<span class="tag">2 M</span></p>
+<div class="a">
+<ul>
+<li>x = at², y = 2at: dy/dx = 2a/(2at) = <strong>1/t</strong>.</li>
+<li>x = sin³t, y = cos³t: dy/dx = (−3cos²t sin t)/(3 sin²t cos t) = <strong>−cot t</strong>.</li>
+<li>x = a sec t, y = b tan t: dy/dx = b sec²t/(a sec t tan t) = (b/a) cosec t; at t = π/6: 2b/a.</li>
+<li>cos y = x cos(a + y): x = cos y/cos(a + y) ⇒ dx/dy = sin a/cos²(a + y) ⇒ <strong>dy/dx = cos²(a + y)/sin a</strong>.</li>
+<li>y = sin(x + y) with dy/dx = 0: y′ = cos(x + y)/(1 − cos(x + y)) = 0 ⇒ cos(x + y) = 0 ⇒ y = sin(x + y) = ±1.</li>
+</ul></div></div>
+
+<h2 id="second">3. Second-order derivatives (prove-that)</h2>
+<div class="qa"><p class="q">Q. If y = sin⁻¹x, prove (1 − x²)y″ − xy′ = 0.<span class="tag">2–3 M · repeated</span></p>
+<div class="a">
+<p>y′ = 1/√(1 − x²) ⇒ √(1 − x²) y′ = 1. Square: (1 − x²)y′² = 1. Differentiate: (1 − x²)·2y′y″ − 2x y′² = 0. Divide by 2y′: <strong>(1 − x²)y″ − xy′ = 0</strong>.</p>
+<p>y = e^{a sin⁻¹x}: same trick gives (1 − x²)y″ − xy′ − a²y = 0.</p>
+<p>y = 5 cos x − 3 sin x: y″ = −5 cos x + 3 sin x = −y ⇒ y″ + y = 0.</p>
+<p>y = log(x²/e²) = 2 log x − 2 ⇒ y″ = −2/x².</p>
+<div class="tip"><strong>Method:</strong> get rid of roots/inverse functions first (cross-multiply, square), then differentiate again.</div></div></div>
+
+<h2 id="rate">4. Rate of change</h2>
+<div class="qa"><p class="q">Q. Sand is poured at 12 cm³/s into a conical heap with height = radius. Find dh/dt when h = 4 cm.<span class="tag">3 M</span></p>
+<div class="a">
+<p>V = ⅓πr²h = ⅓πh³ ⇒ dV/dt = πh² dh/dt ⇒ 12 = π(16) dh/dt ⇒ <strong>dh/dt = 3/(4π) cm/s</strong>.</p>
+<p>Area of circle: dA/dr = 2πr = 10π at r = 5. Cube edge growing at 3 cm/s: dV/dt = 3x² · 3 = 900 cm³/s at x = 10.</p>
+<p>Ball of diameter (3x + 1): V = (π/6)(3x + 1)³ ⇒ dV/dx = (π/6)·3(3x + 1)²·3 = (3π/2)(3x + 1)² = 24π at x = 1.</p></div></div>
+
+<h2 id="aod">5. Increasing / decreasing</h2>
+<div class="qa"><p class="q">Q. Find the intervals where f(x) = 2x³ − 9x² + 12x + 15 is increasing or decreasing.<span class="tag">2–3 M</span></p>
+<div class="a">
+<p>f′(x) = 6x² − 18x + 12 = 6(x − 1)(x − 2).</p>
+<figure>
+<svg viewBox="0 0 360 70" width="360" role="img" aria-label="Sign chart for f prime">
+  <line class="ln" x1="10" y1="30" x2="350" y2="30"/>
+  <circle class="dot" cx="130" cy="30" r="4"/><circle class="dot" cx="230" cy="30" r="4"/>
+  <text x="126" y="52">1</text><text x="226" y="52">2</text>
+  <text x="50" y="22" class="a">+ (increasing)</text><text x="148" y="22" class="a2">− (decr.)</text><text x="256" y="22" class="a">+ (increasing)</text>
+</svg>
+</figure>
+<p>Increasing on (−∞, 1] ∪ [2, ∞); decreasing on [1, 2].</p>
+<p>P(x) = x³ − 6x² + 9x + 20: P′ = 3(x − 1)(x − 3) → decreasing on (1, 3).</p>
+<p>f(x) = sin x + cos x on [0, 2π]: f′ = cos x − sin x &gt; 0 on [0, π/4) ∪ (5π/4, 2π] (increasing), decreasing on (π/4, 5π/4).</p>
+<p>4x³ − 18x² + 27x − 7: f′ = 3(2x − 3)² ≥ 0 → always increasing.</p>
+<p>x² + ax + 1 strictly increasing on (1, 2): 2x + a &gt; 0 for x &gt; 1 ⇒ a ≥ −2, least a = −2.</p>
+<p>√3 sin x − cos x − 2ax + 6 decreasing on R: f′ = √3 cos x + sin x − 2a = 2 sin(x + π/3) − 2a ≤ 0 for all x ⇒ 2 − 2a ≤ 0 ⇒ a ≥ 1.</p></div></div>
+
+<h2 id="maxmin">6. Maxima &amp; minima</h2>
+<div class="qa"><p class="q">Q. State the first and second derivative tests.<span class="tag">method</span></p>
+<div class="a">
+<ol><li>Find critical points: f′(c) = 0.</li>
+<li><strong>First derivative test:</strong> f′ changes + → − at c: local max; − → +: local min.</li>
+<li><strong>Second derivative test:</strong> f″(c) &lt; 0: max; f″(c) &gt; 0: min; f″(c) = 0: test fails.</li>
+<li><strong>Absolute max/min on [a, b]:</strong> compare f at critical points and at the end points.</li></ol>
+<p><em>Absolute:</em> f(x) = 4x − x²/2 on [−2, 9/2]: f′ = 4 − x = 0 at 4; f(−2) = −10, f(4) = 8, f(4.5) = 7.875 → max 8, min −10.</p>
+<p>f(x) = cos x + sin²x on [0, π]: f′ = −sin x + 2 sin x cos x = sin x(2cos x − 1) = 0 at 0, π/3, π. f(0) = 1, f(π/3) = 1/2 + 3/4 = 5/4, f(π) = −1 → absolute max 5/4.</p></div></div>
+
+<div class="qa"><p class="q">Q. Open box from a square sheet of side 18 cm by cutting equal squares of side x from each corner. Find x for maximum volume.<span class="tag">4–5 M · case study</span></p>
+<div class="a">
+<figure>
+<svg viewBox="0 0 240 200" width="240" role="img" aria-label="Square sheet with corner squares cut">
+  <rect x="20" y="20" width="180" height="180" class="fillb" opacity="0.5"/>
+  <g class="thin"><rect x="20" y="20" width="35" height="35"/><rect x="165" y="20" width="35" height="35"/><rect x="20" y="165" width="35" height="35"/><rect x="165" y="165" width="35" height="35"/></g>
+  <rect x="55" y="55" width="110" height="110" class="thin"/>
+  <text x="30" y="42">x</text><text x="86" y="112">18 − 2x</text><text x="98" y="14">18</text>
+</svg>
+</figure>
+<p>V = x(18 − 2x)², 0 &lt; x &lt; 9.</p>
+<p>V′ = (18 − 2x)² − 4x(18 − 2x) = (18 − 2x)(18 − 6x) = 0 ⇒ x = 3 (x = 9 gives no box).</p>
+<p>V″ = 24x − 144 ⇒ V″(3) = −72 &lt; 0 ⇒ maximum. <strong>x = 3 cm, V<sub>max</sub> = 3 × 12² = 432 cm³</strong>.</p></div></div>
+
+<div class="qa"><p class="q">Q. Other repeated max–min problems.<span class="tag">4–5 M</span></p>
+<div class="a">
+<ul>
+<li><strong>Fence along a river</strong> (120 m, river side free): A = x(120 − 2x), A′ = 120 − 4x = 0 ⇒ x = 30, A<sub>max</sub> = 1800 m².</li>
+<li><strong>Square-base box, volume 1024 cm³</strong>, top/bottom ₹5/cm², sides ₹2.5/cm²: h = 1024/x², C = 10x² + 2.5 × 4x × 1024/x² = 10x² + 10240/x. C′ = 20x − 10240/x² = 0 ⇒ x³ = 512 ⇒ x = 8, h = 16, C<sub>min</sub> = 640 + 1280 = ₹1920.</li>
+<li><strong>Helicopter on y = x² + 7, soldier at (3, 7)</strong>: D² = (a − 3)² + a⁴. d/da = 2(a − 3) + 4a³ = 0 ⇒ 2a³ + a − 3 = 0 ⇒ a = 1 → nearest point (1, 8), distance √5.</li>
+<li><strong>Profit P(x) = −3x² + 240x − 1200</strong>: P′ = 0 at x = 40, P″ = −6 &lt; 0, P<sub>max</sub> = −4800 + 9600 − 1200 = 3600 (thousand). At x = 30: 3300, short by 300. At x = 50: 3300 (diminishing returns).</li>
+<li><strong>Right triangle with given hypotenuse + side sum</strong>, rectangle in a circle, etc. — always write one variable, differentiate, test.</li>
+</ul></div></div>
+
+<h2 id="quick">7. Quick-fire 1-markers</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>d/dx log(sec x + tan x)</td><td>sec x</td></tr>
+<tr><td>d/dx [log₂ₓ √(2x)]</td><td>0 (it equals ½)</td></tr>
+<tr><td>Rate of change of area of a circle at r = 5</td><td>10π</td></tr>
+<tr><td>f(x) = x² + 1 increasing on</td><td>(0, ∞)</td></tr>
+<tr><td>|x| at x = 0</td><td>continuous, not differentiable</td></tr>
+<tr><td>dy/dx if x = at², y = 2at</td><td>1/t</td></tr>
+</table>
+
+<div class="pager"><a href="02-matrices.html">← Matrices</a><a href="04-integration.html">Integration &amp; DE →</a></div>
+</main>
+<footer>Study notes · CBSE Class 12 Maths. Verify against NCERT.</footer>
+</body>
+</html>
