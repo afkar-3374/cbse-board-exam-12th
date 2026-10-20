@@ -198,3 +198,16 @@ footer { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 2
   header.site { position: static; }
   .qa { break-inside: avoid; }
 }
+
+/* practice question banks */
+.pq { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
+.pq > p:first-child { margin-top: 0; }
+.pq .n { display: inline-block; min-width: 2.2em; font-weight: 700; color: var(--q); }
+.pq ol.opts { list-style: lower-alpha; margin: 6px 0; padding-left: 26px; }
+.pq details { margin-top: 8px; border-top: 1px dashed var(--border); padding-top: 6px; }
+.pq summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.92rem; }
+.pq details[open] summary { margin-bottom: 6px; }
+.pq details > :last-child { margin-bottom: 0; }
+.marks-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+.marks-nav a { text-decoration: none; background: var(--accent-soft); border-radius: 999px; padding: 4px 14px; font-weight: 600; font-size: 0.92rem; }
+@media print { .pq details { display: none; } }
