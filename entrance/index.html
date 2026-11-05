@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>JEE NEET Library</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.years { display: grid; gap: 6px; margin: 8px 0 16px; }
+.yr { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+.yr b { min-width: 48px; }
+.yr a { text-decoration: none; background: var(--accent-soft); border-radius: 999px; padding: 3px 11px; font-size: .86rem; }
+.subj { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 6px 18px 10px; margin: 16px 0; border-top: 5px solid var(--c); }
+.subj > h2 { border: 0; color: var(--c); }
+.subj h3 { font-size: 1rem; margin: 14px 0 2px; }
+.subj p.note { color: var(--muted); font-size: .88rem; margin: 2px 0; }
+.big { display: inline-block; text-decoration: none; background: var(--c, var(--accent)); color: #fff; border-radius: 10px; padding: 8px 14px; font-weight: 600; margin: 4px 6px 4px 0; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.tabs a { text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 18px 0; }
+.card { display: block; text-decoration: none; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-top: 5px solid var(--c); border-radius: 14px; padding: 16px 18px; }
+.card h2 { border: 0; margin: 4px 0; color: var(--c); }
+.card ul { color: var(--muted); font-size: .9rem; padding-left: 18px; }
+.c-phy { --c: #2b6cc4; } .c-che { --c: #b8412f; } .c-mat { --c: #8a3fc0; } .c-bio { --c: #1f8a54; } .c-jee { --c: #2b6cc4; } .c-neet { --c: #1f8a54; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .c-phy, :root:not([data-theme="light"]) .c-jee { --c: #7aa7ee; } :root:not([data-theme="light"]) .c-che { --c: #f08a7a; } :root:not([data-theme="light"]) .c-mat { --c: #c39af0; } :root:not([data-theme="light"]) .c-bio, :root:not([data-theme="light"]) .c-neet { --c: #5cc48a; } }
+:root[data-theme="dark"] .c-phy, :root[data-theme="dark"] .c-jee { --c: #7aa7ee; } :root[data-theme="dark"] .c-che { --c: #f08a7a; } :root[data-theme="dark"] .c-mat { --c: #c39af0; } :root[data-theme="dark"] .c-bio, :root[data-theme="dark"] .c-neet { --c: #5cc48a; }
+</style></head><body>
+<header class="site"><div class="inner"><a class="brand" href="../index.html">CBSE · JEE · NEET</a>
+<nav><a href="../index.html">CBSE notes</a><a href="index.html">Entrance hub</a><a href="jee/index.html">JEE</a><a href="neet/index.html">NEET</a></nav></div></header>
+<main>
+<h1>JEE &amp; NEET paper library</h1>
+<p>Previous papers sorted by subject, with solutions, model papers and an expected NEET 2027 paper.</p>
+<div class=cards>
+<a class="card c-jee" href="jee/index.html"><h2>JEE</h2><ul><li>JEE Advanced 2007–2026: Physics, Chemistry, Maths</li><li>JEE Main 2023–2026 with solutions</li><li>All-questions page per subject</li><li>3 model papers for 2027</li></ul><b>219 PDFs →</b></a>
+<a class="card c-neet" href="neet/index.html"><h2>NEET</h2><ul><li>NEET 2015–2025: Physics, Chemistry, Biology</li><li>Answers &amp; solutions, answer keys</li><li>Expected 2027 paper (interactive + PDF)</li><li>3 model papers for 2027</li></ul><b>57 PDFs →</b></a>
+</div>
+<h2>How to use this</h2><ol><li>Start with the latest 5 years of your exam and work back.</li><li>Do full papers timed (3 h), then check the solutions files.</li><li>Use the all-questions pages for chapter-wise revision.</li><li>Take the NEET 2027 expected paper as a final mock.</li></ol></main><footer>JEE &amp; NEET paper library · for personal study</footer></body></html>
