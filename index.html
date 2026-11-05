@@ -3,116 +3,135 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CBSE Class 12 Notes</title>
-<meta name="description" content="CBSE Class 12 board exam revision notes — Physics, Maths, Biology and English as question-and-answer notes with diagrams, built from an analysis of 20 pre-board papers per subject.">
+<title>Study Hub</title>
+<meta name="description" content="One place for CBSE Class 12 notes and practice, JEE and NEET previous-year papers by subject, solutions, model papers and the NEET 2027 expected paper.">
 <link rel="stylesheet" href="style.css">
 <style>
-.hero { padding: 28px 0 8px; }
-.hero h1 { font-size: 2.2rem; margin-bottom: 6px; }
-.hero p { color: var(--muted); font-size: 1.08rem; max-width: 640px; margin: 0; }
-.stats { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 18px 0 6px; color: var(--muted); font-size: 0.92rem; }
-.stats b { color: var(--text); font-size: 1.15rem; display: block; }
-.subjects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 22px 0; }
-.subject { display: block; text-decoration: none; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px 16px; border-top: 5px solid var(--c); transition: border-color .15s, transform .15s; }
-.subject:hover { border-color: var(--c); transform: translateY(-2px); }
-.subject .icon { font-size: 1.9rem; line-height: 1; }
-.subject h2 { border: 0; margin: 10px 0 2px; padding: 0; font-size: 1.3rem; color: var(--c); }
-.subject .code { font-size: 0.8rem; color: var(--muted); }
-.subject ul { margin: 10px 0 12px; padding-left: 18px; font-size: 0.9rem; color: var(--muted); }
-.subject .go { font-weight: 600; color: var(--c); font-size: 0.92rem; }
-.s-phy { --c: #2b6cc4; } .s-mat { --c: #8a3fc0; } .s-bio { --c: #1f8a54; } .s-eng { --c: #c0621f; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .s-phy { --c: #7aa7ee; } :root:not([data-theme="light"]) .s-mat { --c: #c39af0; } :root:not([data-theme="light"]) .s-bio { --c: #5cc48a; } :root:not([data-theme="light"]) .s-eng { --c: #f0a066; } }
-:root[data-theme="dark"] .s-phy { --c: #7aa7ee; } :root[data-theme="dark"] .s-mat { --c: #c39af0; } :root[data-theme="dark"] .s-bio { --c: #5cc48a; } :root[data-theme="dark"] .s-eng { --c: #f0a066; }
-.quick { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; }
-.quick a { text-decoration: none; background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; font-size: 0.88rem; }
+.hero { padding: 30px 0 6px; }
+.hero h1 { font-size: 2.3rem; margin: 0 0 6px; }
+.hero p { color: var(--muted); font-size: 1.08rem; max-width: 660px; margin: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px 26px; margin: 18px 0 4px; color: var(--muted); font-size: .9rem; }
+.stats b { color: var(--text); font-size: 1.25rem; display: block; }
+.jump { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 12px; margin: 22px 0 8px; }
+.jump a { display: flex; gap: 12px; align-items: center; text-decoration: none; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-left: 5px solid var(--c); border-radius: 12px; padding: 14px 16px; transition: transform .15s, border-color .15s; }
+.jump a:hover { transform: translateY(-2px); border-color: var(--c); }
+.jump .ic { font-size: 1.7rem; line-height: 1; }
+.jump b { display: block; font-size: 1.08rem; color: var(--c); }
+.jump span { font-size: .85rem; color: var(--muted); }
+.block { background: var(--surface); border: 1px solid var(--border); border-top: 5px solid var(--c); border-radius: 14px; padding: 6px 20px 16px; margin: 22px 0; scroll-margin-top: 12px; }
+.block > h2 { border: 0; color: var(--c); margin: 14px 0 4px; }
+.block > p { color: var(--muted); margin: 0 0 10px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.tile { display: block; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; background: var(--bg); }
+.tile:hover { border-color: var(--c); }
+.tile b { display: block; color: var(--c); }
+.tile small { color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 2px; }
+.row a { text-decoration: none; background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; font-size: .88rem; }
+.row .lbl { font-size: .85rem; color: var(--muted); align-self: center; min-width: 74px; }
+.feature { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; background: var(--accent-soft); border-radius: 12px; padding: 14px 16px; margin: 12px 0 4px; }
+.feature div { max-width: 520px; }
+.btn { display: inline-block; text-decoration: none; background: var(--c); color: #fff; font-weight: 600; border-radius: 10px; padding: 9px 16px; }
+.c-cbse { --c: #c0621f; } .c-jee { --c: #2b6cc4; } .c-neet { --c: #1f8a54; } .c-mock { --c: #8a3fc0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .c-cbse { --c: #f0a066; } :root:not([data-theme="light"]) .c-jee { --c: #7aa7ee; }
+  :root:not([data-theme="light"]) .c-neet { --c: #5cc48a; } :root:not([data-theme="light"]) .c-mock { --c: #c39af0; }
+  :root:not([data-theme="light"]) .btn { color: #15171b; }
+}
+:root[data-theme="dark"] .c-cbse { --c: #f0a066; } :root[data-theme="dark"] .c-jee { --c: #7aa7ee; }
+:root[data-theme="dark"] .c-neet { --c: #5cc48a; } :root[data-theme="dark"] .c-mock { --c: #c39af0; }
+:root[data-theme="dark"] .btn { color: #15171b; }
 </style>
 </head>
 <body>
 <header class="site"><div class="inner">
-  <a class="brand" href="index.html">CBSE Board Exam · Class 12</a>
+  <a class="brand" href="index.html">Study Hub</a>
   <nav>
-    <a href="physics/index.html">Physics</a>
-    <a href="maths/index.html">Maths</a>
-    <a href="biology/index.html">Biology</a>
-    <a href="english/index.html">English</a>
-    <a href="entrance/index.html">JEE &amp; NEET</a>
+    <a href="#cbse">CBSE 12</a>
+    <a href="#jee">JEE</a>
+    <a href="#neet">NEET</a>
+    <a href="entrance/neet/expected-2027.html">NEET 2027 mock</a>
   </nav>
 </div></header>
 <main>
 <section class="hero">
-  <h1>CBSE Class 12 — Board Exam Notes</h1>
-  <p>Question-and-answer revision notes with diagrams for every chapter. Topic priorities come from analysing about 20 Pre-Board 1 (2026–27) papers per subject.</p>
+  <h1>Study Hub</h1>
+  <p>Everything in one place: CBSE Class 12 board notes and practice, JEE and NEET previous-year papers by subject, solutions, model papers and an expected NEET 2027 paper.</p>
   <div class="stats">
-    <div><b>4</b>subjects</div>
-    <div><b>26</b>note pages</div>
-    <div><b>76</b>question papers analysed</div>
-    <div><b>380</b>practice questions</div>
+    <div><b>26</b>CBSE note pages</div>
+    <div><b>380</b>CBSE practice questions</div>
+    <div><b>219</b>JEE papers (PDF)</div>
+    <div><b>57</b>NEET papers &amp; solutions</div>
+    <div><b>180</b>NEET 2027 mock questions</div>
   </div>
 </section>
 
-<div class="subjects">
-  <a class="subject s-phy" href="physics/index.html">
-    <div class="icon">⚛️</div>
-    <h2>Physics</h2><div class="code">Code 042 · 70 marks</div>
-    <ul><li>Electrostatics, Current, Magnetism</li><li>EMI &amp; AC, EM Waves &amp; Optics</li><li>Modern Physics, Semiconductors</li></ul>
-    <span class="go">Open Physics →</span>
-  </a>
-  <a class="subject s-mat" href="maths/index.html">
-    <div class="icon">∑</div>
-    <h2>Mathematics</h2><div class="code">Code 041 · 80 marks</div>
-    <ul><li>Relations, ITF, Matrices</li><li>Differentiation, Integration, DE</li><li>Vectors &amp; 3D, LPP, Probability</li></ul>
-    <span class="go">Open Maths →</span>
-  </a>
-  <a class="subject s-bio" href="biology/index.html">
-    <div class="icon">🧬</div>
-    <h2>Biology</h2><div class="code">Code 044 · 70 marks</div>
-    <ul><li>Reproduction, Genetics</li><li>Evolution, Human Health</li><li>Microbes, Biotechnology, Ecology</li></ul>
-    <span class="go">Open Biology →</span>
-  </a>
-  <a class="subject s-eng" href="english/index.html">
-    <div class="icon">📖</div>
-    <h2>English Core</h2><div class="code">Code 301 · 80 marks</div>
-    <ul><li>Reading &amp; writing formats</li><li>Flamingo prose &amp; poetry</li><li>Vistas</li></ul>
-    <span class="go">Open English →</span>
-  </a>
+<div class="jump">
+  <a class="c-cbse" href="#cbse"><span class="ic">📘</span><div><b>CBSE Class 12</b><span>Notes, practice, exam patterns</span></div></a>
+  <a class="c-jee" href="#jee"><span class="ic">⚙️</span><div><b>JEE</b><span>Advanced 2007–26 · Main 2023–26</span></div></a>
+  <a class="c-neet" href="#neet"><span class="ic">🩺</span><div><b>NEET</b><span>Papers 2015–25 · solutions · keys</span></div></a>
+  <a class="c-mock" href="entrance/neet/expected-2027.html"><span class="ic">📝</span><div><b>NEET 2027 mock</b><span>Take it online, auto-scored</span></div></a>
 </div>
 
-<h2>JEE &amp; NEET paper library</h2>
-<p>Previous-year papers for JEE Advanced, JEE Main and NEET, split by subject, with solutions, model papers and an expected NEET 2027 paper you can take online.</p>
-<div class="quick">
-  <a href="entrance/index.html">Open the library</a>
-  <a href="entrance/jee/index.html">JEE papers</a>
-  <a href="entrance/neet/index.html">NEET papers</a>
-  <a href="entrance/neet/expected-2027.html">NEET 2027 expected paper</a>
-</div>
+<section class="block c-cbse" id="cbse">
+  <h2>📘 CBSE Class 12 board exam</h2>
+  <p>Question-and-answer notes with diagrams, built from 76 Pre-Board papers. <a href="cbse.html">Full CBSE overview →</a></p>
+  <div class="grid">
+    <a class="tile" href="physics/index.html"><b>⚛️ Physics</b><small>7 units · code 042</small></a>
+    <a class="tile" href="maths/index.html"><b>∑ Mathematics</b><small>6 units · code 041</small></a>
+    <a class="tile" href="biology/index.html"><b>🧬 Biology</b><small>5 units · code 044</small></a>
+    <a class="tile" href="english/index.html"><b>📖 English Core</b><small>Reading, writing, literature · code 301</small></a>
+  </div>
+  <div class="row"><span class="lbl">Practice</span>
+    <a href="physics/practice.html">Physics</a><a href="maths/practice.html">Maths</a><a href="biology/practice.html">Biology</a><a href="english/practice.html">English</a></div>
+  <div class="row"><span class="lbl">Patterns</span>
+    <a href="physics/00-exam-pattern.html">Physics</a><a href="maths/00-exam-pattern.html">Maths</a><a href="biology/00-exam-pattern.html">Biology</a><a href="english/00-exam-pattern.html">English</a></div>
+</section>
 
-<h2>Practice by marks</h2>
-<p>Each subject has 20 questions for every mark category (1, 2, 3, 4 and 5 marks; English 1, 2, 4 and 5), with hidden answers.</p>
-<div class="quick">
-  <a href="physics/practice.html">Physics practice</a>
-  <a href="maths/practice.html">Maths practice</a>
-  <a href="biology/practice.html">Biology practice</a>
-  <a href="english/practice.html">English practice</a>
-</div>
+<section class="block c-jee" id="jee">
+  <h2>⚙️ JEE</h2>
+  <p>JEE Advanced 2007–2026 (official) and JEE Main 2023–2026 with solutions, split by subject. <a href="entrance/jee/index.html">All JEE papers →</a></p>
+  <div class="grid">
+    <a class="tile" href="entrance/jee/index.html#Physics"><b>Physics</b><small>40 Advanced + 32 Main papers</small></a>
+    <a class="tile" href="entrance/jee/index.html#Chemistry"><b>Chemistry</b><small>40 Advanced + 32 Main papers</small></a>
+    <a class="tile" href="entrance/jee/index.html#Mathematics"><b>Mathematics</b><small>40 Advanced + 32 Main papers</small></a>
+    <a class="tile" href="entrance/jee/index.html#model"><b>2027 model papers</b><small>3 full JEE Main-pattern papers</small></a>
+  </div>
+  <div class="row"><span class="lbl">All Qs</span>
+    <a href="entrance/files/JEE/Physics/JEE_Physics_All_Previous_Questions.html" target="_blank">Physics</a>
+    <a href="entrance/files/JEE/Chemistry/JEE_Chemistry_All_Previous_Questions.html" target="_blank">Chemistry</a>
+    <a href="entrance/files/JEE/Mathematics/JEE_Mathematics_All_Previous_Questions.html" target="_blank">Maths</a></div>
+</section>
 
-<h2>Start with the exam patterns</h2>
-<p>Each subject has a pattern page: paper structure, most-repeated questions and Assertion–Reason traps.</p>
-<div class="quick">
-  <a href="physics/00-exam-pattern.html">Physics pattern</a>
-  <a href="maths/00-exam-pattern.html">Maths pattern</a>
-  <a href="biology/00-exam-pattern.html">Biology pattern</a>
-  <a href="english/00-exam-pattern.html">English pattern</a>
-</div>
+<section class="block c-neet" id="neet">
+  <h2>🩺 NEET</h2>
+  <p>NEET 2015–2025 papers split by subject, with answers &amp; solutions and answer keys. <a href="entrance/neet/index.html">All NEET papers →</a></p>
+  <div class="feature">
+    <div><b>NEET 2027 expected paper</b><br><small>180 original questions, NEET 2025 pattern, weighted towards the most-asked chapters. Tap to answer, see the explanation, track your score.</small></div>
+    <div class="row" style="margin:0"><a class="btn" style="background:var(--c);padding:9px 16px" href="entrance/neet/expected-2027.html">Start the mock</a>
+    <a href="entrance/files/NEET/Model%20QP/NEET_UG_2027_Expected_Paper.pdf" target="_blank">PDF</a></div>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <a class="tile" href="entrance/neet/index.html#Physics"><b>Physics</b><small>11 papers · 5 solution sets</small></a>
+    <a class="tile" href="entrance/neet/index.html#Chemistry"><b>Chemistry</b><small>11 papers · 5 solution sets</small></a>
+    <a class="tile" href="entrance/neet/index.html#Biology"><b>Biology</b><small>11 papers · 5 solution sets</small></a>
+    <a class="tile" href="entrance/neet/index.html#keys"><b>Answer keys</b><small>2015–2019</small></a>
+    <a class="tile" href="entrance/neet/index.html#model"><b>2027 model papers</b><small>3 model papers + expected paper</small></a>
+  </div>
+  <div class="row"><span class="lbl">All Qs</span>
+    <a href="entrance/files/NEET/Physics/NEET_Physics_All_Previous_Questions.html" target="_blank">Physics</a>
+    <a href="entrance/files/NEET/Chemistry/NEET_Chemistry_All_Previous_Questions.html" target="_blank">Chemistry</a>
+    <a href="entrance/files/NEET/Biology/NEET_Biology_All_Previous_Questions.html" target="_blank">Biology</a></div>
+</section>
 
-<h2>How to use these notes</h2>
+<h2>How to use this hub</h2>
 <ol>
-<li>Read the subject's <strong>exam pattern</strong> page first to know what matters most.</li>
-<li>Work through each chapter's questions; cover the answer and try first.</li>
-<li>Redraw every diagram and graph from memory.</li>
-<li>Use the quick-fire tables at the end of chapters for last-day revision.</li>
+<li><strong>Boards first:</strong> read each subject's exam pattern, then work through the notes and practice pages.</li>
+<li><strong>Entrance papers:</strong> start with the latest 5 years, do full papers timed, then check the solutions.</li>
+<li><strong>Chapter revision:</strong> use the "All Qs" pages to see every past question on one page.</li>
+<li><strong>Final check:</strong> take the NEET 2027 mock and revise the chapters you got wrong.</li>
 </ol>
-<p class="tip"><strong>Note:</strong> these are independent study notes. Always cross-check with NCERT and the latest CBSE syllabus.</p>
 </main>
-<footer>CBSE Board Exam · Class 12 · study notes</footer>
+<footer>Study Hub · CBSE Class 12 · JEE · NEET</footer>
 </body>
 </html>
