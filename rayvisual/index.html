@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ray Optics – Visual Chapter</title>
+<meta name="description" content="CBSE Class 12 Physics Chapter 9, Ray Optics and Optical Instruments, explained with interactive ray diagrams. NCERT and board questions after every topic.">
+<link rel="stylesheet" href="../style.css">
+<style>
+.sim { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin: 16px 0; }
+.sim h4 { margin: 0 0 2px; font-size: 1rem; }
+.sim .hint { margin: 0 0 8px; color: var(--muted); font-size: 0.9rem; }
+.sim svg { display: block; width: 100%; height: auto; background: var(--bg); border-radius: 8px; border: 1px solid var(--border); }
+.sim .ctl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px 18px; margin-top: 10px; }
+.sim label { display: block; font-size: 0.9rem; color: var(--muted); }
+.sim label b { color: var(--text); font-variant-numeric: tabular-nums; }
+.sim input[type=range] { width: 100%; accent-color: var(--accent); margin: 2px 0 0; }
+.sim select { width: 100%; font: inherit; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.sim .out { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.sim .out span { background: var(--accent-soft); border-radius: 6px; padding: 3px 10px; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+.sim .out span.big { background: var(--warn-soft); color: var(--warn); font-weight: 600; }
+.steps { counter-reset: st; list-style: none; padding: 0; margin: 12px 0; }
+.steps li { counter-increment: st; position: relative; padding: 2px 0 8px 40px; }
+.steps li::before { content: counter(st); position: absolute; left: 0; top: 2px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 0.9rem; display: grid; place-items: center; }
+.check { border: 2px solid var(--accent); border-radius: 12px; padding: 4px 14px 10px; margin: 26px 0 8px; background: var(--accent-soft); }
+.check > h3 { margin: 10px 0 2px; }
+.check > p.sub { margin: 0 0 8px; color: var(--muted); font-size: 0.9rem; }
+.src { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 9px; margin-right: 6px; vertical-align: 1px; white-space: nowrap; }
+.src.ncert { background: var(--good); color: var(--surface); }
+.src.board { background: var(--q); color: var(--surface); }
+.src.mk { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+.idea { background: var(--surface); border-left: 4px solid var(--good); border-radius: 6px; padding: 8px 12px; margin: 10px 0; }
+.idea strong { color: var(--good); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+svg .ray3 { stroke: var(--good); fill: none; stroke-width: 2.2; }
+svg .fa { fill: var(--svg-accent); } svg .fa2 { fill: var(--svg-accent2); } svg .fg { fill: var(--good); }
+svg .med { fill: var(--svg-accent); stroke: none; }
+svg text.g { fill: var(--good); }
+</style>
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="../physics/index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="../physics/05-optics.html">Optics notes</a>
+    <a href="../physics/practice.html">Practice</a>
+    <a href="../physics/00-exam-pattern.html">Pattern</a>
+  </nav>
+</div></header>
+<main>
+<h1>Ray Optics, the visual way</h1>
+<p class="lead">NCERT Class 12 Physics · Chapter 9 · Ray Optics and Optical Instruments. Every topic has a diagram you can move with sliders. When a topic is over, you get NCERT and board questions on exactly that topic.</p>
+
+<div class="toc"><strong>Topics</strong>
+<ol>
+<li><a href="#mirrors">Reflection by spherical mirrors</a></li>
+<li><a href="#refraction">Refraction and Snell's law</a></li>
+<li><a href="#tir">Total internal reflection</a></li>
+<li><a href="#surface">Refraction at a spherical surface, lenses</a></li>
+<li><a href="#prism">Refraction through a prism</a></li>
+<li><a href="#instruments">Microscope and telescope</a></li>
+<li><a href="#sheet">One-page formula sheet</a></li>
+</ol></div>
+
+<div class="tip"><strong>How to use:</strong> read the idea, drag the sliders until the diagram makes sense, then try the questions before opening the answers. <span class="src ncert">NCERT</span> questions are from the textbook exercises of this chapter. <span class="src board">Board</span> questions are the types asked again and again in CBSE Class 12 papers (no year is tagged).</div>
+
+<div class="idea"><strong>One rule for the whole chapter (sign convention):</strong> measure every distance from the pole (mirror) or optical centre (lens). Along the direction of the incoming light is <strong>positive</strong>, against it is <strong>negative</strong>. Heights above the axis are positive, below are negative. Light is always drawn coming from the left, so the object distance u is negative.</div>
+
+<!-- ===================== 1 MIRRORS ===================== -->
+<h2 id="mirrors">1. Reflection by spherical mirrors</h2>
+<p>A spherical mirror is a piece cut from a hollow sphere. A <strong>concave</strong> mirror curves in like a cave and brings parallel rays together at the focus F. A <strong>convex</strong> mirror bulges out and spreads them, so they only <em>seem</em> to come from F behind the mirror.</p>
+<ul>
+<li><strong>Pole P</strong>: centre of the mirror. <strong>C</strong>: centre of the sphere. <strong>R</strong>: radius of curvature.</li>
+<li>Focus is halfway between P and C.</li>
+</ul>
+<div class="formula">f = R/2 &nbsp;&nbsp;|&nbsp;&nbsp; 1/v + 1/u = 1/f &nbsp;&nbsp;|&nbsp;&nbsp; m = h′/h = −v/u</div>
+<ol class="steps">
+<li>A ray <strong>parallel to the axis</strong> reflects through F (concave) or appears to come from F (convex).</li>
+<li>A ray hitting the <strong>pole</strong> reflects at an equal angle on the other side of the axis.</li>
+<li>Where the two reflected rays meet is the image. If they only meet when extended backwards (dashed), the image is <strong>virtual</strong>.</li>
+</ol>
+
+<div class="sim" id="simMirror"></div>
+
+<table>
+<tr><th>Object position (concave mirror)</th><th>Image</th></tr>
+<tr><td>Beyond C</td><td>Between F and C, real, inverted, smaller</td></tr>
+<tr><td>At C</td><td>At C, real, inverted, same size</td></tr>
+<tr><td>Between C and F</td><td>Beyond C, real, inverted, larger</td></tr>
+<tr><td>At F</td><td>At infinity</td></tr>
+<tr><td>Between F and P</td><td>Behind mirror, virtual, erect, larger</td></tr>
+</table>
+<p>A convex mirror <em>always</em> gives a virtual, erect, smaller image between P and F. That is why it gives a wide field of view as a rear-view mirror.</p>
+
+<div class="check"><h3>Topic 1 over: test yourself</h3><p class="sub">Mirrors, mirror equation, magnification</p>
+<div class="pq"><p><span class="src ncert">NCERT 9.1</span>A small candle, 2.5 cm in size, is placed 27 cm in front of a concave mirror of radius of curvature 36 cm. At what distance from the mirror should a screen be placed to get a sharp image? Describe the nature and size of the image.</p>
+<details><summary>Show answer</summary><p>f = −18 cm, u = −27 cm. 1/v = 1/f − 1/u = −1/18 + 1/27 = −1/54, so <strong>v = −54 cm</strong>: screen 54 cm in front of the mirror.</p><p>m = −v/u = −2, so image height = −5 cm: <strong>real, inverted, 5 cm tall</strong>. If the candle moves closer, the screen must move farther away. Closer than 18 cm the image becomes virtual and cannot be caught on a screen.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.2</span>A 4.5 cm needle is placed 12 cm away from a convex mirror of focal length 15 cm. Give the location of the image and the magnification.</p>
+<details><summary>Show answer</summary><p>u = −12 cm, f = +15 cm. 1/v = 1/15 + 1/12 = 9/60, so <strong>v = +6.7 cm</strong> (behind the mirror).</p><p>m = −v/u = +0.56, image height = 2.5 cm: <strong>virtual, erect, diminished</strong>. As the needle moves away, the image moves towards F and keeps shrinking.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">3 M</span>An object is placed 20 cm in front of a concave mirror of focal length 15 cm. Find the position, nature and magnification of the image.</p>
+<details><summary>Show answer</summary><p>u = −20, f = −15. 1/v = −1/15 + 1/20 = −1/60, so v = −60 cm. m = −v/u = −3.</p><p>Real, inverted, three times magnified, 60 cm in front of the mirror. (Set u = 20, f = 15 in the diagram above to see it.)</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>Use the mirror equation to show that an object placed between f and 2f of a concave mirror produces a real image beyond 2f. <em>(Also NCERT 9.15 a)</em></p>
+<details><summary>Show answer</summary><p>For a concave mirror f &lt; 0 and u &lt; 0, with 2f &lt; u &lt; f.</p><p>So 1/2f &gt; 1/u &gt; 1/f, which gives −1/2f &lt; −1/u &lt; −1/f. Adding 1/f: 1/f − 1/2f &lt; 1/v &lt; 0, i.e. 1/2f &lt; 1/v &lt; 0.</p><p>Hence v is negative (real image) and |v| &gt; |2f|: the image lies beyond 2f.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">1 M</span>Why is a convex mirror preferred as a rear-view mirror in vehicles?</p>
+<details><summary>Show answer</summary><p>It always forms an erect, diminished image, so it covers a much wider field of view than a plane mirror of the same size.</p></details></div>
+</div>
+
+<!-- ===================== 2 REFRACTION ===================== -->
+<h2 id="refraction">2. Refraction and Snell's law</h2>
+<p>Light slows down in a denser medium. When it enters at an angle, one side of the beam slows first, so the ray <strong>bends towards the normal</strong>. Going from denser to rarer it speeds up and bends <strong>away</strong> from the normal.</p>
+<div class="formula">n = c/v &nbsp;&nbsp;|&nbsp;&nbsp; n₁ sin i = n₂ sin r &nbsp;&nbsp;|&nbsp;&nbsp; n₂₁ = n₂/n₁ = v₁/v₂ = λ₁/λ₂</div>
+<p>Frequency never changes on refraction. Speed and wavelength change.</p>
+
+<div class="sim" id="simSnell"></div>
+
+<h3>Two results you must know</h3>
+<div class="grid2">
+<div class="qa"><p class="q">Apparent depth</p><div class="a"><div class="formula">apparent depth = real depth / n</div><p>A pool looks shallower than it is. Shift = t (1 − 1/n) for a slab of thickness t.</p></div></div>
+<div class="qa"><p class="q">Glass slab</p><div class="a"><p>The emergent ray is <strong>parallel</strong> to the incident ray, only shifted sideways (lateral shift). No deviation.</p></div></div>
+</div>
+
+<div class="check"><h3>Topic 2 over: test yourself</h3><p class="sub">Snell's law, refractive index, apparent depth</p>
+<div class="pq"><p><span class="src ncert">NCERT 9.3</span>A tank is filled with water to a height of 12.5 cm. The apparent depth of a needle lying at the bottom is measured by a microscope to be 9.4 cm. What is the refractive index of water? If water is replaced by a liquid of refractive index 1.63 up to the same height, by what distance would the microscope have to be moved to focus on the needle again?</p>
+<details><summary>Show answer</summary><p>n = real depth / apparent depth = 12.5 / 9.4 = <strong>1.33</strong>.</p><p>New apparent depth = 12.5 / 1.63 = 7.67 cm. The microscope must be moved <strong>up by 9.4 − 7.67 = 1.73 cm</strong>.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.16</span>A small pin fixed on a table top is viewed from above from a distance of 50 cm. By what distance would the pin appear to be raised if it is viewed through a 15 cm thick glass slab (n = 1.5) held parallel to the table? Does the answer depend on the location of the slab?</p>
+<details><summary>Show answer</summary><p>Shift = t (1 − 1/n) = 15 × (1 − 1/1.5) = <strong>5 cm</strong>. It does not depend on where the slab is placed (for small angles of incidence).</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">1 M</span>When light travels from air into glass, which of these change: frequency, wavelength, speed?</p>
+<details><summary>Show answer</summary><p>Speed and wavelength both decrease by the factor n. Frequency stays the same, because it is fixed by the source.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>The refractive index of glass is 1.5. Find the speed of light in glass. If light of wavelength 600 nm in air enters the glass, what is its wavelength inside?</p>
+<details><summary>Show answer</summary><p>v = c/n = 3 × 10⁸ / 1.5 = 2 × 10⁸ m/s. λ′ = λ/n = 600/1.5 = 400 nm.</p></details></div>
+</div>
+
+<!-- ===================== 3 TIR ===================== -->
+<h2 id="tir">3. Total internal reflection</h2>
+<p>Send light from a <strong>denser</strong> medium towards a rarer one and keep increasing the angle. The refracted ray bends further and further from the normal until it skims the surface. That angle of incidence is the <strong>critical angle</strong> i<sub>c</sub>. Go beyond it and no light gets out at all: everything is reflected back.</p>
+<div class="formula">sin i<sub>c</sub> = n<sub>rarer</sub>/n<sub>denser</sub> = 1/n (rarer medium is air)</div>
+<div class="idea"><strong>Two conditions for TIR:</strong> (1) light must travel from denser to rarer medium, (2) angle of incidence must be greater than the critical angle.</div>
+
+<div class="sim" id="simTIR"></div>
+
+<h3>Where you see it</h3>
+<div class="grid2">
+<div class="qa"><p class="q">Optical fibre</p><div class="a"><p>A glass core surrounded by cladding of <strong>lower</strong> refractive index. Light hits the core wall at more than i<sub>c</sub>, so it bounces along the fibre by repeated TIR with almost no loss, even round bends.</p></div></div>
+<div class="qa"><p class="q">Totally reflecting prisms</p><div class="a"><p>A 45°–90°–45° glass prism (i<sub>c</sub> ≈ 42°) turns light by 90° or 180°, because light meets the slanted face at 45° &gt; i<sub>c</sub>. Needs n &gt; √2.</p></div></div>
+</div>
+<p>Diamond sparkles because its critical angle is only about 24°, so light is trapped by many internal reflections. Mirage in a desert is the same effect in layers of hot air.</p>
+
+<div class="check"><h3>Topic 3 over: test yourself</h3><p class="sub">Critical angle, TIR, optical fibre</p>
+<div class="pq"><p><span class="src ncert">NCERT 9.5</span>A small bulb is placed at the bottom of a tank containing water to a depth of 80 cm. What is the area of the surface of water through which light from the bulb can emerge? Refractive index of water is 1.33. (Treat the bulb as a point source.)</p>
+<details><summary>Show answer</summary><p>Light escapes only inside a cone of half-angle i<sub>c</sub>. sin i<sub>c</sub> = 1/1.33, so i<sub>c</sub> ≈ 48.75°.</p><p>Radius of the bright circle r = h tan i<sub>c</sub> = 0.80 × 1.14 = 0.91 m. Area = πr² ≈ <strong>2.6 m²</strong>.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>State the conditions for total internal reflection. Calculate the critical angle for a glass–air surface (n = 1.5).</p>
+<details><summary>Show answer</summary><p>Light must go from the denser to the rarer medium, and the angle of incidence must exceed the critical angle.</p><p>sin i<sub>c</sub> = 1/1.5 = 0.667, so i<sub>c</sub> ≈ 41.8°.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">3 M</span>With a diagram, explain how an optical fibre transmits light. Why is the cladding made of a material of lower refractive index than the core?</p>
+<details><summary>Show answer</summary><p>Light entering one end strikes the core–cladding boundary at an angle greater than the critical angle and is totally internally reflected. This repeats along the length, so the light comes out at the other end with very little loss.</p><p>TIR needs light to go from denser to rarer medium, so the cladding must have the lower refractive index.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>A ray falls normally on one of the short faces of a right-angled isosceles glass prism. What is the minimum refractive index of the glass for the ray to be totally reflected at the hypotenuse?</p>
+<details><summary>Show answer</summary><p>The ray meets the hypotenuse at 45°. For TIR, 45° ≥ i<sub>c</sub>, so sin 45° ≥ 1/n, giving n ≥ √2 ≈ 1.414.</p></details></div>
+</div>
+
+<!-- ===================== 4 SPHERICAL SURFACE + LENSES ===================== -->
+<h2 id="surface">4. Refraction at a spherical surface, lenses</h2>
+<p>A lens is just <strong>two curved surfaces</strong>. So first learn what one curved surface does, then apply it twice.</p>
+
+<figure>
+<svg viewBox="0 0 560 190" width="560" role="img" aria-label="Refraction at a convex spherical surface from object O to image I">
+  <rect class="med" x="262" y="10" width="298" height="170" opacity="0.10"/>
+  <line class="dash" x1="20" y1="100" x2="545" y2="100"/>
+  <path class="ln" d="M285 20 Q 235 100 285 180"/>
+  <line class="acc" x1="60" y1="100" x2="270" y2="55"/><polygon class="fa" points="170,76.4 158,74 160,84"/>
+  <line class="acc" x1="270" y1="55" x2="500" y2="100"/><polygon class="fa" points="390,78.5 378,71 376,81"/>
+  <line class="dash" x1="360" y1="100" x2="216" y2="28"/>
+  <circle class="dot" cx="60" cy="100" r="3"/><text x="52" y="120">O</text>
+  <circle class="dot" cx="360" cy="100" r="3"/><text x="356" y="120">C</text>
+  <circle class="dot" cx="500" cy="100" r="3"/><text x="496" y="120">I</text>
+  <text x="250" y="118">P</text><text x="268" y="46">N</text>
+  <text x="120" y="150" class="s">medium n₁ (rarer)</text><text x="400" y="150" class="s">medium n₂ (denser)</text>
+  <text x="140" y="96" class="s">u</text><text x="420" y="96" class="s">v</text><text x="300" y="96" class="s">R</text>
+</svg>
+<figcaption>The normal at N passes through the centre of curvature C. The ray bends towards it on entering the denser medium.</figcaption>
+</figure>
+<div class="formula">n₂/v − n₁/u = (n₂ − n₁)/R</div>
+<p>Apply this at the first surface of a lens, use that image as the object for the second surface, add the two equations, and you get the <strong>lens maker's formula</strong>:</p>
+<div class="formula">1/f = (n₂₁ − 1)(1/R₁ − 1/R₂) &nbsp;&nbsp;|&nbsp;&nbsp; 1/v − 1/u = 1/f &nbsp;&nbsp;|&nbsp;&nbsp; m = v/u</div>
+
+<div class="sim" id="simMaker"></div>
+
+<h3>Image formation by a lens</h3>
+<ol class="steps">
+<li>A ray <strong>parallel to the axis</strong> passes through the second focus F (convex) or appears to come from the first focus (concave).</li>
+<li>A ray through the <strong>optical centre</strong> goes straight, undeviated.</li>
+<li>Their meeting point is the image.</li>
+</ol>
+
+<div class="sim" id="simLens"></div>
+
+<h3>Power and combination</h3>
+<div class="formula">P = 1/f (f in metres, unit dioptre D) &nbsp;&nbsp;|&nbsp;&nbsp; lenses in contact: 1/f = 1/f₁ + 1/f₂, P = P₁ + P₂, m = m₁m₂</div>
+<p>Convex lens: positive power. Concave lens: negative power.</p>
+
+<div class="check"><h3>Topic 4 over: test yourself</h3><p class="sub">Spherical surface, lens maker's formula, thin lens, power</p>
+<div class="pq"><p><span class="src ncert">NCERT 9.7</span>Double-convex lenses are to be manufactured from a glass of refractive index 1.55, with both faces of the same radius of curvature. What is the radius of curvature required if the focal length is to be 20 cm?</p>
+<details><summary>Show answer</summary><p>1/f = (n − 1)(2/R), so R = 2(n − 1) f = 2 × 0.55 × 20 = <strong>22 cm</strong>. (Check it in the lens maker above: n = 1.55, R₁ = R₂ = 22.)</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.8</span>A beam of light converges at a point P. A lens is placed in the path of the convergent beam 12 cm from P. At what point does the beam converge if the lens is (a) a convex lens of focal length 20 cm, (b) a concave lens of focal length 16 cm?</p>
+<details><summary>Show answer</summary><p>P acts as a virtual object, so u = +12 cm.</p><p>(a) 1/v = 1/20 + 1/12 = 8/60, v = <strong>7.5 cm</strong> beyond the lens.</p><p>(b) 1/v = −1/16 + 1/12 = 1/48, v = <strong>48 cm</strong> beyond the lens.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.9</span>An object of size 3.0 cm is placed 14 cm in front of a concave lens of focal length 21 cm. Describe the image produced by the lens.</p>
+<details><summary>Show answer</summary><p>u = −14, f = −21. 1/v = −1/21 − 1/14 = −5/42, so v = <strong>−8.4 cm</strong>. m = v/u = 0.6, image size = 1.8 cm.</p><p>Virtual, erect, diminished, on the same side as the object. Moving the object away pushes the image towards the focus but never beyond it.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.10</span>What is the focal length of a convex lens of focal length 30 cm in contact with a concave lens of focal length 20 cm? Is the system converging or diverging?</p>
+<details><summary>Show answer</summary><p>1/f = 1/30 − 1/20 = −1/60, so f = <strong>−60 cm</strong>. The combination is a diverging lens.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">5 M</span>Derive the relation n₂/v − n₁/u = (n₂ − n₁)/R for refraction at a convex spherical surface, and use it to obtain the lens maker's formula.</p>
+<details><summary>Show answer</summary><p><strong>Surface:</strong> for small angles, i = ∠NOM + ∠NCM and r = ∠NCM − ∠NIM (exterior angle theorem). Snell's law for small angles gives n₁ i = n₂ r. Writing each angle as (height MN)/(distance) and applying the sign convention (OM = −u, MI = +v, MC = +R) gives n₂/v − n₁/u = (n₂ − n₁)/R.</p><p><strong>Lens:</strong> first surface (object at infinity side): n₂/v₁ − n₁/u = (n₂ − n₁)/R₁. Second surface, with the first image as object: n₁/v − n₂/v₁ = (n₁ − n₂)/R₂. Add them: n₁(1/v − 1/u) = (n₂ − n₁)(1/R₁ − 1/R₂). Put u = ∞, v = f: 1/f = (n₂₁ − 1)(1/R₁ − 1/R₂).</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>A convex lens of glass (n = 1.5) is dipped in turn in liquids of refractive index (a) 1.33, (b) 1.5, (c) 1.65. How does it behave in each?</p>
+<details><summary>Show answer</summary><p>1/f ∝ (n<sub>glass</sub>/n<sub>liquid</sub> − 1).</p><p>(a) Still converging but weaker: focal length becomes about 4 times. (b) Bracket is zero, f = ∞: acts like a plane glass sheet and becomes invisible. (c) Bracket is negative: it behaves as a diverging lens. Try the "surrounding medium" option in the lens maker above.</p></details></div>
+</div>
+
+<!-- ===================== 5 PRISM ===================== -->
+<h2 id="prism">5. Refraction through a prism</h2>
+<p>A prism bends a ray twice, both times towards its base. The total turning is the <strong>angle of deviation δ</strong>.</p>
+<div class="formula">r₁ + r₂ = A &nbsp;&nbsp;|&nbsp;&nbsp; δ = i + e − A</div>
+<p>As you increase i from a small value, δ first falls, reaches a minimum, then rises. At <strong>minimum deviation</strong> the path is symmetric: i = e, r₁ = r₂ = A/2, and the ray inside is parallel to the base.</p>
+<div class="formula">n = sin[(A + δ<sub>m</sub>)/2] / sin(A/2) &nbsp;&nbsp;|&nbsp;&nbsp; thin prism: δ = (n − 1)A</div>
+
+<div class="sim" id="simPrism"></div>
+
+<div class="check"><h3>Topic 5 over: test yourself</h3><p class="sub">Prism, deviation, minimum deviation</p>
+<div class="pq"><p><span class="src ncert">NCERT 9.6</span>A prism is made of glass of unknown refractive index. A parallel beam of light is incident on a face of the prism. The angle of minimum deviation is measured to be 40°. What is the refractive index of the material of the prism? The refracting angle of the prism is 60°. If the prism is placed in water (n = 1.33), predict the new angle of minimum deviation.</p>
+<details><summary>Show answer</summary><p>n = sin[(60° + 40°)/2] / sin 30° = sin 50° / 0.5 = <strong>1.53</strong>.</p><p>In water, relative index = 1.53/1.33 = 1.15. sin[(60° + δ′)/2] = 1.15 × 0.5 = 0.576, so (60° + δ′)/2 ≈ 35.2° and δ′ ≈ <strong>10°</strong>.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.21</span>At what angle should a ray of light be incident on the face of a prism of refracting angle 60° so that it just suffers total internal reflection at the other face? The refractive index of the material of the prism is 1.524.</p>
+<details><summary>Show answer</summary><p>At the second face r₂ = i<sub>c</sub>, with sin i<sub>c</sub> = 1/1.524, so i<sub>c</sub> ≈ 41°. Then r₁ = A − r₂ = 19°.</p><p>sin i = 1.524 × sin 19° ≈ 0.496, so i ≈ <strong>30°</strong>. (In the diagram above set A = 60, n = 1.52 and lower i towards 30.)</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">3 M</span>Draw the graph of angle of deviation against angle of incidence for a prism. Derive the expression for the refractive index of the prism in terms of A and δ<sub>m</sub>.</p>
+<details><summary>Show answer</summary><p>The graph is a U-shaped curve with a single minimum δ<sub>m</sub> (see the small graph in the diagram above).</p><p>In the quadrilateral formed by the two normals, r₁ + r₂ = A, and δ = (i − r₁) + (e − r₂) = i + e − A. At minimum deviation i = e and r₁ = r₂ = r, so r = A/2 and i = (A + δ<sub>m</sub>)/2. Snell's law: n = sin i / sin r = sin[(A + δ<sub>m</sub>)/2] / sin(A/2).</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>A prism of angle 60° is made of glass of refractive index √2. Find the angle of minimum deviation and the corresponding angle of incidence.</p>
+<details><summary>Show answer</summary><p>sin[(60° + δ<sub>m</sub>)/2] = √2 × sin 30° = 0.707, so (60° + δ<sub>m</sub>)/2 = 45°. δ<sub>m</sub> = 30° and i = 45°.</p></details></div>
+</div>
+
+<!-- ===================== 6 INSTRUMENTS ===================== -->
+<h2 id="instruments">6. Microscope and telescope</h2>
+<p>Your eye judges size by the <strong>angle</strong> an object makes at it. Optical instruments make that angle bigger. Least distance of distinct vision D = 25 cm.</p>
+
+<h3>Simple microscope (magnifying glass)</h3>
+<p>A convex lens of small focal length with the object placed within f. It gives a virtual, erect, enlarged image.</p>
+<div class="formula">image at near point: m = 1 + D/f &nbsp;&nbsp;|&nbsp;&nbsp; image at infinity (relaxed eye): m = D/f</div>
+
+<h3>Compound microscope</h3>
+<p>Two convex lenses. The <strong>objective</strong> (very small f<sub>o</sub>) makes a real, inverted, enlarged image. The <strong>eyepiece</strong> then acts as a magnifying glass on that image.</p>
+<figure><div id="figMicro"></div>
+<figcaption>Objective forms the real image A′B′ just inside the focus of the eyepiece. The eyepiece forms the large virtual final image A″B″.</figcaption></figure>
+<div class="formula">m = m<sub>o</sub> × m<sub>e</sub> ≈ (L/f<sub>o</sub>)(D/f<sub>e</sub>) &nbsp;&nbsp;(final image at infinity, L = tube length)</div>
+
+<div class="sim" id="simMicro"></div>
+
+<h3>Astronomical telescope</h3>
+<p>Objective of <strong>large</strong> focal length and large aperture collects light from a distant object and forms a real image at its focus. The eyepiece of small focal length magnifies it. In normal adjustment the final image is at infinity.</p>
+<div class="formula">m = β/α = f<sub>o</sub>/f<sub>e</sub> &nbsp;&nbsp;|&nbsp;&nbsp; tube length L = f<sub>o</sub> + f<sub>e</sub></div>
+
+<div class="sim" id="simTele"></div>
+
+<div class="idea"><strong>Reflecting telescope (mirror objective):</strong> no chromatic aberration, a parabolic mirror removes spherical aberration, a mirror is lighter and easier to support than a huge lens, and it can be made very large to gather more light.</div>
+
+<div class="check"><h3>Topic 6 over: test yourself</h3><p class="sub">Microscopes and telescopes</p>
+<div class="pq"><p><span class="src ncert">NCERT 9.11</span>A compound microscope consists of an objective lens of focal length 2.0 cm and an eyepiece of focal length 6.25 cm separated by a distance of 15 cm. How far from the objective should an object be placed to obtain the final image at (a) the least distance of distinct vision (25 cm), (b) infinity? What is the magnifying power in each case?</p>
+<details><summary>Show answer</summary><p>(a) Eyepiece: v<sub>e</sub> = −25, so 1/u<sub>e</sub> = −1/25 − 1/6.25 = −1/5, u<sub>e</sub> = −5 cm. So v<sub>o</sub> = 15 − 5 = 10 cm. 1/u<sub>o</sub> = 1/10 − 1/2 = −2/5, u<sub>o</sub> = <strong>−2.5 cm</strong>. m = (10/2.5)(1 + 25/6.25) = 4 × 5 = <strong>20</strong>.</p><p>(b) u<sub>e</sub> = 6.25 cm, so v<sub>o</sub> = 8.75 cm. 1/u<sub>o</sub> = 1/8.75 − 1/2, u<sub>o</sub> = <strong>−2.59 cm</strong>. m = (8.75/2.59)(25/6.25) = <strong>13.5</strong>.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.13</span>A small telescope has an objective lens of focal length 144 cm and an eyepiece of focal length 6.0 cm. What is the magnifying power of the telescope? What is the separation between the objective and the eyepiece?</p>
+<details><summary>Show answer</summary><p>m = f<sub>o</sub>/f<sub>e</sub> = 144/6 = <strong>24</strong>. Separation = f<sub>o</sub> + f<sub>e</sub> = <strong>150 cm</strong>.</p></details></div>
+<div class="pq"><p><span class="src ncert">NCERT 9.27</span>A small telescope has an objective lens of focal length 140 cm and an eyepiece of focal length 5.0 cm. What is the magnifying power for viewing distant objects when (a) the telescope is in normal adjustment, (b) the final image is formed at the least distance of distinct vision (25 cm)?</p>
+<details><summary>Show answer</summary><p>(a) m = 140/5 = <strong>28</strong>. (b) m = (f<sub>o</sub>/f<sub>e</sub>)(1 + f<sub>e</sub>/D) = 28 × (1 + 5/25) = <strong>33.6</strong>.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">3 M</span>Draw a ray diagram of an astronomical telescope in normal adjustment and write the expression for its magnifying power. Give two advantages of a reflecting telescope over a refracting one.</p>
+<details><summary>Show answer</summary><p>Diagram: as in the telescope above, with parallel rays in and parallel rays out. m = f<sub>o</sub>/f<sub>e</sub>, length = f<sub>o</sub> + f<sub>e</sub>.</p><p>Advantages of a reflecting telescope: no chromatic aberration; spherical aberration removed by a parabolic mirror; a large mirror is easier to make and support, so brighter images and better resolving power.</p></details></div>
+<div class="pq"><p><span class="src board">Board</span><span class="src mk">2 M</span>Why should the objective of a telescope have a large focal length and large aperture, while both lenses of a compound microscope have small focal lengths?</p>
+<details><summary>Show answer</summary><p>Telescope: m = f<sub>o</sub>/f<sub>e</sub>, so a large f<sub>o</sub> gives high magnification; a large aperture gathers more light and gives better resolving power.</p><p>Microscope: m ≈ (L/f<sub>o</sub>)(D/f<sub>e</sub>), so both focal lengths must be small for high magnification.</p></details></div>
+</div>
+
+<!-- ===================== SHEET ===================== -->
+<h2 id="sheet">7. One-page formula sheet</h2>
+<table>
+<tr><th>Topic</th><th>Formula</th></tr>
+<tr><td>Mirror</td><td>f = R/2 · 1/v + 1/u = 1/f · m = −v/u</td></tr>
+<tr><td>Refraction</td><td>n = c/v · n₁ sin i = n₂ sin r · apparent depth = real depth / n</td></tr>
+<tr><td>TIR</td><td>sin i<sub>c</sub> = 1/n</td></tr>
+<tr><td>Spherical surface</td><td>n₂/v − n₁/u = (n₂ − n₁)/R</td></tr>
+<tr><td>Lens</td><td>1/f = (n₂₁ − 1)(1/R₁ − 1/R₂) · 1/v − 1/u = 1/f · m = v/u · P = 1/f</td></tr>
+<tr><td>Lenses in contact</td><td>1/f = 1/f₁ + 1/f₂ · P = P₁ + P₂</td></tr>
+<tr><td>Prism</td><td>δ = i + e − A · r₁ + r₂ = A · n = sin[(A + δ<sub>m</sub>)/2] / sin(A/2) · thin: δ = (n − 1)A</td></tr>
+<tr><td>Simple microscope</td><td>m = 1 + D/f (near point) · m = D/f (infinity)</td></tr>
+<tr><td>Compound microscope</td><td>m ≈ (L/f<sub>o</sub>)(D/f<sub>e</sub>)</td></tr>
+<tr><td>Telescope</td><td>m = f<sub>o</sub>/f<sub>e</sub> · L = f<sub>o</sub> + f<sub>e</sub></td></tr>
+</table>
+
+<div class="pager"><a href="../physics/05-optics.html">← Optics Q&amp;A notes</a><a href="../physics/practice.html">Practice bank →</a></div>
+</main>
+<footer>Based on NCERT Physics Part II, Chapter 9 (rationalised edition). Verify numericals against the textbook.</footer>
+
+<script>
+(function () {
+  'use strict';
+  var RAD = Math.PI / 180;
+  function f1(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+  function f2(x) { return (Math.round(x * 100) / 100).toFixed(2); }
+  function L(a, b, cls) { return '<line class="' + cls + '" x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '"/>'; }
+  // line with an arrowhead at its midpoint
+  function ray(a, b, cls, fillCls) {
+    var dx = b[0] - a[0], dy = b[1] - a[1], d = Math.sqrt(dx * dx + dy * dy) || 1;
+    var ux = dx / d, uy = dy / d, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+    var p1 = [mx + ux * 6, my + uy * 6], p2 = [mx - ux * 5 - uy * 4.5, my - uy * 5 + ux * 4.5], p3 = [mx - ux * 5 + uy * 4.5, my - uy * 5 - ux * 4.5];
+    return L(a, b, cls) + (d > 24 ? '<polygon class="' + fillCls + '" points="' + [p1, p2, p3].map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>' : '');
+  }
+  // point at x = X on the straight line through a and b
+  function atX(a, b, X) { return [X, a[1] + (b[1] - a[1]) * (X - a[0]) / (b[0] - a[0])]; }
+  function T(x, y, s, cls) { return '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '"' + (cls ? ' class="' + cls + '"' : '') + '>' + s + '</text>'; }
+  function dot(p, lab, dy) { return '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="2.6"/>' + (lab ? T(p[0] - 4, p[1] + (dy || 16), lab, 's') : ''); }
+  // upright arrow from the axis (object or image)
+  function arrow(x, y0, y1, cls, fillCls) {
+    var s = y1 < y0 ? 1 : -1;
+    return '<line class="' + cls + '" x1="' + x.toFixed(1) + '" y1="' + y0 + '" x2="' + x.toFixed(1) + '" y2="' + y1.toFixed(1) + '"/>' +
+      '<polygon class="' + fillCls + '" points="' + x.toFixed(1) + ',' + (y1 - s * 2).toFixed(1) + ' ' + (x - 5).toFixed(1) + ',' + (y1 + s * 8).toFixed(1) + ' ' + (x + 5).toFixed(1) + ',' + (y1 + s * 8).toFixed(1) + '"/>';
+  }
+
+  function sim(id, cfg) {
+    var box = document.getElementById(id);
+    if (!box) return;
+    var st = {}, h = '<h4>' + cfg.title + '</h4><p class="hint">' + cfg.hint + '</p><svg viewBox="0 0 ' + cfg.w + ' ' + cfg.h + '" role="img" aria-label="' + cfg.title + '"></svg><div class="ctl">';
+    cfg.ctl.forEach(function (c) {
+      st[c.k] = c.val;
+      if (c.opts) {
+        h += '<label>' + c.label + '<select data-k="' + c.k + '">' + c.opts.map(function (o) { return '<option value="' + o[0] + '"' + (o[0] === c.val ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>';
+      } else {
+        h += '<label>' + c.label + ': <b data-v="' + c.k + '"></b><input type="range" data-k="' + c.k + '" min="' + c.min + '" max="' + c.max + '" step="' + c.step + '" value="' + c.val + '"></label>';
+      }
+    });
+    box.innerHTML = h + '</div><div class="out" aria-live="polite"></div>';
+    var svg = box.querySelector('svg'), out = box.querySelector('.out');
+    function upd() {
+      cfg.ctl.forEach(function (c) {
+        if (!c.opts) box.querySelector('[data-v="' + c.k + '"]').textContent = (c.step < 1 ? f2(st[c.k]) : st[c.k]) + (c.unit || '');
+      });
+      var r = cfg.draw(st);
+      svg.innerHTML = r.svg;
+      out.innerHTML = r.out.map(function (o) { return o.charAt(0) === '!' ? '<span class="big">' + o.slice(1) + '</span>' : '<span>' + o + '</span>'; }).join('');
+    }
+    box.addEventListener('input', function (e) {
+      var k = e.target.getAttribute('data-k');
+      if (!k) return;
+      st[k] = e.target.tagName === 'SELECT' ? e.target.value : parseFloat(e.target.value);
+      upd();
+    });
+    upd();
+  }
+
+  function nature(v, m, realIfNeg) {
+    var real = realIfNeg ? v < 0 : v > 0, a = Math.abs(m);
+    return (real ? 'Real, inverted' : 'Virtual, erect') + ', ' + (Math.abs(a - 1) < 0.02 ? 'same size' : a > 1 ? 'magnified' : 'diminished');
+  }
+
+  /* ---------- 1. mirror ---------- */
+  sim('simMirror', {
+    title: 'Try it: image formed by a spherical mirror', hint: 'Slide the object towards the mirror and watch the image jump from real to virtual as it crosses F.',
+    w: 720, h: 300,
+    ctl: [
+      { k: 'type', label: 'Mirror', val: 'concave', opts: [['concave', 'Concave'], ['convex', 'Convex']] },
+      { k: 'u', label: 'Object distance', min: 5, max: 100, step: 1, val: 40, unit: ' cm' },
+      { k: 'f', label: 'Focal length', min: 5, max: 40, step: 1, val: 15, unit: ' cm' }
+    ],
+    draw: function (s) {
+      var P = 540, ax = 150, sc = 4.5, hh = 45, cc = s.type === 'concave';
+      var fs = cc ? -s.f : s.f, u = -s.u, inv = 1 / fs - 1 / u, inf = Math.abs(inv) < 1e-9;
+      var v = inf ? Infinity : 1 / inv, m = inf ? Infinity : -v / u;
+      var tip = [P + u * sc, ax - hh], M1 = [P, ax - hh], pole = [P, ax], F = [P + fs * sc, ax], C = [P + 2 * fs * sc, ax];
+      var g = L([0, ax], [720, ax], 'dash');
+      g += '<path class="ln" style="stroke-width:3" d="' + (cc ? 'M' + (P - 20) + ' 30 Q ' + (P + 20) + ' ' + ax + ' ' + (P - 20) + ' 270' : 'M' + (P + 20) + ' 30 Q ' + (P - 20) + ' ' + ax + ' ' + (P + 20) + ' 270') + '"/>';
+      g += dot(F, 'F') + dot(C, 'C') + dot(pole, 'P');
+      g += arrow(tip[0], ax, tip[1], 'ln', 'dot') + T(tip[0] - 20, tip[1] - 8, 'object', 's');
+      g += ray(tip, M1, 'acc', 'fa') + ray(M1, atX(M1, F, 0), 'acc', 'fa');
+      var tipMirror = [tip[0], ax + hh];
+      g += ray(tip, pole, 'acc2', 'fa2') + ray(pole, atX(pole, tipMirror, 0), 'acc2', 'fa2');
+      if (!cc) g += L(M1, F, 'dash');
+      var o = ['u = ' + f1(u) + ' cm', 'f = ' + f1(fs) + ' cm'];
+      if (inf) { o.push('!Object at F: reflected rays are parallel, image at infinity'); }
+      else {
+        var I = [P + v * sc, ax - m * hh];
+        if (v > 0) { g += L(M1, I, 'dash') + L(pole, I, 'dash'); }
+        g += arrow(I[0], ax, I[1], 'ray3', 'fg') + T(I[0] + 8, I[1] + (m < 0 ? 14 : -4), 'image', 'g');
+        o.push('v = ' + f1(v) + ' cm', 'm = ' + f2(m), '!' + nature(v, m, true));
+        if (I[0] < 0) o.push('Image is off the left edge of the picture');
+      }
+      return { svg: g, out: o };
+    }
+  });
+
+  /* ---------- 2 & 3. Snell / TIR ---------- */
+  function snell(s, labelTop, labelBot) {
+    var cx = 360, cy = 150, R = 135, i = s.i * RAD, sr = s.n1 * Math.sin(i) / s.n2, tir = sr > 1;
+    var g = '<rect class="med" x="0" y="0" width="720" height="150" opacity="' + ((s.n1 - 1) * 0.28 + 0.02).toFixed(2) + '"/><rect class="med" x="0" y="150" width="720" height="150" opacity="' + ((s.n2 - 1) * 0.28 + 0.02).toFixed(2) + '"/>';
+    g += L([0, cy], [720, cy], 'ln') + L([cx, 8], [cx, 292], 'dash');
+    g += T(12, 22, labelTop + ' · n₁ = ' + f2(s.n1), 's') + T(12, 288, labelBot + ' · n₂ = ' + f2(s.n2), 's') + T(cx + 6, 20, 'normal', 's');
+    var A = [cx - R * Math.sin(i), cy - R * Math.cos(i)], Rf = [cx + R * Math.sin(i), cy - R * Math.cos(i)];
+    g += ray(A, [cx, cy], 'acc', 'fa');
+    g += '<path class="thin" d="M' + cx + ' ' + (cy - 34) + ' A 34 34 0 0 0 ' + (cx - 34 * Math.sin(i)).toFixed(1) + ' ' + (cy - 34 * Math.cos(i)).toFixed(1) + '"/>' + T(cx - 50 * Math.sin(i / 2) - 4, cy - 50 * Math.cos(i / 2) + 4, 'i', 'a');
+    var o = ['i = ' + s.i + '°'];
+    if (tir) {
+      g += ray([cx, cy], Rf, 'acc2', 'fa2') + T(Rf[0] + 6, Rf[1], 'all light reflected', 'a2');
+      o.push('!Total internal reflection: no refracted ray');
+    } else {
+      var r = Math.asin(sr), B = [cx + R * Math.sin(r), cy + R * Math.cos(r)];
+      g += '<line class="acc2" opacity="0.3" x1="' + cx + '" y1="' + cy + '" x2="' + Rf[0].toFixed(1) + '" y2="' + Rf[1].toFixed(1) + '"/>';
+      g += ray([cx, cy], B, 'ray3', 'fg');
+      g += '<path class="thin" d="M' + cx + ' ' + (cy + 34) + ' A 34 34 0 0 0 ' + (cx + 34 * Math.sin(r)).toFixed(1) + ' ' + (cy + 34 * Math.cos(r)).toFixed(1) + '"/>' + T(cx + 50 * Math.sin(r / 2) - 3, cy + 50 * Math.cos(r / 2) + 8, 'r', 'g');
+      o.push('r = ' + f1(r / RAD) + '°', '!' + (s.n2 > s.n1 ? 'Bends towards the normal' : s.n2 < s.n1 ? 'Bends away from the normal' : 'No bending'));
+    }
+    if (s.n1 > s.n2) o.push('critical angle = ' + f1(Math.asin(s.n2 / s.n1) / RAD) + '°');
+    o.push('speed: ' + f2(3 / s.n1) + ' → ' + f2(3 / s.n2) + ' ×10⁸ m/s');
+    return { svg: g, out: o };
+  }
+  sim('simSnell', {
+    title: 'Try it: Snell\'s law', hint: 'Change the angle and the two refractive indices. The darker region is the optically denser medium.',
+    w: 720, h: 300,
+    ctl: [
+      { k: 'i', label: 'Angle of incidence', min: 0, max: 85, step: 1, val: 45, unit: '°' },
+      { k: 'n1', label: 'n₁ (top medium)', min: 1, max: 2.5, step: 0.01, val: 1 },
+      { k: 'n2', label: 'n₂ (bottom medium)', min: 1, max: 2.5, step: 0.01, val: 1.33 }
+    ],
+    draw: function (s) { return snell(s, 'Medium 1', 'Medium 2'); }
+  });
+  sim('simTIR', {
+    title: 'Try it: find the critical angle', hint: 'Light starts in the denser medium (top). Increase the angle slowly: the green refracted ray flattens, then disappears.',
+    w: 720, h: 300,
+    ctl: [
+      { k: 'i', label: 'Angle of incidence', min: 0, max: 85, step: 1, val: 30, unit: '°' },
+      { k: 'n1', label: 'n of denser medium', min: 1.1, max: 2.5, step: 0.01, val: 1.5 }
+    ],
+    draw: function (s) { return snell({ i: s.i, n1: s.n1, n2: 1 }, 'Denser medium', 'Air'); }
+  });
+
+  /* ---------- 4a. lens maker ---------- */
+  sim('simMaker', {
+    title: 'Try it: lens maker\'s formula', hint: 'A biconvex lens. Flatter faces (bigger R) or a medium closer to the glass index give a weaker lens.',
+    w: 720, h: 260,
+    ctl: [
+      { k: 'n', label: 'n of lens', min: 1.3, max: 1.8, step: 0.01, val: 1.5 },
+      { k: 'R1', label: 'R₁', min: 10, max: 100, step: 1, val: 30, unit: ' cm' },
+      { k: 'R2', label: 'R₂', min: 10, max: 100, step: 1, val: 30, unit: ' cm' },
+      { k: 'nm', label: 'Surrounding medium', val: '1', opts: [['1', 'Air (n = 1.00)'], ['1.33', 'Water (n = 1.33)'], ['1.5', 'Liquid (n = 1.50)'], ['1.65', 'Liquid (n = 1.65)']] }
+    ],
+    draw: function (s) {
+      var X = 200, ax = 130, sc = 4, nm = parseFloat(s.nm), k = (s.n / nm - 1) * (1 / s.R1 + 1 / s.R2);
+      var flat = Math.abs(k) < 1e-4, f = flat ? Infinity : 1 / k;
+      var r1 = 72 + (s.R1 - 10) * 3, r2 = 72 + (s.R2 - 10) * 3;
+      var g = '<rect class="med" x="0" y="0" width="720" height="260" opacity="' + ((nm - 1) * 0.28).toFixed(2) + '"/>' + L([0, ax], [720, ax], 'dash');
+      g += '<path class="fillb" d="M' + X + ' 60 A ' + r1 + ' ' + r1 + ' 0 0 0 ' + X + ' 200 A ' + r2 + ' ' + r2 + ' 0 0 0 ' + X + ' 60 Z"/>';
+      [-50, -25, 25, 50].forEach(function (d) {
+        var hit = [X, ax + d], end;
+        g += ray([0, ax + d], hit, 'acc', 'fa');
+        if (flat) end = [720, ax + d];
+        else { var F = [X + f * sc, ax]; end = atX(hit, F, 720); if (f < 0) g += L(hit, [Math.max(F[0], 0), atX(hit, F, Math.max(F[0], 0))[1]], 'dash'); }
+        g += ray(hit, end, 'acc', 'fa');
+      });
+      var o = ['1/f = (' + f2(s.n / nm) + ' − 1)(1/' + s.R1 + ' + 1/' + s.R2 + ')'];
+      if (flat) o.push('!f = ∞: the lens does nothing (it would be invisible in this liquid)');
+      else {
+        var Fp = [X + f * sc, ax];
+        if (Fp[0] > 0 && Fp[0] < 720) g += dot(Fp, 'F');
+        o.push('f = ' + f1(f) + ' cm', 'P = ' + (f > 0 ? '+' : '') + f2(100 / f) + ' D', '!' + (f > 0 ? 'Converging lens' : 'Now it diverges: the medium is denser than the lens'));
+      }
+      return { svg: g, out: o };
+    }
+  });
+
+  /* ---------- 4b. thin lens ---------- */
+  sim('simLens', {
+    title: 'Try it: image formed by a thin lens', hint: 'For the convex lens, bring the object inside F to turn it into a magnifying glass.',
+    w: 720, h: 300,
+    ctl: [
+      { k: 'type', label: 'Lens', val: 'convex', opts: [['convex', 'Convex (converging)'], ['concave', 'Concave (diverging)']] },
+      { k: 'u', label: 'Object distance', min: 5, max: 85, step: 1, val: 40, unit: ' cm' },
+      { k: 'f', label: 'Focal length', min: 5, max: 40, step: 1, val: 15, unit: ' cm' }
+    ],
+    draw: function (s) {
+      var X = 360, ax = 150, sc = 4, hh = 45, cv = s.type === 'convex';
+      var fs = cv ? s.f : -s.f, u = -s.u, inv = 1 / fs + 1 / u, inf = Math.abs(inv) < 1e-9;
+      var v = inf ? Infinity : 1 / inv, m = inf ? Infinity : v / u;
+      var tip = [X + u * sc, ax - hh], M1 = [X, ax - hh], O = [X, ax], F2 = [X + fs * sc, ax];
+      var g = L([0, ax], [720, ax], 'dash');
+      g += cv ? '<path class="fillb" d="M' + X + ' 30 Q ' + (X + 18) + ' ' + ax + ' ' + X + ' 270 Q ' + (X - 18) + ' ' + ax + ' ' + X + ' 30 Z"/>'
+        : '<path class="fillb" d="M' + (X - 11) + ' 30 L ' + (X + 11) + ' 30 Q ' + (X + 1) + ' ' + ax + ' ' + (X + 11) + ' 270 L ' + (X - 11) + ' 270 Q ' + (X - 1) + ' ' + ax + ' ' + (X - 11) + ' 30 Z"/>';
+      g += dot([X + s.f * sc, ax], 'F') + dot([X - s.f * sc, ax], 'F') + dot([X + 2 * s.f * sc, ax], '2F') + dot([X - 2 * s.f * sc, ax], '2F');
+      g += arrow(tip[0], ax, tip[1], 'ln', 'dot') + T(tip[0] - 20, tip[1] - 8, 'object', 's');
+      g += ray(tip, M1, 'acc', 'fa') + ray(M1, atX(M1, F2, 720), 'acc', 'fa');
+      g += ray(tip, O, 'acc2', 'fa2') + ray(O, atX(tip, O, 720), 'acc2', 'fa2');
+      if (!cv) g += L(M1, F2, 'dash');
+      var o = ['u = ' + f1(u) + ' cm', 'f = ' + f1(fs) + ' cm'];
+      if (inf) o.push('!Object at F: emerging rays are parallel, image at infinity');
+      else {
+        var I = [X + v * sc, ax - m * hh];
+        if (v < 0) g += L(M1, I, 'dash') + L(tip, I, 'dash');
+        g += arrow(I[0], ax, I[1], 'ray3', 'fg') + T(I[0] + (m < 0 ? -18 : 8), I[1] + (m < 0 ? 18 : -4), 'image', 'g');
+        o.push('v = ' + f1(v) + ' cm', 'm = ' + f2(m), 'P = ' + (fs > 0 ? '+' : '') + f2(100 / fs) + ' D', '!' + nature(v, m, false));
+        if (I[0] < 0 || I[0] > 720) o.push('Image is outside the picture');
+      }
+      return { svg: g, out: o };
+    }
+  });
+
+  /* ---------- 5. prism ---------- */
+  function prismPath(A, n, ideg) {
+    var i = ideg * RAD, r1 = Math.asin(Math.sin(i) / n), r2 = A - r1, x = n * Math.sin(r2);
+    if (Math.abs(x) > 1) return { r1: r1, r2: r2, tir: true };
+    var e = Math.asin(x);
+    return { r1: r1, r2: r2, e: e, d: i + e - A, tir: false };
+  }
+  function rot(v, t) { return [v[0] * Math.cos(t) - v[1] * Math.sin(t), v[0] * Math.sin(t) + v[1] * Math.cos(t)]; }
+  sim('simPrism', {
+    title: 'Try it: deviation by a prism', hint: 'Slide i and watch the red dot run along the δ–i curve. At the bottom of the curve the ray inside is parallel to the base.',
+    w: 720, h: 320,
+    ctl: [
+      { k: 'i', label: 'Angle of incidence i', min: 20, max: 85, step: 1, val: 49, unit: '°' },
+      { k: 'A', label: 'Prism angle A', min: 40, max: 70, step: 1, val: 60, unit: '°' },
+      { k: 'n', label: 'Refractive index n', min: 1.3, max: 1.8, step: 0.01, val: 1.5 }
+    ],
+    draw: function (s) {
+      var A = s.A * RAD, hA = A / 2, Ap = [240, 36], Ls = 240;
+      var Bl = [Ap[0] - Ls * Math.sin(hA), Ap[1] + Ls * Math.cos(hA)], Br = [Ap[0] + Ls * Math.sin(hA), Ap[1] + Ls * Math.cos(hA)];
+      var g = '<polygon class="fillb" points="' + [Ap, Bl, Br].map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '"/>' + T(Ap[0] - 5, Ap[1] + 34, 'A', 's');
+      var p = prismPath(A, s.n, s.i), o = ['i = ' + s.i + '°', 'r₁ = ' + f1(p.r1 / RAD) + '°', 'r₂ = ' + f1(p.r2 / RAD) + '°'];
+      var M1 = [Ap[0] - 0.62 * Ls * Math.sin(hA), Ap[1] + 0.62 * Ls * Math.cos(hA)];
+      var Nin = [Math.cos(hA), Math.sin(hA)], din = rot(Nin, -s.i * RAD), d1 = rot(Nin, -p.r1);
+      g += L([M1[0] - 60 * Nin[0], M1[1] - 60 * Nin[1]], [M1[0] + 40 * Nin[0], M1[1] + 40 * Nin[1]], 'dash');
+      var S0 = [M1[0] - 190 * din[0], M1[1] - 190 * din[1]];
+      g += ray(S0, M1, 'acc', 'fa');
+      // intersection of the inside ray with the right face
+      var t2 = [Math.sin(hA), Math.cos(hA)], den = d1[0] * t2[1] - d1[1] * t2[0];
+      var wx = Ap[0] - M1[0], wy = Ap[1] - M1[1], tt = (wx * t2[1] - wy * t2[0]) / den, q = (wx * d1[1] - wy * d1[0]) / den;
+      if (!(tt > 0) || q < 4 || q > Ls - 4) {
+        var base = atX(M1, [M1[0] + d1[0], M1[1] + d1[1]], M1[0] + 120);
+        g += ray(M1, base, 'acc', 'fa');
+        o.push('!The ray misses the second face here. Increase i');
+      } else {
+        var M2 = [M1[0] + tt * d1[0], M1[1] + tt * d1[1]], nR = [Math.cos(hA), -Math.sin(hA)];
+        g += ray(M1, M2, 'acc', 'fa') + L([M2[0] - 40 * nR[0], M2[1] - 40 * nR[1]], [M2[0] + 60 * nR[0], M2[1] + 60 * nR[1]], 'dash');
+        if (p.tir) {
+          var dr = rot([-nR[0], -nR[1]], p.r2), E = [M2[0] + 110 * dr[0], M2[1] + 110 * dr[1]];
+          g += ray(M2, E, 'acc2', 'fa2');
+          o.push('!Total internal reflection at the second face: no emergent ray');
+        } else {
+          var dout = rot(nR, p.e), E2 = [M2[0] + 170 * dout[0], M2[1] + 170 * dout[1]];
+          g += ray(M2, E2, 'ray3', 'fg');
+          g += L(M1, [M1[0] + 150 * din[0], M1[1] + 150 * din[1]], 'dash') + L(M2, [M2[0] - 120 * dout[0], M2[1] - 120 * dout[1]], 'dash');
+          o.push('e = ' + f1(p.e / RAD) + '°', '!δ = i + e − A = ' + f1(p.d / RAD) + '°');
+        }
+      }
+      var sm = s.n * Math.sin(hA);
+      if (sm < 1) { var dm = 2 * Math.asin(sm) - A; o.push('δ<sub>min</sub> = ' + f1(dm / RAD) + '° at i = ' + f1(Math.asin(sm) / RAD) + '°'); }
+      // δ–i graph
+      var gx = 500, gy = 250, gw = 195, gh = 190, pts = [], lo = 1e9, hi = -1e9, a;
+      for (a = 20; a <= 88; a += 1) { var pp = prismPath(A, s.n, a); if (!pp.tir) { var dd = pp.d / RAD; pts.push([a, dd]); lo = Math.min(lo, dd); hi = Math.max(hi, dd); } }
+      g += L([gx, gy], [gx + gw, gy], 'thin') + L([gx, gy], [gx, gy - gh], 'thin') + T(gx + gw - 8, gy + 16, 'i', 's') + T(gx - 14, gy - gh + 4, 'δ', 's') + T(gx + 40, gy - gh - 6, 'δ against i', 's');
+      if (pts.length > 1) {
+        var span = Math.max(hi - lo, 1), px = function (q0) { return [gx + (q0[0] - 20) / 68 * gw, gy - 14 - (q0[1] - lo) / span * (gh - 30)]; };
+        g += '<polyline class="acc" points="' + pts.map(function (q0) { var z = px(q0); return z[0].toFixed(1) + ',' + z[1].toFixed(1); }).join(' ') + '"/>';
+        if (!p.tir) { var z = px([s.i, p.d / RAD]); g += '<circle class="fa2" cx="' + z[0].toFixed(1) + '" cy="' + z[1].toFixed(1) + '" r="5"/>'; }
+        g += T(gx + 4, gy - 4, f1(lo) + '°', 's');
+      }
+      return { svg: g, out: o };
+    }
+  });
+
+  /* ---------- 6a. compound microscope figure (drawn to scale from the lens formula) ---------- */
+  (function () {
+    var box = document.getElementById('figMicro');
+    if (!box) return;
+    var ax = 105, xo = 170, fo = 40, uo = 52, hh = 14, fe = 70, ue = 45;
+    var vo = 1 / (1 / fo - 1 / uo), h1 = hh * vo / uo, xi = xo + vo, xe = xi + ue, ve = 1 / (1 / fe - 1 / ue), xf = xe + ve, h2 = h1 * (-ve) / ue;
+    var tip = [xo - uo, ax - hh], I1 = [xi, ax + h1], I2 = [xf, ax + h2];
+    var a1 = [xo, ax - hh], a2 = atX(a1, I1, xe), b1 = [xo, ax], b2 = atX(tip, b1, xe);
+    var g = L([10, ax], [710, ax], 'dash');
+    g += '<path class="fillb" d="M' + xo + ' ' + (ax - 34) + ' Q ' + (xo + 10) + ' ' + ax + ' ' + xo + ' ' + (ax + 34) + ' Q ' + (xo - 10) + ' ' + ax + ' ' + xo + ' ' + (ax - 34) + ' Z"/>' + T(xo - 28, ax - 42, 'objective', 's');
+    g += '<path class="fillb" d="M' + xe.toFixed(1) + ' ' + (ax - 88) + ' Q ' + (xe + 16).toFixed(1) + ' ' + ax + ' ' + xe.toFixed(1) + ' ' + (ax + 88) + ' Q ' + (xe - 16).toFixed(1) + ' ' + ax + ' ' + xe.toFixed(1) + ' ' + (ax - 88) + ' Z"/>' + T(xe - 24, ax - 92, 'eyepiece', 's');
+    g += dot([xo + fo, ax], 'F₀', -8) + dot([xe - fe, ax], 'Fₑ', -8);
+    g += arrow(tip[0], ax, tip[1], 'ln', 'dot') + T(tip[0] - 26, ax - 4, 'AB', 's');
+    g += ray(tip, a1, 'acc', 'fa') + ray(a1, a2, 'acc', 'fa') + ray(tip, b1, 'acc2', 'fa2') + ray(b1, b2, 'acc2', 'fa2');
+    g += ray(a2, atX(I2, a2, 700), 'acc', 'fa') + ray(b2, atX(I2, b2, 700), 'acc2', 'fa2');
+    g += L(a2, I2, 'dash') + L(b2, I2, 'dash');
+    g += arrow(I1[0], ax, I1[1], 'ray3', 'fg') + T(I1[0] + 8, I1[1] - 22, 'A′B′', 'g');
+    g += '<line class="dash" x1="' + I2[0].toFixed(1) + '" y1="' + ax + '" x2="' + I2[0].toFixed(1) + '" y2="' + I2[1].toFixed(1) + '"/>' + '<polygon class="fg" points="' + I2[0].toFixed(1) + ',' + (I2[1] + 2).toFixed(1) + ' ' + (I2[0] - 5).toFixed(1) + ',' + (I2[1] - 8).toFixed(1) + ' ' + (I2[0] + 5).toFixed(1) + ',' + (I2[1] - 8).toFixed(1) + '"/>' + T(I2[0] - 84, I2[1], 'A″B″ (final)', 'g');
+    g += T(660, ax - 60, 'eye', 's');
+    box.innerHTML = '<svg viewBox="0 0 720 270" width="720" role="img" aria-label="Ray diagram of a compound microscope">' + g + '</svg>';
+  })();
+
+  sim('simMicro', {
+    title: 'Try it: magnifying power of a compound microscope', hint: 'Smaller focal lengths and a longer tube give a bigger magnification.',
+    w: 720, h: 60,
+    ctl: [
+      { k: 'fo', label: 'Objective f₀', min: 0.5, max: 4, step: 0.1, val: 1, unit: ' cm' },
+      { k: 'fe', label: 'Eyepiece fₑ', min: 2, max: 10, step: 0.5, val: 5, unit: ' cm' },
+      { k: 'L', label: 'Tube length L', min: 10, max: 25, step: 1, val: 20, unit: ' cm' }
+    ],
+    draw: function (s) {
+      var mo = s.L / s.fo, me = 25 / s.fe, w = Math.min(680, mo * me * 0.9);
+      var g = '<rect class="med" x="20" y="18" width="' + w.toFixed(0) + '" height="24" rx="5" opacity="0.6"/>' + T(24, 12, 'magnifying power (bar length)', 's');
+      return { svg: g, out: ['m₀ = L/f₀ = ' + f1(mo), 'mₑ = D/fₑ = ' + f1(me), '!m ≈ ' + Math.round(mo * me) + ' (image at infinity)', 'm ≈ ' + Math.round(mo * (1 + me)) + ' (image at near point)'] };
+    }
+  });
+
+  /* ---------- 6b. telescope ---------- */
+  sim('simTele', {
+    title: 'Try it: astronomical telescope in normal adjustment', hint: 'Rays from a distant star enter parallel at a small angle α and leave parallel at a much bigger angle β.',
+    w: 720, h: 260,
+    ctl: [
+      { k: 'fo', label: 'Objective f₀', min: 40, max: 150, step: 1, val: 100, unit: ' cm' },
+      { k: 'fe', label: 'Eyepiece fₑ', min: 5, max: 25, step: 1, val: 10, unit: ' cm' }
+    ],
+    draw: function (s) {
+      var ax = 120, xo = 44, sc = 3.2, k = 0.05, xi = xo + s.fo * sc, xe = xi + s.fe * sc, I = [xi, ax + s.fo * sc * k];
+      var g = L([0, ax], [720, ax], 'dash');
+      g += '<path class="fillb" d="M' + xo + ' ' + (ax - 62) + ' Q ' + (xo + 12) + ' ' + ax + ' ' + xo + ' ' + (ax + 62) + ' Q ' + (xo - 12) + ' ' + ax + ' ' + xo + ' ' + (ax - 62) + ' Z"/>' + T(xo - 28, ax - 70, 'objective', 's');
+      g += '<path class="fillb" d="M' + xe.toFixed(1) + ' ' + (ax - 40) + ' Q ' + (xe + 9).toFixed(1) + ' ' + ax + ' ' + xe.toFixed(1) + ' ' + (ax + 40) + ' Q ' + (xe - 9).toFixed(1) + ' ' + ax + ' ' + xe.toFixed(1) + ' ' + (ax - 40) + ' Z"/>' + T(xe - 24, ax - 48, 'eyepiece', 's');
+      var kout = (ax - I[1]) / (s.fe * sc);
+      [-40, 0, 40].forEach(function (d, n) {
+        var hit = [xo, ax + d], st0 = [0, ax + d - xo * k], he = atX(hit, I, xe), cls = n === 1 ? 'acc2' : 'acc', fc = n === 1 ? 'fa2' : 'fa';
+        g += ray(st0, hit, cls, fc) + ray(hit, he, cls, fc) + ray(he, [720, he[1] + kout * (720 - xe)], cls, fc);
+      });
+      g += arrow(I[0], ax, I[1], 'ray3', 'fg') + T(I[0] - 150, I[1] + 22, 'image at common focus', 'g');
+      g += T(xo + s.fo * sc / 2 - 8, ax + 96, 'f₀', 's') + T(xi + s.fe * sc / 2 - 6, ax + 96, 'fₑ', 's');
+      g += L([xo, ax + 84], [xi, ax + 84], 'thin') + L([xi, ax + 84], [xe, ax + 84], 'thin') + L([xo, ax + 78], [xo, ax + 90], 'thin') + L([xi, ax + 78], [xi, ax + 90], 'thin') + L([xe, ax + 78], [xe, ax + 90], 'thin');
+      return { svg: g, out: ['!m = f₀/fₑ = ' + f1(s.fo / s.fe), 'tube length = ' + (s.fo + s.fe) + ' cm', 'β is ' + f1(s.fo / s.fe) + ' times α'] };
+    }
+  });
+})();
+</script>
+<script src="../resume.js"></script>
+</body>
+</html>
