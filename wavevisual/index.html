@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wave Optics – Animated Lesson</title>
+<meta name="description" content="Class 12 Physics Chapter 10, Wave Optics, as a guided animated lesson. Watch each idea move, try it yourself, then solve five question-paper questions to unlock the next topic.">
+<link rel="stylesheet" href="../style.css">
+<style>
+main { max-width: 860px; }
+h1 { margin-bottom: 4px; }
+.pills { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 10px; margin: 8px 0 4px; }
+.pill { flex: none; font: inherit; font-size: 0.86rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 5px 12px; cursor: pointer; white-space: nowrap; }
+.pill[disabled] { opacity: 0.55; cursor: not-allowed; }
+.pill.done { color: var(--good); border-color: var(--good); }
+.pill.cur { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+.bar i { display: block; height: 100%; background: var(--good); width: 0; transition: width .5s; }
+.card2 { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin: 0 0 16px; }
+.phase { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.phase h2 { border: 0; margin: 0; padding: 0; font-size: 1.25rem; margin-right: auto; }
+.badge { font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.badge.q { background: var(--q); color: var(--surface); }
+.badge.n { background: var(--good); color: var(--surface); }
+.badge.b { background: var(--warn-soft); color: var(--warn); }
+.badge.c { background: var(--accent); color: var(--surface); }
+.qtext em { font-weight: 400; font-size: 0.9rem; color: var(--muted); }
+#cap { font-size: 1.08rem; line-height: 1.5; min-height: 4.6em; margin: 6px 0 10px; }
+#cap b { color: var(--accent); }
+#cap .f { display: inline-block; font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif; background: var(--accent-soft); border-radius: 6px; padding: 1px 8px; white-space: nowrap; }
+#svg { display: block; width: 100%; height: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+.out { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 10px; min-height: 30px; }
+.out span { background: var(--accent-soft); border-radius: 6px; padding: 3px 10px; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+.out span.big { background: var(--warn-soft); color: var(--warn); font-weight: 600; }
+.ctl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px 18px; margin-top: 12px; }
+.ctl label { display: block; font-size: 0.9rem; color: var(--muted); }
+.ctl label b { color: var(--text); font-variant-numeric: tabular-nums; }
+.ctl input[type=range] { width: 100%; accent-color: var(--accent); margin: 2px 0 0; }
+.ctl select { width: 100%; font: inherit; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.dots { display: flex; gap: 5px; align-items: center; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+.dots i.on { background: var(--accent); }
+.dots i.ok { background: var(--good); }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; align-items: center; }
+.btn { font: inherit; font-weight: 600; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 9px 16px; cursor: pointer; }
+.btn.main { background: var(--accent); border-color: var(--accent); color: var(--surface); margin-left: auto; }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+.todo { margin: 10px 0 0; padding-left: 20px; color: var(--muted); font-size: 0.95rem; }
+.qtext { font-size: 1.08rem; font-weight: 600; margin: 10px 0 12px; }
+.opts { display: grid; gap: 8px; }
+.opt { font: inherit; text-align: left; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); border-radius: 10px; padding: 10px 14px; cursor: pointer; display: flex; gap: 10px; }
+.opt .k { font-weight: 700; color: var(--muted); }
+.opt:hover:not([disabled]) { border-color: var(--accent); }
+.opt.bad { border-color: var(--svg-accent2); opacity: 0.6; text-decoration: line-through; }
+.opt.good { border-color: var(--good); background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--good); }
+.opt[disabled] { cursor: default; }
+.fb { border-radius: 10px; padding: 10px 14px; margin-top: 12px; }
+.fb.hint { background: var(--warn-soft); border-left: 4px solid var(--warn); }
+.fb.why { background: var(--accent-soft); border-left: 4px solid var(--good); }
+.fb strong { display: block; margin-bottom: 2px; }
+.confirm { display: flex; gap: 10px; align-items: flex-start; background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; margin-top: 12px; cursor: pointer; }
+.confirm input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--good); flex: none; }
+.score { font-size: 2rem; font-weight: 700; color: var(--good); margin: 4px 0; }
+svg .ray3 { stroke: var(--good); fill: none; stroke-width: 2.2; }
+svg .fa { fill: var(--svg-accent); } svg .fa2 { fill: var(--svg-accent2); } svg .fg { fill: var(--good); }
+svg .med { fill: var(--svg-accent); stroke: none; }
+svg text.g { fill: var(--good); }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="site"><div class="inner">
+  <a class="brand" href="../physics/index.html">CBSE 12 · Physics</a>
+  <nav>
+    <a href="../rayvisual/">Ray Optics lesson</a>
+    <a href="../physics/05-optics.html">Optics Q&amp;A</a>
+    <a href="../physics/practice.html">Practice</a>
+  </nav>
+</div></header>
+<main>
+<h1>Wave Optics, animated</h1>
+<p class="lead">Watch the idea, try it yourself, solve 5 questions, then the next topic opens.</p>
+
+<div class="pills" id="pills"></div>
+<div class="bar"><i id="bar"></i></div>
+
+<section class="card2" id="stage">
+  <div class="phase"><h2 id="ttl"></h2><span class="badge" id="ph"></span><span class="dots" id="dots"></span></div>
+  <p id="cap" aria-live="polite"></p>
+  <svg id="svg" viewBox="0 0 720 320" role="img" aria-label="Ray diagram"></svg>
+  <div class="out" id="out"></div>
+  <div class="ctl" id="ctl" hidden></div>
+  <ul class="todo" id="todo" hidden></ul>
+  <div class="btns">
+    <button class="btn" id="bBack">◀ Back</button>
+    <button class="btn" id="bReplay">↻ Replay</button>
+    <button class="btn main" id="bNext">Next ▶</button>
+  </div>
+</section>
+
+<section class="card2" id="quiz" hidden></section>
+<section class="card2" id="finish" hidden></section>
+
+<p style="text-align:center"><button class="btn" id="bReset" style="font-size:.85rem;font-weight:500">Start the whole lesson again</button></p>
+</main>
+<footer>Based on NCERT Physics Part II, Chapter 10. Polarisation is included for NEET; it is not in the current CBSE board syllabus. CBSE questions are from the board's Class 12 Physics papers of the year and set shown (cbse.gov.in); NEET questions are from the NTA papers of the year shown; NCERT questions are from the chapter exercises.</footer>
+
+<script>
+(function () {
+  'use strict';
+  var RAD = Math.PI / 180, W = 720;
+  function $(id) { return document.getElementById(id); }
+  function f1(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+  function f2(x) { return (Math.round(x * 100) / 100).toFixed(2); }
+  function P(p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }
+  function L(a, b, cls, op) { return '<line class="' + cls + '"' + (op != null ? ' opacity="' + op.toFixed(2) + '"' : '') + ' x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '"/>'; }
+  function ray(a, b, cls, fc) {
+    var dx = b[0] - a[0], dy = b[1] - a[1], d = Math.sqrt(dx * dx + dy * dy) || 1, ux = dx / d, uy = dy / d, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+    return L(a, b, cls) + (d > 26 ? '<polygon class="' + fc + '" points="' + P([mx + ux * 6, my + uy * 6]) + ' ' + P([mx - ux * 5 - uy * 4.5, my - uy * 5 + ux * 4.5]) + ' ' + P([mx - ux * 5 + uy * 4.5, my - uy * 5 - ux * 4.5]) + '"/>' : '');
+  }
+  // draw the first `frac` (0..1) of a path made of straight pieces
+  function seg(pts, frac, cls, fc) {
+    if (!(frac > 0)) return '';
+    var i, tot = 0, len = [], o = '';
+    for (i = 0; i < pts.length - 1; i++) { len.push(Math.hypot(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1])); tot += len[i]; }
+    var rem = tot * Math.min(frac, 1);
+    for (i = 0; i < len.length && rem > 0.5; i++) {
+      var d = Math.min(len[i], rem), k = d / (len[i] || 1);
+      o += ray(pts[i], [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * k, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * k], cls, fc);
+      rem -= d;
+    }
+    return o;
+  }
+  function atX(a, b, X) { return [X, a[1] + (b[1] - a[1]) * (X - a[0]) / (b[0] - a[0])]; }
+  function T(x, y, s, cls) { return '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '"' + (cls ? ' class="' + cls + '"' : '') + '>' + s + '</text>'; }
+  function dot(p, lab, dy) { return '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="2.6"/>' + (lab ? T(p[0] - 4, p[1] + (dy || 16), lab, 's') : ''); }
+  function arrow(x, y0, y1, cls, fc) {
+    var s = y1 < y0 ? 1 : -1;
+    return '<line class="' + cls + '" x1="' + x.toFixed(1) + '" y1="' + y0 + '" x2="' + x.toFixed(1) + '" y2="' + y1.toFixed(1) + '"/><polygon class="' + fc + '" points="' + P([x, y1 - s * 2]) + ' ' + P([x - 5, y1 + s * 8]) + ' ' + P([x + 5, y1 + s * 8]) + '"/>';
+  }
+  function G(op, inner) { return op > 0.01 ? '<g opacity="' + Math.min(1, op).toFixed(2) + '">' + inner + '</g>' : ''; }
+  function nature(real, m) { var a = Math.abs(m); return (real ? 'Real, inverted' : 'Virtual, erect') + ', ' + (Math.abs(a - 1) < 0.03 ? 'same size' : a > 1 ? 'magnified' : 'diminished'); }
+  function rot(v, t) { return [v[0] * Math.cos(t) - v[1] * Math.sin(t), v[0] * Math.sin(t) + v[1] * Math.cos(t)]; }
+
+  /* ================= drawings ================= */
+  var CL = 0; // seconds; refreshed every frame so the waves keep moving
+  function hue(nm) {
+    var r = 0, g = 0, b = 0;
+    if (nm < 440) { r = (440 - nm) / 60; b = 1; } else if (nm < 490) { g = (nm - 440) / 50; b = 1; } else if (nm < 510) { g = 1; b = (510 - nm) / 20; } else if (nm < 580) { r = (nm - 510) / 70; g = 1; } else if (nm < 645) { r = 1; g = (645 - nm) / 65; } else { r = 1; }
+    return 'rgb(' + Math.round(255 * Math.min(1, r)) + ',' + Math.round(255 * g) + ',' + Math.round(255 * b) + ')';
+  }
+  function arc(c, R, a1, a2, cls, extra) { return '<path class="' + cls + '"' + (extra || '') + ' d="M' + P([c[0] + R * Math.cos(a1), c[1] + R * Math.sin(a1)]) + ' A ' + R.toFixed(1) + ' ' + R.toFixed(1) + ' 0 0 1 ' + P([c[0] + R * Math.cos(a2), c[1] + R * Math.sin(a2)]) + '"/>'; }
+
+  function drawHuy(s) {
+    var g = '', o = [], sy = 160, r, k;
+    if (!s.mode) {
+      var sx = 110 - s.far * s.far * 4000, lam = s.lam, ph = (CL * 34) % lam, near = s.far < 0.03;
+      for (r = ph; r < 900 - sx; r += lam) {
+        if (r < 5 || r < -sx - 30) continue;
+        g += '<circle class="acc" style="stroke-width:1.8" opacity="' + (near ? Math.max(0.15, 1 - r / 720) : 0.75).toFixed(2) + '" cx="' + sx.toFixed(1) + '" cy="' + sy + '" r="' + r.toFixed(1) + '"/>';
+      }
+      if (sx > 0) g += '<circle class="fa2" cx="' + sx.toFixed(1) + '" cy="' + sy + '" r="6"/>' + T(sx - 22, sy + 26, 'source', 's');
+      var rr = '';
+      [40, 100, 160, 220, 280].forEach(function (y) { var a = [sx, sy], b = [690, y], x0 = Math.max(sx + 26, 26); rr += ray(atX(a, b, x0), b, 'acc2', 'fa2'); });
+      g += G(s.rays, rr);
+      o.push(s.far < 0.3 ? '!Spherical wavefronts: the source is close' : s.far > 0.9 ? '!Plane wavefronts: the source is very far away' : 'The wavefronts are flattening out');
+      o.push('Every point on one wavefront is in the same phase');
+      if (s.rays > 0.5) o.push('Rays are perpendicular to the wavefronts');
+      return { svg: g, out: o };
+    }
+    var S0 = [70, 160], R0 = 170, w = s.w * 72, a0 = -50 * RAD, a1 = 50 * RAD;
+    g += '<circle class="fa2" cx="70" cy="160" r="6"/>' + T(48, 186, 'source', 's') + arc(S0, R0, a0, a1, 'ln') + T(S0[0] + R0 * Math.cos(a0) - 4, S0[1] + R0 * Math.sin(a0) - 8, 'old wavefront', 's');
+    for (k = -4; k <= 4; k++) {
+      var a = k * 12.5 * RAD, p = [S0[0] + R0 * Math.cos(a), S0[1] + R0 * Math.sin(a)];
+      g += '<circle class="dota" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3.2"/>';
+      if (w > 1) g += '<circle class="thin" style="stroke:var(--svg-accent)" opacity="0.7" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="' + w.toFixed(1) + '"/>';
+    }
+    g += G(s.env, arc(S0, R0 + 72, a0, a1, 'ray3', ' style="stroke-width:3.5"') + T(S0[0] + (R0 + 72) * Math.cos(a0) + 6, S0[1] + (R0 + 72) * Math.sin(a0) - 6, 'new wavefront', 'g') + arc(S0, R0 - 72, a0, a1, 'dash') + T(S0[0] + R0 - 150, 164, 'no backward wave', 's'));
+    o.push('Each blue dot is a new source of secondary wavelets', 'Wavelet radius = speed × time');
+    if (s.env > 0.5) o.push('!New wavefront = the common tangent (envelope) of all the wavelets');
+    return { svg: g, out: o };
+  }
+
+  function drawWR(s) {
+    var cy = 160, cx = 360, i = s.i * RAD, si = Math.sin(i), ci = Math.cos(i), n = s.n, sr = si / n, tir = sr > 1, lam = 36, k, g, o = [];
+    var r = tir ? 0 : Math.asin(sr), cr = Math.cos(r), sR = Math.sin(r);
+    g = '<rect class="med" x="0" y="0" width="720" height="160" opacity="' + (n < 1 ? (1 / n - 1) * 0.3 + 0.03 : 0.03).toFixed(2) + '"/><rect class="med" x="0" y="160" width="720" height="160" opacity="' + (n > 1 ? (n - 1) * 0.3 + 0.03 : 0.03).toFixed(2) + '"/>';
+    var base = (CL * 40) % lam, kmin = Math.ceil((-700 * si + cy * ci - base) / lam), kmax = Math.floor((1400 * si + cy * ci - base) / lam);
+    for (k = kmin; k <= kmax; k++) {
+      var x0 = (base + k * lam - cy * ci) / si;
+      g += L([x0, cy], [x0 + 700 * ci, cy - 700 * si], 'acc', s.mode ? 0.6 : 0.9);
+      if (s.mode) g += L([x0, cy], [x0 - 700 * ci, cy - 700 * si], 'acc2', 0.9);
+      else if (!tir) g += L([x0, cy], [x0 - 700 * cr, cy + 700 * sR], 'ray3', 0.9);
+    }
+    g += L([0, cy], [W, cy], 'ln') + L([cx, 6], [cx, 314], 'dash');
+    g += ray([cx - 150 * si, cy - 150 * ci], [cx, cy], 'ln', 'dot');
+    if (s.mode) g += ray([cx, cy], [cx + 150 * si, cy - 150 * ci], 'ln', 'dot');
+    else if (!tir) g += ray([cx, cy], [cx + 150 * sR, cy + 150 * cr], 'ln', 'dot');
+    g += T(12, 22, 'Medium 1 · speed v₁', 's') + T(12, 308, s.mode ? 'Reflecting surface' : 'Medium 2 · speed v₂ = v₁/' + f2(n), 's');
+    o.push('i = ' + f1(s.i) + '°');
+    if (s.mode) o.push('!angle of reflection = ' + f1(s.i) + '° (same as i)', 'Both wavefronts travel the same distance in the same time');
+    else if (tir) o.push('!No refracted wavefront: total internal reflection');
+    else o.push('r = ' + f1(r / RAD) + '°', '!sin i / sin r = v₁/v₂ = ' + f2(n), 'wavelength in medium 2 = ' + f2(1 / n) + ' × λ₁', 'frequency unchanged');
+    return { svg: g, out: o };
+  }
+
+  function drawSup(s) {
+    var a = 26, a2 = a * s.r, w = CL * 3, ph = s.phi * RAD, kk = 2 * Math.PI / 120, x, p1 = [], p2 = [], p3 = [], g = '', o = [];
+    if (!s.coh) ph = 3.1 * Math.sin(CL * 2.3) + 2.2 * Math.sin(CL * 5.1 + 1) + 1.5 * Math.sin(CL * 9.7);
+    for (x = 30; x <= 560; x += 5) {
+      var y1 = a * Math.sin(kk * x - w), y2 = a2 * Math.sin(kk * x - w + ph);
+      p1.push(x + ',' + (62 - y1).toFixed(1)); p2.push(x + ',' + (146 - y2).toFixed(1)); p3.push(x + ',' + (250 - y1 - y2).toFixed(1));
+    }
+    g += L([30, 62], [560, 62], 'dash') + L([30, 146], [560, 146], 'dash') + L([30, 250], [560, 250], 'dash');
+    g += '<polyline class="acc" points="' + p1.join(' ') + '"/><polyline class="acc2" points="' + p2.join(' ') + '"/><polyline class="ray3" style="stroke-width:3" points="' + p3.join(' ') + '"/>';
+    g += T(30, 24, 'wave 1', 'a') + T(30, 108, 'wave 2', 'a2') + T(30, 196, 'wave 1 + wave 2', 'g');
+    var I = 1 + s.r * s.r + 2 * s.r * Math.cos(ph);
+    g += '<circle cx="645" cy="160" r="48" fill="#000" opacity="0.85"/><circle cx="645" cy="160" r="48" fill="#ffd84a" opacity="' + Math.min(1, I / 4).toFixed(2) + '"/><circle class="thin" cx="645" cy="160" r="48"/>' + T(608, 232, 'brightness here', 's');
+    if (s.coh) {
+      var c = Math.cos(ph);
+      o.push('phase difference φ = ' + f1(s.phi) + '°', 'path difference = ' + f2(s.phi / 360) + ' λ', '!I = ' + f2(I) + ' I₀' + (c > 0.995 ? ' · constructive' : c < -0.995 ? ' · destructive' : ''));
+      if (s.r < 0.995) o.push('I<sub>max</sub>/I<sub>min</sub> = ' + f1(Math.pow((1 + s.r) / (1 - s.r), 2)));
+    } else o.push('!The phase difference keeps jumping: no steady pattern', 'average I = I₁ + I₂ = ' + f2(1 + s.r * s.r) + ' I₀');
+    return { svg: g, out: o };
+  }
+
+  function screen(x, I, col, pat, boost) { // intensity strip + graph on the right
+    var g = '<rect x="' + x + '" y="10" width="26" height="300" fill="#000" opacity="0.88"/>', y, pts = [];
+    for (y = 10; y < 310; y += 2) {
+      var v = I(y + 1);
+      g += '<rect x="' + x + '" y="' + y + '" width="26" height="2" fill="' + col + '" opacity="' + (pat * (boost ? Math.pow(v, 0.5) : v)).toFixed(3) + '"/>';
+      pts.push((x + 38 + v * 62 * pat).toFixed(1) + ',' + (y + 1));
+    }
+    return g + L([x + 38, 10], [x + 38, 310], 'dash') + G(pat, '<polyline class="thin" points="' + pts.join(' ') + '"/>') + T(x - 6, 318, 'screen', 's');
+  }
+  function drawY(s) {
+    var bx = 170, cy = 160, sep = 24 + s.d * 70, lp = s.lam / 700 * 22 + 4, col = hue(s.lam), g = '', r, x, ph = (CL * 30) % lp;
+    for (x = bx - 8 - ph; x > 20; x -= lp) g += '<line x1="' + x.toFixed(1) + '" y1="40" x2="' + x.toFixed(1) + '" y2="280" stroke="' + col + '" stroke-width="1.3" opacity="0.55"/>';
+    [cy - sep / 2, cy + sep / 2].forEach(function (sy) {
+      for (r = ph; r < 470; r += lp) if (r > 3) g += '<path d="M' + bx + ' ' + (sy - r).toFixed(1) + ' A ' + r.toFixed(1) + ' ' + r.toFixed(1) + ' 0 0 1 ' + bx + ' ' + (sy + r).toFixed(1) + '" fill="none" stroke="' + col + '" stroke-width="1.3" opacity="' + (s.wav * Math.max(0.1, 0.75 - r / 640)).toFixed(2) + '"/>';
+    });
+    g += '<rect x="598" y="0" width="122" height="320" fill="var(--bg)"/>';
+    var t = cy - sep / 2 - 4, b = cy + sep / 2 + 4;
+    g += '<rect class="dot" x="' + (bx - 4) + '" y="0" width="8" height="' + t.toFixed(1) + '"/><rect class="dot" x="' + (bx - 4) + '" y="' + (t + 8).toFixed(1) + '" width="8" height="' + (sep - 8).toFixed(1) + '"/><rect class="dot" x="' + (bx - 4) + '" y="' + (b + 4).toFixed(1) + '" width="8" height="' + (320 - b).toFixed(1) + '"/>';
+    g += T(bx - 30, cy - sep / 2 + 4, 'S₁', 's') + T(bx - 30, cy + sep / 2 + 4, 'S₂', 's');
+    var beta = s.lam * s.D / (1000 * s.d);
+    g += screen(604, function (y) { var c = Math.cos(Math.PI * ((y - cy) / 25) / beta); return c * c; }, col, s.pat);
+    return { svg: g, out: ['λ = ' + Math.round(s.lam) + ' nm', 'd = ' + f2(s.d) + ' mm', 'D = ' + f2(s.D) + ' m', '!fringe width β = λD/d = ' + f2(beta) + ' mm', 'angular width λ/d = ' + (s.lam * 1e-6 / s.d / RAD).toFixed(3) + '°'] };
+  }
+  function drawDiff(s) {
+    var bx = 170, cy = 160, h = 6 + s.a * 100, col = hue(s.lam), lp = s.lam / 700 * 22 + 4, ph = (CL * 30) % lp, g = '', r, x;
+    var y1 = s.lam * s.D / (1000 * s.a), half = Math.min(150, y1 * 10 + h / 2), th = Math.max(0.03, Math.atan(half / 430));
+    for (x = bx - 8 - ph; x > 20; x -= lp) g += '<line x1="' + x.toFixed(1) + '" y1="40" x2="' + x.toFixed(1) + '" y2="280" stroke="' + col + '" stroke-width="1.3" opacity="0.55"/>';
+    g += '<polygon points="' + P([bx, cy - h / 2]) + ' ' + P([600, cy - half]) + ' ' + P([600, cy + half]) + ' ' + P([bx, cy + h / 2]) + '" fill="' + col + '" opacity="0.13"/>';
+    for (r = ph; r < 440; r += lp) if (r > 8) g += arc([bx, cy], r, -th, th, 'thin', ' style="stroke:' + col + '" opacity="' + Math.max(0.15, 0.8 - r / 620).toFixed(2) + '"');
+    g += '<rect x="598" y="0" width="122" height="320" fill="var(--bg)"/>';
+    g += '<rect class="dot" x="' + (bx - 4) + '" y="0" width="8" height="' + (cy - h / 2).toFixed(1) + '"/><rect class="dot" x="' + (bx - 4) + '" y="' + (cy + h / 2).toFixed(1) + '" width="8" height="' + (160 - h / 2).toFixed(1) + '"/>' + T(bx - 60, cy + 4, 'slit a', 's');
+    g += screen(604, function (y) { var al = Math.PI * s.a * ((y - cy) / 10) / (s.lam * 1e-3 * s.D); if (Math.abs(al) < 1e-6) return 1; var v = Math.sin(al) / al; return v * v; }, col, s.pat, true);
+    return { svg: g, out: ['λ = ' + Math.round(s.lam) + ' nm', 'a = ' + f2(s.a) + ' mm', 'D = ' + f2(s.D) + ' m', '!width of central maximum = 2λD/a = ' + f1(2 * y1) + ' mm', 'first minimum at θ = λ/a = ' + (s.lam * 1e-6 / s.a / RAD).toFixed(3) + '°'] };
+  }
+
+  function dbl(c, ang, len, cls) { var dx = Math.sin(ang) * len, dy = -Math.cos(ang) * len; return L([c[0] - dx, c[1] - dy], [c[0] + dx, c[1] + dy], cls); }
+  function drawPol(s) {
+    var g = '', o = [], k;
+    if (!s.mode) {
+      var th = s.th * RAD, c2 = Math.cos(th) * Math.cos(th), by = 226, osc = Math.sin(CL * 5), cyI = 86;
+      g += '<rect x="30" y="' + (by - 13) + '" width="200" height="26" fill="#ffd84a" opacity="0.95"/><rect x="230" y="' + (by - 13) + '" width="220" height="26" fill="#ffd84a" opacity="0.5"/><rect x="450" y="' + (by - 13) + '" width="230" height="26" fill="#ffd84a" opacity="' + (0.5 * c2).toFixed(3) + '"/>';
+      g += '<rect class="thin" x="30" y="' + (by - 13) + '" width="650" height="26"/>';
+      g += '<rect class="fillb" x="223" y="' + (by - 46) + '" width="14" height="92" rx="4"/><rect class="fillb" x="443" y="' + (by - 46) + '" width="14" height="92" rx="4"/>' + T(210, by + 66, 'P₁', 's') + T(430, by + 66, 'P₂', 's');
+      [95, 230, 340, 450, 585].forEach(function (x) { g += '<circle class="thin" cx="' + x + '" cy="' + cyI + '" r="44"/>'; });
+      for (k = 0; k < 6; k++) g += dbl([95, cyI], k * 30 * RAD, 38 * Math.abs(Math.sin(CL * 5 + k * 1.7)), 'acc');
+      for (k = -2; k <= 2; k++) { g += L([230 + k * 14, cyI - Math.sqrt(1936 - 196 * k * k) + 4], [230 + k * 14, cyI + Math.sqrt(1936 - 196 * k * k) - 4], 'thin'); }
+      g += dbl([340, cyI], 0, 38 * Math.abs(osc), 'acc');
+      for (k = -2; k <= 2; k++) { var hl = Math.sqrt(1936 - 196 * k * k) - 4, ox = k * 14 * Math.cos(th), oy = k * 14 * Math.sin(th); g += L([450 + ox - Math.sin(th) * hl, cyI + oy + Math.cos(th) * hl], [450 + ox + Math.sin(th) * hl, cyI + oy - Math.cos(th) * hl], 'thin'); }
+      g += dbl([585, cyI], th, 38 * Math.abs(Math.cos(th) * osc), 'acc2');
+      g += T(60, 150, 'unpolarised', 's') + T(196, 150, 'polaroid P₁', 's') + T(300, 150, 'plane polarised', 's') + T(400, 150, 'P₂ turned by θ', 's') + T(552, 150, 'what gets through', 's') + T(40, by - 22, 'light beam →', 's');
+      o.push('θ = ' + f1(s.th) + '°', 'After P₁ the intensity is I₀ (half of the unpolarised light)', '!I = I₀ cos²θ = ' + f2(c2) + ' I₀');
+      if (c2 < 0.004) o.push('Crossed polaroids: no light gets through');
+      return { svg: g, out: o };
+    }
+    var cx = 360, cy = 190, R = 150, i = s.i * RAD, r = Math.asin(Math.sin(i) / s.n), iB = Math.atan(s.n), off = Math.abs(s.i - iB / RAD), O = [cx, cy];
+    var A = [cx - R * Math.sin(i), cy - R * Math.cos(i)], Rf = [cx + R * Math.sin(i), cy - R * Math.cos(i)], B = [cx + R * Math.sin(r), cy + R * Math.cos(r)];
+    g = '<rect class="med" x="0" y="190" width="720" height="130" opacity="0.2"/>' + L([0, cy], [W, cy], 'ln') + L([cx, 20], [cx, 312], 'dash') + T(12, 308, 'glass · n = ' + f2(s.n), 's') + T(12, 22, 'air', 's');
+    g += ray(A, O, 'acc', 'fa') + ray(O, Rf, 'acc2', 'fa2') + ray(O, B, 'ray3', 'fg');
+    function marks(a, b, dots, ticks) {
+      var m = '', dx = b[0] - a[0], dy = b[1] - a[1], d = Math.hypot(dx, dy), nx = -dy / d, ny = dx / d;
+      [0.22, 0.42, 0.78].forEach(function (f) { m += '<circle class="dot" opacity="' + dots.toFixed(2) + '" cx="' + (a[0] + dx * f).toFixed(1) + '" cy="' + (a[1] + dy * f).toFixed(1) + '" r="3.4"/>'; });
+      [0.32, 0.66, 0.88].forEach(function (f) { var p = [a[0] + dx * f, a[1] + dy * f]; m += L([p[0] - nx * 10, p[1] - ny * 10], [p[0] + nx * 10, p[1] + ny * 10], 'ln', ticks); });
+      return m;
+    }
+    g += marks(A, O, 1, 1) + marks(O, Rf, 1, Math.min(1, off / 22)) + marks(O, B, 0.45, 1);
+    g += T(470, 40, '● E-field ⟂ to this page', 's') + T(470, 58, '| E-field in this page', 's');
+    o.push('i = ' + f1(s.i) + '°', 'Brewster angle = tan⁻¹ n = ' + f1(iB / RAD) + '°', 'angle between reflected and refracted rays = ' + f1(180 - s.i - r / RAD) + '°');
+    o.push(off < 0.8 ? '!Reflected light is completely polarised' : '!Reflected light is only partially polarised');
+    return { svg: g, out: o };
+  }
+
+  /* ================= lesson content ================= */
+  var F = function (x) { return '<span class="f">' + x + '</span>'; };
+  var WR = ' <em>(Written question in the paper; options added here.)</em>';
+  var AR = ['Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A).', 'Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A).', 'Assertion (A) is true, but Reason (R) is false.', 'Both Assertion (A) and Reason (R) are false.'];
+  var TOPICS = [
+    { id: 'huy', short: 'Wavefronts', title: '1. Wavefronts and Huygens\' principle', draw: drawHuy,
+      init: { mode: 0, lam: 36, far: 0, rays: 0, w: 0, env: 0 }, play: { mode: 0, far: 0, rays: 1, w: 1, env: 1 },
+      story: [
+        { cap: 'Light spreads from a point source like ripples from a stone dropped in a pond. Each circle is a <b>wavefront</b>: a surface on which every point vibrates in the <b>same phase</b>.' },
+        { cap: '<b>Rays</b> show the direction in which the energy travels. They are always <b>perpendicular</b> to the wavefronts.', to: { rays: 1 }, dur: 1200 },
+        { cap: 'Move very far from the source. A small piece of a huge sphere looks flat: a <b>plane wavefront</b>, like light reaching us from a star. A line source gives cylindrical wavefronts.', to: { far: 1 }, dur: 4200 },
+        { cap: '<b>Huygens\' principle</b>: every point on a wavefront acts as a fresh source of <b>secondary wavelets</b>, which spread out with the speed of the wave.', set: { mode: 1, w: 0, env: 0 }, to: { w: 1 }, dur: 3200 },
+        { cap: 'The surface touching all the wavelets (their <b>envelope</b>) is the <b>new wavefront</b>. Huygens assumed the wavelets have zero amplitude backwards, so there is no backward wave.', to: { env: 1 }, dur: 1400 }
+      ],
+      ctl: [{ k: 'mode', label: 'View', num: 1, opts: [['0', 'Wavefronts from a source'], ['1', 'Huygens\' construction']] }, { k: 'far', label: 'Distance from the source', when: 0, min: 0, max: 1, step: 0.01 }, { k: 'lam', label: 'Wavelength (spacing)', when: 0, min: 18, max: 60, step: 1, unit: ' px' }, { k: 'w', label: 'Time since the old wavefront', when: 1, min: 0, max: 1, step: 0.01 }],
+      todo: ['Slide the distance slowly. At what point do the wavefronts look plane?', 'In Huygens\' construction, drag the time slider and watch the wavelets build the new wavefront.'],
+      quiz: [
+        { src: 'NCERT 10.2', q: 'What is the shape of the wavefront of light emerging out of a convex lens when a point source is placed at its focus?', opts: ['Spherical, diverging', 'Plane', 'Spherical, converging', 'Cylindrical'], ans: 1, hint: 'What do the rays look like after the lens when the source is at the focus? Wavefronts are perpendicular to rays.', why: 'The rays emerge parallel to the axis, so the wavefronts perpendicular to them are plane.' },
+        { src: 'NCERT 10.2', q: 'What is the shape of the portion of the wavefront of light from a distant star intercepted by the Earth?', opts: ['Spherical', 'Plane', 'Cylindrical', 'Elliptical'], ans: 1, hint: 'Replay step 3: what happens to a wavefront very far from its source?', why: 'The star is so far away that the small part of its huge spherical wavefront reaching the Earth is practically plane.' },
+        { src: 'CBSE 2023 · 55/4/1', q: 'A plane wavefront is incident on a concave mirror of radius of curvature R. The radius of the refracted wavefront will be <em>(The paper prints “refracted”; the reflected wavefront is meant.)</em>', opts: ['2R', 'R', 'R/2', 'R/4'], ans: 2, hint: 'A plane wavefront means parallel rays. Where does a concave mirror bring parallel rays together?', why: 'Parallel rays converge to the focus, at f = R/2. So the reflected wavefront is spherical with radius R/2.' },
+        { src: 'CBSE 2026 · 55/4/1 · 2 marks', q: 'State Huygens principle. How did Huygens justify the absence of the backwave on a spherical wavefront?' + WR, opts: ['He assumed the amplitude of the secondary wavelets is maximum in the forward direction and zero in the backward direction', 'The backward wavelets are absorbed by the medium', 'The backward wavelets travel faster and escape', 'Only half of the points on a wavefront emit secondary wavelets'], ans: 0, hint: 'Replay step 5 of the animation.', why: 'Huygens argued that the amplitude of the secondary wavelets is maximum in the forward direction and zero in the backward direction, so no backward wave forms.' },
+        { src: 'CBSE 2026 · 55/4/1', q: 'What is the difference between a ray and a wavefront?' + WR, opts: ['A wavefront is a surface of constant phase; a ray is a line perpendicular to it along which the energy travels', 'A ray is a surface of constant phase; a wavefront is a line along the direction of travel', 'Both are surfaces of constant phase', 'A wavefront is always plane and a ray is always curved'], ans: 0, hint: 'Replay steps 1 and 2.', why: 'A wavefront is the locus of points in the same phase. A ray is normal to the wavefront and shows the direction of propagation of energy.' }
+      ] },
+
+    { id: 'wr', short: 'Huygens refraction', title: '2. Refraction and reflection of a plane wave', draw: drawWR,
+      init: { mode: 0, i: 40, n: 1 }, play: { mode: 0, i: 40, n: 1.5 },
+      story: [
+        { cap: 'Plane wavefronts march through a medium. The black ray is perpendicular to them. With the same medium on both sides nothing changes.' },
+        { cap: 'Now the lower medium is <b>denser</b>, so the wave is slower there. The end of each wavefront that enters first slows down first, and the whole wavefront <b>swings round</b>. From the geometry: ' + F('sin i / sin r = v₁/v₂ = n₂₁') + ', which is Snell\'s law.', to: { n: 1.5 }, dur: 3600 },
+        { cap: 'Look at the spacing. The wavefronts are <b>closer together</b> in the denser medium: ' + F('λ₂ = λ₁/n') + '. The <b>frequency does not change</b>, because as many wavefronts leave the boundary each second as arrive.', to: { i: 62 }, dur: 3000 },
+        { cap: 'Going into a <b>rarer</b> medium the wave speeds up and bends <b>away</b> from the normal. Past the critical angle no refracted wavefront can form: total internal reflection.', to: { n: 0.7, i: 30 }, dur: 3600 },
+        { cap: '<b>Reflection.</b> The reflected wavefront (red) travels the same distance in the same time as the incident one, so the two triangles are congruent and ' + F('angle of reflection = angle of incidence') + '.', set: { mode: 1, n: 1.5 }, to: { i: 45 }, dur: 2600 }
+      ],
+      ctl: [{ k: 'mode', label: 'View', num: 1, opts: [['0', 'Refraction'], ['1', 'Reflection']] }, { k: 'i', label: 'Angle of incidence', min: 10, max: 80, step: 1, unit: '°' }, { k: 'n', label: 'n of medium 2 relative to medium 1', when: 0, min: 0.6, max: 2, step: 0.01 }],
+      todo: ['Set n = 1.33 and compare the wavefront spacing above and below.', 'Set n = 0.7 and raise i until the refracted wavefronts vanish. That angle is the critical angle.'],
+      quiz: [
+        { src: 'NCERT 10.1', q: 'Monochromatic light of wavelength 589 nm is incident from air on a water surface (n = 1.33). For the refracted light, the wavelength, frequency and speed are', opts: ['443 nm, 5.09 × 10¹⁴ Hz, 2.26 × 10⁸ m/s', '589 nm, 5.09 × 10¹⁴ Hz, 3 × 10⁸ m/s', '443 nm, 6.77 × 10¹⁴ Hz, 3 × 10⁸ m/s', '589 nm, 3.83 × 10¹⁴ Hz, 2.26 × 10⁸ m/s'], ans: 0, hint: 'Frequency stays the same: f = c/λ. Speed and wavelength are both divided by n.', why: 'f = 3 × 10⁸ / 589 × 10⁻⁹ = 5.09 × 10¹⁴ Hz (unchanged). v = c/n = 2.26 × 10⁸ m/s. λ = 589/1.33 = 443 nm.' },
+        { src: 'NCERT 10.3', q: 'Is the speed of light in glass independent of the colour of light? If not, which of the two colours red and violet travels slower in a glass prism?', opts: ['Yes, all colours travel at the same speed in glass', 'No; red travels slower', 'No; violet travels slower', 'No; they differ in frequency but not in speed'], ans: 2, hint: 'The refractive index of glass is larger for violet than for red, and v = c/n.', why: 'n depends on colour: n<sub>violet</sub> &gt; n<sub>red</sub>. Since v = c/n, violet light travels slower in glass.' },
+        { src: 'CBSE 2024 · 55/1/1', q: 'A plane wave is incident at an angle i on a reflecting surface. Construct the corresponding reflected wavefront. Using this diagram, prove that the angle of reflection is equal to the angle of incidence. Which fact completes the proof?' + WR, opts: ['The incident and reflected waves cover the same distance vτ in the same time, so the two right-angled triangles are congruent', 'The reflected wave travels slower than the incident wave', 'The wavelength doubles on reflection', 'The reflected wavefront is always parallel to the incident wavefront'], ans: 0, hint: 'Replay step 5 of the animation.', why: 'In time τ the incident wavefront advances vτ and the reflected wavelet also spreads vτ. The two right-angled triangles share the hypotenuse along the surface, so they are congruent and i = r.' },
+        { src: 'CBSE 2026 · 55/4/1', q: 'Depict refraction of a plane wave by a convex lens. The wavefront emerging from the lens is' + WR, opts: ['plane, parallel to the incident wavefront', 'spherical, converging to the focus of the lens', 'spherical, diverging from the focus of the lens', 'cylindrical'], ans: 1, hint: 'The middle of a convex lens is thickest. Which part of the wavefront is delayed most?', why: 'The central part of the wavefront passes through the thickest glass and is delayed most, so the emerging wavefront is spherical and converges to the focus.' },
+        { src: 'CBSE 2024 · 55/1/1 · 2 marks', q: 'Monochromatic light of frequency 5·0 × 10¹⁴ Hz passes from air into a medium of refractive index 1·5. Find the wavelength of the light (i) reflected, and (ii) refracted at the interface of the two media.' + WR, opts: ['600 nm and 400 nm', '400 nm and 600 nm', '600 nm and 600 nm', '600 nm and 900 nm'], ans: 0, hint: 'The reflected light stays in air: λ = c/f. In the medium the wavelength becomes λ/n.', why: 'Reflected (in air): λ = 3 × 10⁸ / 5 × 10¹⁴ = 600 nm. Refracted: 600/1.5 = 400 nm.' }
+      ] },
+
+    { id: 'sup', short: 'Interference', title: '3. Superposition and coherence', draw: drawSup,
+      init: { phi: 0, r: 1, coh: 1 }, play: { phi: 60, r: 1, coh: 1 },
+      story: [
+        { cap: 'Two waves of the same frequency arrive <b>in step</b>: crest on crest. The amplitudes add to 2a, so the intensity is <b>four times</b> that of one wave. This is <b>constructive interference</b>.' },
+        { cap: 'Shift one wave by half a wavelength. Now crest meets trough and they cancel: <b>destructive interference</b>, darkness.', to: { phi: 180 }, dur: 3600 },
+        { cap: 'In general ' + F('I = 4I₀ cos²(φ/2)') + ', where the phase difference φ comes from the path difference: ' + F('φ = 2π × (path difference)/λ') + '. Bright when the path difference is nλ, dark when it is (n + ½)λ.', to: { phi: 90 }, dur: 3000 },
+        { cap: 'With unequal amplitudes the cancelling is not complete: ' + F('I<sub>max</sub>/I<sub>min</sub> = (a₁ + a₂)²/(a₁ − a₂)²') + '.', to: { r: 0.5, phi: 180 }, dur: 3200 },
+        { cap: 'Two separate lamps are <b>incoherent</b>: their phase difference jumps about randomly, so bright and dark swap too fast to see and the intensities simply add. A steady pattern needs <b>coherent sources</b>: a constant phase difference.', set: { coh: 0, r: 1 } }
+      ],
+      ctl: [{ k: 'coh', label: 'Sources', num: 1, opts: [['1', 'Coherent'], ['0', 'Incoherent (two separate lamps)']] }, { k: 'phi', label: 'Phase difference φ', min: 0, max: 360, step: 1, unit: '°' }, { k: 'r', label: 'Amplitude ratio a₂/a₁', min: 0.2, max: 1, step: 0.01 }],
+      todo: ['Set φ = 120°. Is the intensity one quarter of the maximum?', 'Set a₂/a₁ = 0.5 and find I<sub>max</sub>/I<sub>min</sub>.'],
+      quiz: [
+        { src: 'CBSE 2025 · 55/5/1', q: 'Two coherent light waves, each having amplitude ‘a’, superpose to produce an interference pattern on a screen. The intensity of light as seen on the screen varies between', opts: ['0 and 2a²', '0 and 4a²', 'a² and 2a²', '2a² and 4a²'], ans: 1, hint: 'Intensity is proportional to (amplitude)². What are the largest and smallest resultant amplitudes?', why: 'The resultant amplitude varies between 0 (destructive) and 2a (constructive), so the intensity varies between 0 and (2a)² = 4a².' },
+        { src: 'CBSE 2023 · 55/1/1 · 2 marks', q: 'Two coherent monochromatic light beams of intensities I and 4I superpose each other. Find the ratio of maximum and minimum intensities in the resulting beam.' + WR, opts: ['3 : 1', '5 : 3', '9 : 1', '25 : 9'], ans: 2, hint: 'Amplitudes are proportional to √I, so a₁ : a₂ = 1 : 2.', why: 'I<sub>max</sub>/I<sub>min</sub> = (a₁ + a₂)²/(a₁ − a₂)² = (1 + 2)²/(2 − 1)² = 9 : 1.' },
+        { src: 'CBSE 2026 · 55/1/1', q: 'Four independent waves are expressed as (i) y₁ = A₁ sin ωt, (ii) y₂ = A₂ sin 2ωt, (iii) y₃ = A₃ cos ωt, (iv) y₄ = A₄ sin (ωt + π/3). The interference between two of these waves is possible in', opts: ['(i) and (iii) only', '(iii) and (iv) only', '(i), (iii) and (iv) only', 'All of them'], ans: 2, hint: 'Steady interference needs the same frequency and a constant phase difference.', why: 'Waves (i), (iii) and (iv) all have angular frequency ω with fixed phase differences, so any two of them can interfere. Wave (ii) has frequency 2ω.' },
+        { src: 'CBSE 2024 · 55/1/1', q: 'What are the coherent sources of light? Can two independent sodium lamps act like coherent sources? Explain.' + WR, opts: ['Yes, because both emit light of the same wavelength', 'No, because the phase difference between their waves changes rapidly and randomly', 'Yes, provided they are equally bright', 'No, because sodium light is not monochromatic'], ans: 1, hint: 'Replay the last step of the animation.', why: 'Coherent sources keep a constant phase difference. Atoms in two independent lamps emit independently, so the phase difference changes randomly in about 10⁻¹⁰ s and no steady pattern is seen.' },
+        { src: 'NCERT 10.5', q: 'In Young’s double-slit experiment using monochromatic light of wavelength λ, the intensity of light at a point on the screen where path difference is λ, is K units. What is the intensity of light at a point where path difference is λ/3?', opts: ['K', 'K/2', 'K/4', '3K/4'], ans: 2, hint: 'Path difference λ/3 means φ = 2π/3. Use I = 4I₀ cos²(φ/2).', why: 'At path difference λ: φ = 2π, I = 4I₀ = K. At λ/3: φ = 2π/3, I = 4I₀ cos²(π/3) = I₀ = K/4.' }
+      ] },
+
+    { id: 'ydse', short: 'Double slit', title: '4. Young\'s double-slit experiment', draw: drawY,
+      init: { lam: 600, d: 0.5, D: 1, wav: 1, pat: 0 }, play: { lam: 600, d: 0.5, D: 1, wav: 1, pat: 1 },
+      story: [
+        { cap: 'One source lights two narrow slits S₁ and S₂. Both get light from the <b>same wavefront</b>, so they act as two <b>coherent sources</b>. Watch their wavelets overlap.' },
+        { cap: 'On the screen: <b>bright</b> where the path difference S₂P − S₁P = nλ, <b>dark</b> where it is (n + ½)λ. The result is equally spaced bright and dark <b>fringes</b>.', to: { pat: 1 }, dur: 1800 },
+        { cap: 'The spacing is the <b>fringe width</b>: ' + F('β = λD/d') + '. Move the slits <b>further apart</b> and the fringes crowd together.', to: { d: 1 }, dur: 3200 },
+        { cap: 'Move the screen <b>further away</b> (larger D) and the fringes spread out.', set: { d: 0.5 }, to: { D: 2 }, dur: 3200 },
+        { cap: 'Change the colour. <b>Red</b> (long λ) gives wider fringes than <b>violet</b>. With white light only the central fringe is white; the rest are coloured. In a liquid of index μ the fringe width becomes β/μ.', set: { D: 1, lam: 400 }, to: { lam: 700 }, dur: 4200 }
+      ],
+      ctl: [{ k: 'lam', label: 'Wavelength λ', min: 400, max: 700, step: 5, unit: ' nm' }, { k: 'd', label: 'Slit separation d', min: 0.2, max: 1.2, step: 0.01, unit: ' mm' }, { k: 'D', label: 'Screen distance D', min: 0.5, max: 2, step: 0.01, unit: ' m' }],
+      todo: ['Halve d and double D. By what factor does the fringe width change?', 'Find a setting that gives β = 1.2 mm.'],
+      quiz: [
+        { src: 'NEET 2020', q: 'In Young’s double slit experiment, if the separation between coherent sources is halved and the distance of the screen from the coherent sources is doubled, then the fringe width becomes', opts: ['double', 'half', 'four times', 'one-fourth'], ans: 2, hint: 'β = λD/d. Put D → 2D and d → d/2.', why: 'β′ = λ(2D)/(d/2) = 4λD/d = 4β.' },
+        { src: 'NEET 2024', q: 'If the monochromatic source in Young’s double slit experiment is replaced by white light, then', opts: ['There will be a central bright white fringe surrounded by a few coloured fringes', 'All bright fringes will be of equal width', 'Interference pattern will disappear', 'There will be a central dark fringe surrounded by a few coloured fringes'], ans: 0, hint: 'At the centre the path difference is zero for every colour. Elsewhere β depends on λ.', why: 'At the centre all wavelengths have zero path difference, so the central fringe is white. Other fringes fall at different places for different colours, giving a few coloured fringes.' },
+        { src: 'CBSE 2026 · 55/1/1', q: 'The shape of the interference fringes in Young’s double-slit experiment, when the distance between the slit and the screen is very large as compared to the slit-separation, is nearly', opts: ['straight', 'parabolic', 'circular', 'hyperbolic'], ans: 0, hint: 'Strictly the fringes are hyperbolas. What do they look like when D is very large compared with d?', why: 'The fringes are hyperbolic in general, but for D much larger than d they are very nearly straight lines.' },
+        { src: 'CBSE 2023 · 55/4/1', q: 'In a Young’s double-slit experiment, the fringe width is found to be β. If the entire apparatus is immersed in a liquid of refractive index μ, the new fringe width will be', opts: ['β', 'μβ', 'β/μ', 'β/μ²'], ans: 2, hint: 'In the liquid the wavelength becomes λ/μ.', why: 'β = λD/d and λ becomes λ/μ in the liquid, so the new fringe width is β/μ.' },
+        { src: 'NCERT 10.4', q: 'In a Young’s double-slit experiment, the slits are separated by 0.28 mm and the screen is placed 1.4 m away. The distance between the central bright fringe and the fourth bright fringe is measured to be 1.2 cm. Determine the wavelength of light used in the experiment.', opts: ['450 nm', '500 nm', '600 nm', '750 nm'], ans: 2, hint: 'The fourth bright fringe is at x = 4λD/d.', why: 'λ = xd/(4D) = (1.2 × 10⁻² × 0.28 × 10⁻³)/(4 × 1.4) = 6 × 10⁻⁷ m = 600 nm.' }
+      ] },
+
+    { id: 'diff', short: 'Diffraction', title: '5. Diffraction at a single slit', draw: drawDiff,
+      init: { lam: 600, a: 0.4, D: 1, pat: 1 }, play: { lam: 600, a: 0.1, D: 1, pat: 1 },
+      story: [
+        { cap: 'Light passes through a fairly <b>wide</b> slit. It goes almost straight on and makes a narrow bright patch, as ray optics expects.' },
+        { cap: 'Now <b>narrow</b> the slit. Surprise: the light <b>spreads out</b> more, not less. This bending of light round the edges is <b>diffraction</b>.', to: { a: 0.06 }, dur: 4200 },
+        { cap: 'The pattern has a broad <b>central maximum</b> and much weaker side bands. Minima where ' + F('a sin θ = nλ') + ', secondary maxima near ' + F('a sin θ = (n + ½)λ') + '. The central maximum is <b>twice as wide</b> as the others: ' + F('width = 2λD/a') + '.', to: { a: 0.1 }, dur: 2200 },
+        { cap: 'Longer wavelength spreads more: <b>red diffracts more than violet</b>.', set: { lam: 400 }, to: { lam: 700 }, dur: 3600 },
+        { cap: 'Bring the screen closer and the whole pattern shrinks in proportion to D. Unlike double-slit fringes, these bands are <b>not</b> equally bright or equally wide.', set: { lam: 600 }, to: { D: 0.5 }, dur: 3000 }
+      ],
+      ctl: [{ k: 'lam', label: 'Wavelength λ', min: 400, max: 700, step: 5, unit: ' nm' }, { k: 'a', label: 'Slit width a', min: 0.03, max: 0.4, step: 0.01, unit: ' mm' }, { k: 'D', label: 'Screen distance D', min: 0.5, max: 2, step: 0.01, unit: ' m' }],
+      todo: ['Halve the slit width. What happens to the width of the central maximum?', 'Compare the central maximum for 400 nm and 700 nm.'],
+      quiz: [
+        { src: 'CBSE 2025 · 55/4/1', q: 'Assertion (A): In double slit experiment if one slit is closed, diffraction pattern due to the other slit will appear on the screen.<br>Reason (R): For interference, at least two waves are required.', opts: AR, ans: 1, hint: 'Check each statement on its own first. Then ask: does R explain why a single slit gives a diffraction pattern?', why: 'Both statements are true. But the single-slit pattern arises because wavelets from different parts of the same slit superpose; R does not explain that.' },
+        { src: 'CBSE 2025 · 55/4/1 · 2 marks', q: 'Find the angle of diffraction (in degrees) for first secondary maximum of the pattern due to diffraction at a single slit. The width of the slit and wavelength of light used are 0·55 mm and 550 nm, respectively.' + WR, opts: ['0·057°', '0·086°', '0·115°', '0·172°'], ans: 1, hint: 'First secondary maximum: a sin θ = 3λ/2. Convert radians to degrees.', why: 'θ ≈ 3λ/2a = 1.5 × 550 × 10⁻⁹ / 0.55 × 10⁻³ = 1.5 × 10⁻³ rad = 0.086°.' },
+        { src: 'CBSE 2026 · 55/4/1', q: 'In a single-slit diffraction experiment, light of wavelength λ illuminates the slit of width ‘a’. The diffraction pattern is observed on a screen kept at a distance D from the slits. How is the linear width of central maximum affected when separation between the slit and the screen is decreased?' + WR, opts: ['It decreases', 'It increases', 'It stays the same', 'It first increases, then decreases'], ans: 0, hint: 'Linear width of the central maximum = 2λD/a.', why: 'The width 2λD/a is proportional to D, so it decreases when the screen is brought closer. (The angular width 2λ/a does not change.)' },
+        { src: 'CBSE 2023 · 55/4/1', q: 'In diffraction due to a single slit, the phase difference between light waves reaching a point on the screen is 5π. Explain whether a bright or a dark fringe will be formed at the point.' + WR, opts: ['Bright: 5π means a path difference of 5λ/2, the condition for a secondary maximum', 'Dark: 5π means a path difference of 5λ, the condition for a minimum', 'Dark: every odd multiple of π gives a minimum in single-slit diffraction', 'Bright: it is the central maximum'], ans: 0, hint: 'Path difference = (λ/2π) × phase difference. Minima need nλ; secondary maxima need (n + ½)λ.', why: 'Path difference = (λ/2π) × 5π = 5λ/2 = (2 + ½)λ. That satisfies the condition for a secondary maximum, so the point is bright.' },
+        { src: 'CBSE 2025 · 55/7/1', q: 'In a single slit diffraction experiment, the aperture of the slit is 3 mm and the separation between the slit and the screen is 1·5 m. A monochromatic light of wavelength 600 nm is normally incident on the slit. Calculate the distance of (I) first order minimum, and (II) second order maximum, from the centre of the screen.' + WR, opts: ['0·30 mm and 0·75 mm', '0·30 mm and 0·60 mm', '0·15 mm and 0·75 mm', '0·60 mm and 1·50 mm'], ans: 0, hint: 'First minimum at y = λD/a. Second secondary maximum at y = 5λD/2a.', why: 'λD/a = 600 × 10⁻⁹ × 1.5 / 3 × 10⁻³ = 0.30 mm. Second maximum: 2.5 × 0.30 = 0.75 mm.' }
+      ] },
+
+    { id: 'pol', short: 'Polarisation', title: '6. Polarisation', draw: drawPol,
+      init: { mode: 0, th: 0, i: 30, n: 1.5 }, play: { mode: 0, th: 30 },
+      story: [
+        { cap: 'Light is a <b>transverse</b> wave: the electric field vibrates at right angles to the direction of travel. In ordinary (<b>unpolarised</b>) light it vibrates in every such direction. A <b>polaroid</b> lets through only one direction, giving <b>plane polarised</b> light of half the intensity.' },
+        { cap: 'Turn a second polaroid P₂. The light gets dimmer and dimmer, and when the two are <b>crossed</b> (90°) nothing gets through.', to: { th: 90 }, dur: 4200 },
+        { cap: '<b>Malus\' law</b>: ' + F('I = I₀ cos²θ') + '. At 45° exactly half gets through. Only transverse waves can be polarised, so this proves light is transverse.', to: { th: 45 }, dur: 2600 },
+        { cap: 'Reflection also polarises light. Here unpolarised light meets glass. The reflected beam is only partly polarised.', set: { mode: 1, i: 30 } },
+        { cap: 'At the <b>Brewster angle</b>, ' + F('tan i<sub>B</sub> = n') + ', the reflected and refracted rays are <b>perpendicular</b> and the reflected light is <b>completely polarised</b>, with its electric field perpendicular to the plane of incidence. The refracted light is partly polarised.', to: { i: 56.31 }, dur: 3600 }
+      ],
+      ctl: [{ k: 'mode', label: 'View', num: 1, opts: [['0', 'Two polaroids (Malus\' law)'], ['1', 'Polarisation by reflection (Brewster)']] }, { k: 'th', label: 'Angle θ between the polaroids', when: 0, min: 0, max: 180, step: 0.5, unit: '°' }, { k: 'i', label: 'Angle of incidence', when: 1, min: 10, max: 85, step: 0.5, unit: '°' }, { k: 'n', label: 'Refractive index n', when: 1, min: 1.2, max: 2.4, step: 0.01 }],
+      todo: ['Set θ = 60°. What fraction of I₀ gets through?', 'Brewster view: set n = 1.73 and find the angle at which the reflected light is completely polarised.'],
+      quiz: [
+        { src: 'NEET 2025', q: 'The intensity of transmitted light when a polaroid sheet, placed between two crossed polaroids at 22.5° from the polarization axis of one of the polaroids, is (I₀ is the intensity of polarised light after passing through the first polaroid):', opts: ['I₀/2', 'I₀/4', 'I₀/8', 'I₀/16'], ans: 2, hint: 'Apply Malus\' law twice: 22.5° at the middle sheet, then 90° − 22.5° = 67.5° at the last polaroid.', why: 'I = I₀ cos²22.5° × cos²67.5° = I₀ (sin 22.5° cos 22.5°)² = I₀ (sin 45°/2)² = I₀/8.' },
+        { src: 'NEET 2018', q: 'Unpolarised light is incident from air on a plane surface of a material of refractive index ‘μ’. At a particular angle of incidence ‘i’, it is found that the reflected and refracted rays are perpendicular to each other. Which of the following options is correct for this situation?', opts: ['i = sin⁻¹(1/μ)', 'Reflected light is polarised with its electric vector perpendicular to the plane of incidence', 'Reflected light is polarised with its electric vector parallel to the plane of incidence', 'i = tan⁻¹(1/μ)'], ans: 1, hint: 'Reflected ⟂ refracted is the Brewster condition, tan i = μ. Then recall the direction of E in the reflected beam.', why: 'This is the Brewster angle, i = tan⁻¹ μ. The reflected light is completely polarised with its electric vector perpendicular to the plane of incidence.' },
+        { src: 'NEET 2020', q: 'The Brewsters angle i<sub>b</sub> for an interface should be', opts: ['0° &lt; i<sub>b</sub> &lt; 30°', '30° &lt; i<sub>b</sub> &lt; 45°', '45° &lt; i<sub>b</sub> &lt; 90°', 'i<sub>b</sub> = 90°'], ans: 2, hint: 'tan i<sub>b</sub> = μ, and μ is greater than 1.', why: 'tan i<sub>b</sub> = μ &gt; 1 means i<sub>b</sub> &gt; 45°, and it is always less than 90°.' },
+        { src: 'NEET 2024', q: 'An unpolarised light beam strikes a glass surface at Brewster\'s angle. Then', opts: ['Both the reflected and refracted light will be completely polarised.', 'The reflected light will be completely polarised but the refracted light will be partially polarised.', 'The reflected light will be partially polarised.', 'The refracted light will be completely polarised.'], ans: 1, hint: 'Replay the last step of the animation and look at the dots and bars on each ray.', why: 'By Brewster\'s law the reflected light is completely polarised, while the refracted light is only partially polarised.' },
+        { src: 'NEET 2025', q: 'An unpolarized light beam travelling in air is incident on a medium of refractive index 1.73 at Brewster’s angle. Then', opts: ['Reflected light is completely polarized and the angle of reflection is close to 60°', 'Reflected light is partially polarized and the angle of reflection is close to 30°', 'Both reflected and transmitted light are perfectly polarized with angles of reflection and refraction close to 60° and 30°, respectively', 'Transmitted light is completely polarized with angle of refraction close to 30°'], ans: 0, hint: 'tan i<sub>B</sub> = 1.73 ≈ √3.', why: 'i<sub>B</sub> = tan⁻¹(1.73) = 60°. The angle of reflection is also 60°, and the reflected light is completely polarised. The transmitted light is only partially polarised.' }
+      ] }
+  ];
+
+  /* ================= engine ================= */
+  var KEY = 'wv:lesson:1', S = { t: 0, phase: 'learn', step: 0, q: 0, done: [], first: 0, tried: {} };
+  try { var sv = JSON.parse(localStorage.getItem(KEY)); if (sv && typeof sv.t === 'number' && sv.t <= TOPICS.length) S = sv; } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  var st = {}, raf = 0, still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var svg = $('svg'), out = $('out'), cap = $('cap'), ctl = $('ctl');
+  function topic() { return TOPICS[S.t]; }
+  function assign(a, b) { if (b) Object.keys(b).forEach(function (k) { a[k] = b[k]; }); return a; }
+  function render() {
+    if (!topic()) return;
+    CL = performance.now() / 1000;
+    var r = topic().draw(st);
+    svg.innerHTML = r.svg;
+    out.innerHTML = r.out.map(function (o) { return o.charAt(0) === '!' ? '<span class="big">' + o.slice(1) + '</span>' : '<span>' + o + '</span>'; }).join('');
+  }
+  function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; }
+  function tween(to, dur) {
+    stop();
+    if (!to) { render(); return; }
+    var from = {}, t0 = 0, keys = Object.keys(to);
+    keys.forEach(function (k) { from[k] = st[k]; });
+    if (still || !dur) { assign(st, to); render(); return; }
+    function fr(now) {
+      if (!t0) t0 = now;
+      var p = Math.min(1, (now - t0) / dur), e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      keys.forEach(function (k) { st[k] = from[k] + (to[k] - from[k]) * e; });
+      render();
+      raf = p < 1 ? requestAnimationFrame(fr) : 0;
+    }
+    raf = requestAnimationFrame(fr);
+  }
+  function playStep() {
+    var T0 = topic(), k = S.step, j;
+    st = assign({}, T0.init);
+    for (j = 0; j < k; j++) { assign(st, T0.story[j].set); assign(st, T0.story[j].to); }
+    assign(st, T0.story[k].set);
+    cap.innerHTML = T0.story[k].cap;
+    render();
+    tween(T0.story[k].to, T0.story[k].dur);
+  }
+  function buildCtl() {
+    var T0 = topic(), h = '';
+    T0.ctl.forEach(function (c) {
+      if (c.when != null && c.when !== st.mode) return;
+      if (c.opts) h += '<label>' + c.label + '<select data-k="' + c.k + '">' + c.opts.map(function (o) { return '<option value="' + o[0] + '"' + (String(st[c.k]) === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>';
+      else h += '<label>' + c.label + ': <b>' + (c.step < 1 ? (c.step < 0.1 ? f2(st[c.k]) : f1(st[c.k])) : Math.round(st[c.k])) + (c.unit || '') + '</b><input type="range" data-k="' + c.k + '" min="' + c.min + '" max="' + c.max + '" step="' + c.step + '" value="' + st[c.k] + '"></label>';
+    });
+    ctl.innerHTML = h;
+  }
+  ctl.addEventListener('input', function (e) {
+    var k = e.target.getAttribute('data-k'); if (!k) return;
+    var c = topic().ctl.filter(function (x) { return x.k === k; })[0];
+    if (c.opts) { st[k] = c.num ? parseFloat(e.target.value) : e.target.value; render(); buildCtl(); }
+    else { st[k] = parseFloat(e.target.value); e.target.parentNode.querySelector('b').textContent = (c.step < 1 ? (c.step < 0.1 ? f2(st[k]) : f1(st[k])) : Math.round(st[k])) + (c.unit || ''); render(); }
+  });
+
+  function pills() {
+    var h = '';
+    TOPICS.forEach(function (t, i) {
+      var open = i === 0 || S.done[i - 1] || S.done[i];
+      h += '<button class="pill' + (i === S.t ? ' cur' : S.done[i] ? ' done' : '') + '" data-t="' + i + '"' + (open ? '' : ' disabled title="Finish the previous topic first"') + '>' + (S.done[i] ? '✓ ' : open ? '' : '🔒 ') + t.short + '</button>';
+    });
+    $('pills').innerHTML = h;
+    var n = S.done.filter(Boolean).length;
+    $('bar').style.width = (n / TOPICS.length * 100) + '%';
+  }
+  $('pills').addEventListener('click', function (e) {
+    var b = e.target.closest('.pill'); if (!b || b.disabled) return;
+    S.t = +b.getAttribute('data-t'); S.phase = 'learn'; S.step = 0; S.q = 0; show(true);
+  });
+
+  function show(scroll) {
+    stop(); save(); pills();
+    var fin = S.t >= TOPICS.length;
+    $('stage').hidden = fin || S.phase === 'quiz';
+    $('quiz').hidden = fin || S.phase !== 'quiz';
+    $('finish').hidden = !fin;
+    if (fin) { finish(); if (scroll) window.scrollTo(0, 0); return; }
+    var T0 = topic();
+    if (S.phase === 'quiz') { quiz(); }
+    else {
+      $('ttl').textContent = T0.title;
+      var play = S.phase === 'play', n = T0.story.length, d = '';
+      for (var i = 0; i < n; i++) d += '<i class="' + (play || i < S.step ? 'ok' : i === S.step ? 'on' : '') + '"></i>';
+      $('dots').innerHTML = d;
+      $('ph').textContent = play ? 'Your turn' : 'Watch · step ' + (S.step + 1) + ' of ' + n;
+      ctl.hidden = !play; $('todo').hidden = !play; $('bReplay').hidden = play;
+      $('bBack').disabled = !play && S.step === 0;
+      if (play) {
+        st = assign({}, T0.init);
+        T0.story.forEach(function (s) { assign(st, s.set); assign(st, s.to); });
+        assign(st, T0.play);
+        cap.innerHTML = '<b>Your turn.</b> Move the sliders and see how the picture changes. When you are ready, start the questions.';
+        $('todo').innerHTML = T0.todo.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+        buildCtl(); render();
+        $('bNext').textContent = 'Start the 5 questions ▶';
+      } else {
+        $('bNext').textContent = S.step === n - 1 ? 'Try it yourself ▶' : 'Next ▶';
+        playStep();
+      }
+    }
+    if (scroll) $('pills').scrollIntoView({ block: 'start' });
+  }
+  $('bNext').onclick = function () {
+    var n = topic().story.length;
+    if (S.phase === 'learn') { if (S.step < n - 1) S.step++; else S.phase = 'play'; show(); }
+    else { S.phase = 'quiz'; S.q = 0; show(true); }
+  };
+  $('bBack').onclick = function () {
+    if (S.phase === 'play') { S.phase = 'learn'; S.step = topic().story.length - 1; } else if (S.step > 0) S.step--;
+    show();
+  };
+  $('bReplay').onclick = playStep;
+
+  /* ---------- questions ---------- */
+  function quiz() {
+    var T0 = topic(), Q = T0.quiz, box = $('quiz'), n = Q.length;
+    if (S.q >= n) { // all solved: ask the student to confirm
+      box.innerHTML = '<div class="phase"><h2>' + T0.title + '</h2><span class="badge n">All ' + n + ' solved</span></div>' +
+        '<p>Well done. Before moving on, be honest with yourself:</p>' +
+        '<label class="confirm"><input type="checkbox" id="ok"><span>I solved all ' + n + ' questions on paper and I understand why each answer is correct.</span></label>' +
+        '<div class="btns"><button class="btn" id="qAgain">↻ See the animation again</button><button class="btn" id="qRedo">Redo the questions</button><button class="btn main" id="qGo" disabled>' + (S.t === TOPICS.length - 1 ? 'Finish the chapter ▶' : 'Next topic: ' + TOPICS[S.t + 1].short + ' ▶') + '</button></div>';
+      $('ok').onchange = function () { $('qGo').disabled = !this.checked; };
+      $('qAgain').onclick = function () { S.phase = 'learn'; S.step = 0; show(true); };
+      $('qRedo').onclick = function () { S.q = 0; show(true); };
+      $('qGo').onclick = function () { S.done[S.t] = true; S.t++; S.phase = 'learn'; S.step = 0; S.q = 0; show(true); };
+      return;
+    }
+    var q = Q[S.q], d = '', key = T0.id + S.q, wrong = false, solved = false;
+    for (var i = 0; i < n; i++) d += '<i class="' + (i < S.q ? 'ok' : i === S.q ? 'on' : '') + '"></i>';
+    var cls = q.src.indexOf('NEET') === 0 ? 'q' : q.src.indexOf('NCERT') === 0 ? 'n' : q.src.indexOf('CBSE') === 0 ? 'c' : 'b';
+    box.innerHTML = '<div class="phase"><h2>' + T0.title + '</h2><span class="badge">Question ' + (S.q + 1) + ' of ' + n + '</span><span class="dots">' + d + '</span></div>' +
+      '<span class="badge ' + cls + '">' + q.src + '</span><p class="qtext">' + q.q + '</p><div class="opts">' +
+      q.opts.map(function (o, j) { return '<button class="opt" data-j="' + j + '"><span class="k">' + '(' + (j + 1) + ')</span><span>' + o + '</span></button>'; }).join('') +
+      '</div><div id="fb" aria-live="polite"></div><div class="btns"><button class="btn" id="qBack">◀ Back to the animation</button><button class="btn main" id="qNext" disabled>' + (S.q === n - 1 ? 'Finish questions ▶' : 'Next question ▶') + '</button></div>';
+    box.querySelector('.opts').onclick = function (e) {
+      var b = e.target.closest('.opt'); if (!b || b.disabled || solved) return;
+      var j = +b.getAttribute('data-j');
+      if (j === q.ans) {
+        solved = true; b.classList.add('good');
+        [].forEach.call(box.querySelectorAll('.opt'), function (x) { x.disabled = true; });
+        if (!S.tried[key]) { S.tried[key] = wrong ? 2 : 1; if (!wrong) S.first++; save(); }
+        $('fb').innerHTML = '<div class="fb why"><strong>' + (wrong ? 'Correct now.' : 'Correct!') + '</strong>' + q.why + '</div>';
+        $('qNext').disabled = false; $('qNext').focus();
+      } else {
+        wrong = true; b.classList.add('bad'); b.disabled = true;
+        $('fb').innerHTML = '<div class="fb hint"><strong>Not quite. Try again.</strong>Hint: ' + q.hint + '</div>';
+      }
+    };
+    $('qBack').onclick = function () { S.phase = 'learn'; S.step = 0; show(true); };
+    $('qNext').onclick = function () { S.q++; show(true); };
+  }
+
+  function finish() {
+    var total = TOPICS.reduce(function (a, t) { return a + t.quiz.length; }, 0);
+    $('finish').innerHTML = '<div class="phase"><h2>Chapter complete 🎉</h2><span class="badge n">6 of 6 topics</span></div>' +
+      '<p class="score">' + Math.min(S.first, total) + ' / ' + total + '</p><p>questions solved on the first try. Go back to any topic with the buttons above.</p>' +
+      '<h3>Formula sheet</h3><table>' +
+      '<tr><th>Topic</th><th>Formula</th></tr>' +
+      '<tr><td>Wavefront</td><td>surface of constant phase · rays ⟂ wavefronts · point source: spherical, far away: plane</td></tr>' +
+      '<tr><td>Huygens</td><td>each point is a source of secondary wavelets · new wavefront = their envelope</td></tr>' +
+      '<tr><td>Refraction</td><td>sin i / sin r = v₁/v₂ = n₂₁ · λ₂ = λ₁/n · frequency unchanged</td></tr>' +
+      '<tr><td>Interference</td><td>I = 4I₀ cos²(φ/2) · φ = 2π(path difference)/λ · I<sub>max</sub>/I<sub>min</sub> = (a₁ + a₂)²/(a₁ − a₂)²</td></tr>' +
+      '<tr><td>Double slit</td><td>bright: path difference = nλ · dark: (n + ½)λ · β = λD/d · in a liquid: β/μ</td></tr>' +
+      '<tr><td>Single slit</td><td>minima: a sin θ = nλ · secondary maxima: (n + ½)λ · central width = 2λD/a</td></tr>' +
+      '<tr><td>Polarisation</td><td>Malus: I = I₀ cos²θ · Brewster: tan i<sub>B</sub> = n</td></tr></table>' +
+      '<div class="btns"><a class="btn" href="../rayvisual/">Ray Optics lesson</a><a class="btn main" href="../physics/practice.html">More practice ▶</a></div>';
+  }
+
+  $('bReset').onclick = function () {
+    if (!confirm('Clear your progress and start from topic 1?')) return;
+    S = { t: 0, phase: 'learn', step: 0, q: 0, done: [], first: 0, tried: {} }; show(true);
+  };
+  window.__rv = { S: function () { return S; }, show: show, topics: TOPICS, set: function (x) { S = x; } };
+  show();
+  // keep the waves moving between tweens
+  (function loop() {
+    if (window.__nolive || still) return;
+    requestAnimationFrame(loop);
+    if (!raf && !document.hidden && topic() && S.phase !== 'quiz') render();
+  })();
+})();
+</script>
+</body>
+</html>
