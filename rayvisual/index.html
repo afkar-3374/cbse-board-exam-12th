@@ -6,6 +6,7 @@
 <title>Ray Optics – Animated Lesson</title>
 <meta name="description" content="Class 12 Physics Chapter 9, Ray Optics, as a guided animated lesson. Watch each idea, try it yourself, then solve five question-paper questions to unlock the next topic.">
 <link rel="stylesheet" href="../style.css">
+<script type="importmap">{ "imports": { "three": "../lib/three/three.module.min.js" } }</script>
 <style>
 main { max-width: 860px; }
 h1 { margin-bottom: 4px; }
@@ -87,6 +88,28 @@ svg text.g { fill: var(--good); }
 @keyframes bob { 50% { transform: translateY(-4px); } }
 @keyframes glow { 50% { box-shadow: 0 0 20px var(--warn); } }
 @media (prefers-reduced-motion: reduce) { .say, .moral { animation: none; opacity: 1; transform: none; } #tale .scene i, .say.sL .av { animation: none; } }
+/* view switch + 3D */
+.vt { display: inline-flex; gap: 0; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; margin: 2px 0 10px; }
+.vt button { font: inherit; font-size: 0.86rem; font-weight: 600; border: 0; background: var(--surface); color: var(--muted); padding: 6px 14px; cursor: pointer; }
+.vt button + button { border-left: 1px solid var(--border); }
+.vt button.on { background: var(--accent); color: var(--surface); }
+body:not(.has3d) .vt, body:not(.has3d) #v3 { display: none; }
+body.v-2d #v3 { display: none; }
+body.has3d.v-3d #svg { display: none; }
+#v3 { position: relative; margin-top: 10px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: #10151f; aspect-ratio: 16 / 9; }
+#v3 canvas { display: block; width: 100%; height: auto; cursor: grab; touch-action: pan-y; }
+#v3 canvas:active { cursor: grabbing; }
+#v3 .v3h { position: absolute; left: 10px; bottom: 8px; font-size: 0.78rem; color: #c9d3e3; background: rgba(10,14,22,.6); padding: 3px 9px; border-radius: 999px; pointer-events: none; }
+#v3 .v3t { position: absolute; left: 10px; top: 8px; font-size: 0.78rem; font-weight: 700; color: #ffd38a; background: rgba(10,14,22,.6); padding: 3px 9px; border-radius: 999px; pointer-events: none; letter-spacing: .03em; }
+#v3 .v3r { position: absolute; right: 8px; top: 8px; font: inherit; font-size: 0.8rem; color: #dfe6f1; background: rgba(10,14,22,.65); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+/* richer 2D drawing */
+#svg { background-color: var(--bg); background-image: linear-gradient(rgba(127,140,160,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(127,140,160,.10) 1px, transparent 1px); background-size: 24px 24px; }
+svg .acc, svg .acc2, svg .ray3 { filter: url(#glow); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.6; }
+svg .fillb { fill: url(#glass); stroke: #5d9fd6; stroke-width: 1.6; }
+svg .med { fill: url(#water); }
+svg .wax { fill: url(#wax); stroke: #b49a6a; stroke-width: 1; }
+svg .flame { fill: url(#flame); }
+svg .ghost { fill: var(--good); fill-opacity: .18; stroke: var(--good); stroke-width: 1.4; stroke-dasharray: 4 3; }
 [hidden] { display: none !important; }
 </style>
 </head>
@@ -112,7 +135,9 @@ svg text.g { fill: var(--good); }
   <div class="phase"><h2 id="ttl"></h2><span class="badge" id="ph"></span><span class="dots" id="dots"></span></div>
   <div id="tale" aria-live="polite"></div>
   <div id="capwrap"><div class="lbl" id="capl">📐 The physics</div><p id="cap"></p></div>
+  <div class="vt" id="vt" role="group" aria-label="Picture type"><button data-v="2d">✏️ 2D diagram</button><button data-v="3d">🧊 3D real world</button><button data-v="both">Both</button></div>
   <svg id="svg" viewBox="0 0 720 320" role="img" aria-label="Ray diagram"></svg>
+  <div id="v3"><span class="v3t">3D · REAL WORLD</span><button class="v3r" id="v3reset">⟲ Reset view</button><span class="v3h">Drag to look around</span></div>
   <div class="out" id="out"></div>
   <div class="ctl" id="ctl" hidden></div>
   <ul class="todo" id="todo" hidden></ul>
@@ -159,7 +184,15 @@ svg text.g { fill: var(--good); }
   function atX(a, b, X) { return [X, a[1] + (b[1] - a[1]) * (X - a[0]) / (b[0] - a[0])]; }
   function T(x, y, s, cls) { return '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '"' + (cls ? ' class="' + cls + '"' : '') + '>' + s + '</text>'; }
   function dot(p, lab, dy) { return '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="2.6"/>' + (lab ? T(p[0] - 4, p[1] + (dy || 16), lab, 's') : ''); }
+  function candle(x, y0, y1, ghost) {
+    var h = y1 - y0, a = Math.abs(h), sg = h < 0 ? -1 : 1, w = Math.max(5, Math.min(13, a * 0.2)), wy = y0 + 0.7 * h, fy = y0 + 0.86 * h;
+    var g = '<rect class="' + (ghost ? 'ghost' : 'wax') + '" x="' + (x - w / 2).toFixed(1) + '" y="' + Math.min(y0, wy).toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + Math.abs(wy - y0).toFixed(1) + '" rx="2"/>';
+    g += '<line class="thin" x1="' + x.toFixed(1) + '" y1="' + wy.toFixed(1) + '" x2="' + x.toFixed(1) + '" y2="' + (y0 + 0.76 * h).toFixed(1) + '"/>';
+    g += '<path class="' + (ghost ? 'ghost' : 'flame') + '" d="M' + x.toFixed(1) + ' ' + y1.toFixed(1) + ' Q ' + (x + w * 0.62).toFixed(1) + ' ' + (fy + sg * a * 0.05).toFixed(1) + ' ' + x.toFixed(1) + ' ' + (y0 + 0.74 * h).toFixed(1) + ' Q ' + (x - w * 0.62).toFixed(1) + ' ' + (fy + sg * a * 0.05).toFixed(1) + ' ' + x.toFixed(1) + ' ' + y1.toFixed(1) + ' Z"/>';
+    return g;
+  }
   function arrow(x, y0, y1, cls, fc) {
+    if (Math.abs(y1 - y0) > 22 && (cls === 'ln' || cls === 'ray3')) return candle(x, y0, y1, cls === 'ray3');
     var s = y1 < y0 ? 1 : -1;
     return '<line class="' + cls + '" x1="' + x.toFixed(1) + '" y1="' + y0 + '" x2="' + x.toFixed(1) + '" y2="' + y1.toFixed(1) + '"/><polygon class="' + fc + '" points="' + P([x, y1 - s * 2]) + ' ' + P([x - 5, y1 + s * 8]) + ' ' + P([x + 5, y1 + s * 8]) + '"/>';
   }
@@ -544,10 +577,12 @@ svg text.g { fill: var(--good); }
   var svg = $('svg'), out = $('out'), cap = $('cap'), ctl = $('ctl');
   function topic() { return TOPICS[S.t]; }
   function assign(a, b) { if (b) Object.keys(b).forEach(function (k) { a[k] = b[k]; }); return a; }
+  var DEFS = '<defs><filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#9fd3ff" stop-opacity=".75"/><stop offset=".4" stop-color="#eef8ff" stop-opacity=".55"/><stop offset="1" stop-color="#7bbcec" stop-opacity=".8"/></linearGradient><linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#66c2ff"/><stop offset="1" stop-color="#1c64b4"/></linearGradient><linearGradient id="wax" x1="0" x2="1"><stop offset="0" stop-color="#e9dcb8"/><stop offset=".45" stop-color="#fffaf0"/><stop offset="1" stop-color="#d8c79c"/></linearGradient><radialGradient id="flame" cx=".5" cy=".65" r=".6"><stop offset="0" stop-color="#fffbe0"/><stop offset=".45" stop-color="#ffc93c"/><stop offset="1" stop-color="#ff6a00" stop-opacity=".85"/></radialGradient></defs>';
   function render() {
     if (!topic()) return;
     var r = topic().draw(st);
-    svg.innerHTML = r.svg;
+    svg.innerHTML = DEFS + r.svg;
+    if (window.V3) V3.draw(topic().id, st); else window.__v3pending = [topic().id, st];
     out.innerHTML = r.out.map(function (o) { return o.charAt(0) === '!' ? '<span class="big">' + o.slice(1) + '</span>' : '<span>' + o + '</span>'; }).join('');
   }
   function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; }
@@ -723,6 +758,10 @@ svg text.g { fill: var(--good); }
       '<div class="btns"><a class="btn" href="notes.html">Read the full notes version</a><a class="btn main" href="../physics/practice.html">More practice ▶</a></div>';
   }
 
+  var VIEW = localStorage.getItem('view:mode') || 'both';
+  function setView(v) { VIEW = v; document.body.classList.remove('v-2d', 'v-3d', 'v-both'); document.body.classList.add('v-' + v); [].forEach.call($('vt').children, function (b) { b.className = b.getAttribute('data-v') === v ? 'on' : ''; }); try { localStorage.setItem('view:mode', v); } catch (e) {} }
+  $('vt').onclick = function (e) { var b = e.target.closest('button'); if (b) setView(b.getAttribute('data-v')); };
+  setView(VIEW);
   $('bReset').onclick = function () {
     if (!confirm('Clear your progress and start from topic 1?')) return;
     S = { t: 0, phase: 'learn', step: 0, q: 0, done: [], first: 0, tried: {} }; show(true);
@@ -730,6 +769,11 @@ svg text.g { fill: var(--good); }
   window.__rv = { S: function () { return S; }, show: show, topics: TOPICS, set: function (x) { S = x; } };
   show();
 })();
+</script>
+<script type="module">
+import { start } from "../lib/view3d.js";
+import SCENES from "./scene3d.js";
+start(SCENES);
 </script>
 </body>
 </html>
