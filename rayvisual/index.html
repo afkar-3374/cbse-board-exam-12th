@@ -65,6 +65,28 @@ svg .ray3 { stroke: var(--good); fill: none; stroke-width: 2.2; }
 svg .fa { fill: var(--svg-accent); } svg .fa2 { fill: var(--svg-accent2); } svg .fg { fill: var(--good); }
 svg .med { fill: var(--svg-accent); stroke: none; }
 svg text.g { fill: var(--good); }
+.storybar { display: flex; justify-content: flex-end; margin: -4px 0 8px; }
+.stog { font: inherit; font-size: 0.84rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.stog.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+#tale { margin: 4px 0 12px; display: grid; gap: 8px; }
+#tale .scene { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--accent); font-size: 0.95rem; }
+#tale .scene i { font-style: normal; font-size: 1.6rem; letter-spacing: 2px; animation: bob 2.4s ease-in-out infinite; }
+.say { display: flex; gap: 10px; align-items: flex-start; opacity: 0; transform: translateY(6px); animation: pop .45s ease-out forwards; }
+.say .av { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 1.25rem; background: var(--accent-soft); border: 1.5px solid var(--border); }
+.say.sL .av { background: var(--warn-soft); border-color: var(--warn); box-shadow: 0 0 12px var(--warn-soft); animation: glow 2s ease-in-out infinite; }
+.say > div { background: var(--bg); border: 1px solid var(--border); border-radius: 4px 14px 14px 14px; padding: 7px 12px; line-height: 1.45; font-size: 1rem; }
+.say > div b.who { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 1px; }
+.say.sL > div { border-color: var(--warn); }
+.say.sN > div { font-style: italic; background: transparent; border-style: dashed; }
+.moral { background: var(--accent-soft); border-left: 4px solid var(--good); border-radius: 10px; padding: 9px 14px; animation: pop .45s ease-out forwards; }
+.moral strong { display: block; margin-bottom: 2px; }
+#capwrap { margin: 4px 0 10px; }
+#capwrap .lbl { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+#capwrap #cap { margin-top: 2px; }
+@keyframes pop { to { opacity: 1; transform: none; } }
+@keyframes bob { 50% { transform: translateY(-4px); } }
+@keyframes glow { 50% { box-shadow: 0 0 20px var(--warn); } }
+@media (prefers-reduced-motion: reduce) { .say, .moral { animation: none; opacity: 1; transform: none; } #tale .scene i, .say.sL .av { animation: none; } }
 [hidden] { display: none !important; }
 </style>
 </head>
@@ -80,14 +102,16 @@ svg text.g { fill: var(--good); }
 </div></header>
 <main>
 <h1>Ray Optics, animated</h1>
-<p class="lead">Watch the idea, try it yourself, solve 5 questions, then the next topic opens.</p>
+<p class="lead">Follow <b>Lumi</b>, a little ray of sunlight, and her friend Meera through six short stories. Watch the idea, try it yourself, solve 5 questions, then the next topic opens.</p>
+<div class="storybar"><button class="stog on" id="bStory" aria-pressed="true">📖 Story mode: on</button></div>
 
 <div class="pills" id="pills"></div>
 <div class="bar"><i id="bar"></i></div>
 
 <section class="card2" id="stage">
   <div class="phase"><h2 id="ttl"></h2><span class="badge" id="ph"></span><span class="dots" id="dots"></span></div>
-  <p id="cap" aria-live="polite"></p>
+  <div id="tale" aria-live="polite"></div>
+  <div id="capwrap"><div class="lbl" id="capl">📐 The physics</div><p id="cap"></p></div>
   <svg id="svg" viewBox="0 0 720 320" role="img" aria-label="Ray diagram"></svg>
   <div class="out" id="out"></div>
   <div class="ctl" id="ctl" hidden></div>
@@ -446,6 +470,72 @@ svg text.g { fill: var(--good); }
       ] }
   ];
 
+  /* ================= story (Lumi's journey) ================= */
+  var CAST = { N: ['📖', 'Story'], L: ['✨', 'Lumi'], M: ['👧', 'Meera'], D: ['👴', 'Dadu'] };
+  var TALES = {
+    mirror: { scene: '🎡🪞', place: 'Chapter 1 · The Hall of Mirrors',
+      steps: [
+        ['N|Lumi is a tiny ray of sunlight. After 8 minutes racing from the Sun, she lands at the town fair, in the Hall of Mirrors. Meera, a Class 12 student, is standing in front of a big shiny bowl-shaped mirror.', 'M|Who are you?', 'L|I\'m Lumi, a ray of light! This bowl is a concave mirror. Let me show you how it makes your picture.'],
+        ['L|Watch me. I come in parallel to the axis, hit the mirror, and bounce straight through that special point F, the focus. Every parallel ray does the same thing.'],
+        ['L|My sister ray aims at the centre of the mirror, the pole. She bounces off like a cricket ball off the floor, at the same angle on the other side.'],
+        ['M|You two crossed over there!', 'L|Yes! Where we cross, your image is made. It\'s real, so you could catch it on a screen, and it\'s upside down.'],
+        ['N|Meera steps closer, to the point C.', 'M|Now my upside-down twin is exactly my size!', 'L|At C, the image comes back to C, same size.'],
+        ['M|One more step and the upside-down me became a giant!', 'L|Between C and F the image runs far away and gets bigger.'],
+        ['N|Meera steps very close, inside F, and suddenly she\'s the right way up and huge.', 'M|This is Papa\'s shaving mirror!', 'L|Now the rays spread out and never meet. Your eyes trace them back behind the mirror, so you see a virtual image there.'],
+        ['N|Outside, Meera climbs onto her dad\'s scooter and looks in the bulging side mirror.', 'L|That\'s a convex mirror. It always spreads me out, so the picture is small and upright, and you can see the whole road behind you.']
+      ],
+      moral: 'A concave mirror can make a real, upside-down image or a virtual, giant one, depending on where you stand. A convex mirror always gives a small, upright, virtual image.' },
+    refr: { scene: '🏊💧', place: 'Chapter 2 · The Swimming Pool',
+      steps: [
+        ['N|After the fair, Lumi follows Meera to the swimming pool.', 'L|In plain air I run in a perfectly straight line. Nothing to bend me.'],
+        ['N|Lumi dives into the water at a slant.', 'L|Ooh, it\'s thick in here! I slow down, and because one side of me hits the water first, I turn towards the normal. It\'s like a shopping trolley whose left wheel hits sand first and swerves.', 'M|So the slower you go, the more you turn?'],
+        ['L|The steeper I dive, the more I bend, but Snell\'s rule always holds: n₁ sin i = n₂ sin r. I never break it.'],
+        ['L|If I dive straight down, along the normal, both sides of me slow down together. No swerving, just slowing.'],
+        ['N|Now Lumi bounces off a coin at the bottom and comes back up into the air.', 'L|Going from water into air I speed up and bend away from the normal. Your eye thinks I came from higher up.', 'M|That\'s why the pool looked shallow and I almost jumped into the deep end!']
+      ],
+      moral: 'Light bends at a boundary because its speed changes. Into a denser medium it bends towards the normal, into a rarer one away from it, and every time n₁ sin i = n₂ sin r.' },
+    tir: { scene: '💎📡', place: 'Chapter 3 · Trapped in the Glass',
+      steps: [
+        ['N|Lumi gets caught inside a thick glass block on Meera\'s desk. She wants to get out into the air.', 'L|I\'ll head for the surface. I get out, bending away from the normal, but a little bit of me reflects back inside.'],
+        ['L|Let me try a steeper angle. Hmm, I only just get out now. I\'m skimming closer and closer to the surface.'],
+        ['L|At about 42° I come out running flat along the surface. That angle is the critical angle, where sin i<sub>c</sub> = 1/n.'],
+        ['L|Any steeper and I can\'t get out at all! The surface acts like a perfect mirror and 100% of me bounces back. That\'s total internal reflection.', 'M|So a diamond sparkles because light gets trapped and bounces around inside it!'],
+        ['N|Meera\'s video call to her cousin in Dubai travels as light inside a thin glass fibre under the sea.', 'L|In an optical fibre I hit the wall beyond the critical angle every time, so I bounce, bounce, bounce all the way, even round bends, and none of me escapes.']
+      ],
+      moral: 'Total internal reflection needs two things: light going from a denser to a rarer medium, and an angle bigger than the critical angle (sin i<sub>c</sub> = 1/n).' },
+    lens: { scene: '👓🔥', place: 'Chapter 4 · Dadu\'s Spectacles',
+      steps: [
+        ['N|Meera\'s grandfather, Dadu, picks up his reading glass.', 'D|Back in my school days we lit paper with this on a sunny afternoon!', 'L|A lens is just two curved glass surfaces. Each one bends me, and all of us parallel rays meet at one hot spot: the focus.'],
+        ['L|Make the faces more curved and I bend more sharply, so the focus comes closer. That\'s the lens maker\'s formula.'],
+        ['N|Dadu\'s glasses fall into a bucket of water.', 'L|Glass is only a little denser than water, so I hardly bend now. The lens has become weak.'],
+        ['L|In a liquid denser than glass, the same lens even spreads me out. It becomes a diverging lens!', 'M|So a lens isn\'t convex or concave on its own. It depends on what\'s around it!'],
+        ['N|Back on land, Meera points the lens at a candle.', 'L|First rule: if I come in parallel to the axis, I pass through F on the other side.'],
+        ['L|Second rule: through the exact centre of the lens I go straight. Where my sister and I meet, the candle\'s image appears.'],
+        ['M|When I move the candle closer, its image on the wall gets huge!', 'L|That\'s how the projector in your classroom works.'],
+        ['L|Bring the candle inside F and I can\'t make a real image. Look through the lens and you see a big, upright candle: a magnifying glass.', 'D|That\'s how I read the newspaper!'],
+        ['L|Dadu\'s other glasses use a concave lens. It always makes things look smaller and upright. Opticians measure lens strength in dioptres, P = 1/f.']
+      ],
+      moral: 'Convex lenses bring light together and concave lenses spread it out. Use 1/v − 1/u = 1/f, and remember that the medium around the lens changes its power.' },
+    prism: { scene: '🔺🌈', place: 'Chapter 5 · The Glass Mountain',
+      steps: [
+        ['N|At the science lab, Lumi climbs over a glass prism, a little triangular mountain.', 'L|I bend towards the base when I go in, and again when I come out. My total turn is the deviation δ.'],
+        ['L|If I hit the first face at a very steep angle, I turn a lot. Watch the dot climb high on the graph.'],
+        ['M|As you come in straighter, you turn less... and then more again?', 'L|Yes! The graph drops, reaches a bottom, and rises again.'],
+        ['L|At the very bottom is minimum deviation. My path is perfectly balanced: I go in and come out at the same angle, and inside the prism I travel parallel to the base. That\'s how you measure n.'],
+        ['L|Come in too flat, though, and I hit the second face beyond the critical angle. I get trapped, just like in the glass block!']
+      ],
+      moral: 'In a prism δ = i + e − A. Deviation is smallest when the path is symmetric (i = e), and that gives n = sin[(A + δ<sub>m</sub>)/2] / sin(A/2).' },
+    inst: { scene: '🔬🔭', place: 'Chapter 6 · The Tiny and the Far',
+      steps: [
+        ['N|In biology class, Meera looks at an onion cell, far too small for her eye.', 'L|The objective lens is close to the cell. I make a big, upside-down real image inside the tube.'],
+        ['L|Then the eyepiece acts like Dadu\'s magnifying glass on that image. Both lenses have short focal lengths, so the cell looks hundreds of times bigger.'],
+        ['N|At night, on the terrace, Meera points a telescope at Saturn.', 'L|My cousins from Saturn arrive in parallel lines. The big objective lens focuses them, and the eyepiece sends them out again at a much bigger angle.'],
+        ['M|A longer telescope shows Saturn bigger?', 'L|Yes. A longer objective focal length means more magnification: m = f₀/fₑ.'],
+        ['L|A stronger eyepiece helps too. And a wide objective lens catches more of my family, so faint stars look bright and sharp.', 'N|Meera sees Saturn\'s rings for the first time. Lumi\'s journey through ray optics is complete!']
+      ],
+      moral: 'Microscope: two short focal lengths, m ≈ (L/f₀)(D/fₑ). Telescope: a long objective and a short eyepiece, m = f₀/fₑ and L = f₀ + fₑ.' }
+  };
+
   /* ================= engine ================= */
   var KEY = 'rv:lesson:2', S = { t: 0, phase: 'learn', step: 0, q: 0, done: [], first: 0, tried: {} };
   try { var sv = JSON.parse(localStorage.getItem(KEY)); if (sv && typeof sv.t === 'number' && sv.t <= TOPICS.length) S = sv; } catch (e) {}
@@ -476,12 +566,29 @@ svg text.g { fill: var(--good); }
     }
     raf = requestAnimationFrame(fr);
   }
+  var STORY = localStorage.getItem('story:on') !== '0';
+  function tell(T0, k) {
+    var el = $('tale'), tl = TALES[T0.id];
+    $('bStory').className = 'stog' + (STORY ? ' on' : ''); $('bStory').textContent = '📖 Story mode: ' + (STORY ? 'on' : 'off'); $('bStory').setAttribute('aria-pressed', STORY);
+    $('capl').hidden = !STORY || !tl;
+    if (!STORY || !tl) { el.hidden = true; el.innerHTML = ''; return; }
+    el.hidden = false;
+    var h = '<div class="scene"><i>' + tl.scene + '</i><span>' + tl.place + '</span></div>';
+    if (k === 'play') h += '<div class="moral"><strong>✨ What Lumi taught us</strong>' + tl.moral + '</div>';
+    else (tl.steps[k] || []).forEach(function (ln, i) {
+      var w = CAST[ln.charAt(0)];
+      h += '<div class="say s' + ln.charAt(0) + '" style="animation-delay:' + (i * 0.7).toFixed(1) + 's"><span class="av" aria-hidden="true">' + w[0] + '</span><div><b class="who">' + w[1] + '</b>' + ln.slice(2) + '</div></div>';
+    });
+    el.innerHTML = h;
+  }
+  $('bStory').onclick = function () { STORY = !STORY; try { localStorage.setItem('story:on', STORY ? '1' : '0'); } catch (e) {} tell(topic(), S.phase === 'play' ? 'play' : S.step); };
   function playStep() {
     var T0 = topic(), k = S.step, j;
     st = assign({}, T0.init);
     for (j = 0; j < k; j++) { assign(st, T0.story[j].set); assign(st, T0.story[j].to); }
     assign(st, T0.story[k].set);
     cap.innerHTML = T0.story[k].cap;
+    tell(T0, k);
     render();
     tween(T0.story[k].to, T0.story[k].dur);
   }
@@ -539,6 +646,7 @@ svg text.g { fill: var(--good); }
         assign(st, T0.play);
         cap.innerHTML = '<b>Your turn.</b> Move the sliders and see how the picture changes. When you are ready, start the questions.';
         $('todo').innerHTML = T0.todo.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+        tell(T0, 'play');
         buildCtl(); render();
         $('bNext').textContent = 'Start the 5 questions ▶';
       } else {

@@ -65,6 +65,28 @@ svg .ray3 { stroke: var(--good); fill: none; stroke-width: 2.2; }
 svg .fa { fill: var(--svg-accent); } svg .fa2 { fill: var(--svg-accent2); } svg .fg { fill: var(--good); }
 svg .med { fill: var(--svg-accent); stroke: none; }
 svg text.g { fill: var(--good); }
+.storybar { display: flex; justify-content: flex-end; margin: -4px 0 8px; }
+.stog { font: inherit; font-size: 0.84rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.stog.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+#tale { margin: 4px 0 12px; display: grid; gap: 8px; }
+#tale .scene { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--accent); font-size: 0.95rem; }
+#tale .scene i { font-style: normal; font-size: 1.6rem; letter-spacing: 2px; animation: bob 2.4s ease-in-out infinite; }
+.say { display: flex; gap: 10px; align-items: flex-start; opacity: 0; transform: translateY(6px); animation: pop .45s ease-out forwards; }
+.say .av { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 1.25rem; background: var(--accent-soft); border: 1.5px solid var(--border); }
+.say.sL .av { background: var(--warn-soft); border-color: var(--warn); box-shadow: 0 0 12px var(--warn-soft); animation: glow 2s ease-in-out infinite; }
+.say > div { background: var(--bg); border: 1px solid var(--border); border-radius: 4px 14px 14px 14px; padding: 7px 12px; line-height: 1.45; font-size: 1rem; }
+.say > div b.who { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 1px; }
+.say.sL > div { border-color: var(--warn); }
+.say.sN > div { font-style: italic; background: transparent; border-style: dashed; }
+.moral { background: var(--accent-soft); border-left: 4px solid var(--good); border-radius: 10px; padding: 9px 14px; animation: pop .45s ease-out forwards; }
+.moral strong { display: block; margin-bottom: 2px; }
+#capwrap { margin: 4px 0 10px; }
+#capwrap .lbl { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+#capwrap #cap { margin-top: 2px; }
+@keyframes pop { to { opacity: 1; transform: none; } }
+@keyframes bob { 50% { transform: translateY(-4px); } }
+@keyframes glow { 50% { box-shadow: 0 0 20px var(--warn); } }
+@media (prefers-reduced-motion: reduce) { .say, .moral { animation: none; opacity: 1; transform: none; } #tale .scene i, .say.sL .av { animation: none; } }
 [hidden] { display: none !important; }
 </style>
 </head>
@@ -79,14 +101,16 @@ svg text.g { fill: var(--good); }
 </div></header>
 <main>
 <h1>Wave Optics, animated</h1>
-<p class="lead">Watch the idea, try it yourself, solve 5 questions, then the next topic opens.</p>
+<p class="lead">Lumi the light ray has a secret: she is also a <b>wave</b>. Follow her and Meera through six short stories. Watch the idea, try it yourself, solve 5 questions, then the next topic opens.</p>
+<div class="storybar"><button class="stog on" id="bStory" aria-pressed="true">📖 Story mode: on</button></div>
 
 <div class="pills" id="pills"></div>
 <div class="bar"><i id="bar"></i></div>
 
 <section class="card2" id="stage">
   <div class="phase"><h2 id="ttl"></h2><span class="badge" id="ph"></span><span class="dots" id="dots"></span></div>
-  <p id="cap" aria-live="polite"></p>
+  <div id="tale" aria-live="polite"></div>
+  <div id="capwrap"><div class="lbl" id="capl">📐 The physics</div><p id="cap"></p></div>
   <svg id="svg" viewBox="0 0 720 320" role="img" aria-label="Ray diagram"></svg>
   <div class="out" id="out"></div>
   <div class="ctl" id="ctl" hidden></div>
@@ -415,6 +439,65 @@ svg text.g { fill: var(--good); }
       ] }
   ];
 
+  /* ================= story (Lumi's secret) ================= */
+  var CAST = { N: ['📖', 'Story'], L: ['✨', 'Lumi'], M: ['👧', 'Meera'], Y: ['🎩', 'Mr Young'] };
+  var TALES = {
+    huy: { scene: '🪨🌊', place: 'Chapter 1 · Ripples in the Pond',
+      steps: [
+        ['N|Meera drops a pebble into the village pond. Rings spread out. Lumi glows beside her.', 'L|I have a secret, Meera. I\'m not only a ray. I\'m a wave, just like these ripples! Each ring is a wavefront, where everything moves in step.'],
+        ['L|The "ray" you drew in the last chapter is just the direction I travel. It always points straight out, at right angles to my wavefronts.'],
+        ['M|The rings far away look almost straight.', 'L|Yes! From very far away, a giant sphere looks flat. That\'s why sunlight and starlight reach you as plane wavefronts.'],
+        ['L|Here\'s how I move. Every point on my wavefront becomes a tiny new source and sends out its own little wavelet, like gossip in class: everyone who hears it tells their neighbours.'],
+        ['L|Draw a line touching the front of all those wavelets and you get my next wavefront. That\'s Huygens\' principle. The gossip only moves forward, never back.']
+      ],
+      moral: 'A wavefront joins points vibrating in the same phase. Rays are perpendicular to it. Every point is a source of wavelets, and their envelope is the new wavefront.' },
+    wr: { scene: '🥁🪖', place: 'Chapter 2 · The Marching Band',
+      steps: [
+        ['N|On Republic Day, a marching band walks in straight rows across a road.', 'L|My wavefronts are like those rows of marchers. On smooth road they all move at the same speed, so the rows stay straight.'],
+        ['N|The band reaches a muddy field at a slant. The marchers who step into the mud first slow down.', 'M|The whole row swings round!', 'L|That\'s refraction. Work out the geometry and you get sin i / sin r = v₁/v₂, which is Snell\'s law.'],
+        ['L|In the mud the rows bunch up closer, so my wavelength gets shorter. But the drummer still beats at the same rate, so my frequency never changes.'],
+        ['L|Marching from mud back onto road, the rows speed up and swing away from the normal. Too steep, and no row can form outside: total internal reflection again.'],
+        ['N|The band meets a wall and turns back.', 'L|The returning rows travel the same distance in the same time as the ones arriving, so the angle of reflection equals the angle of incidence.']
+      ],
+      moral: 'A wave bends because it changes speed: sin i / sin r = v₁/v₂. The wavelength changes with the medium, but the frequency never does.' },
+    sup: { scene: '👯🎧', place: 'Chapter 3 · Lumi Meets Her Twin',
+      steps: [
+        ['N|Lumi meets her twin sister Lumo. They have exactly the same frequency.', 'L|When we arrive in step, crest on crest, we add up. Twice the height means four times the brightness! That\'s constructive interference.'],
+        ['L|Now Lumo falls half a wavelength behind. My crest meets her trough and we cancel. Darkness!', 'M|Two lights making darkness? That\'s how my noise-cancelling headphones work with sound!'],
+        ['L|Somewhere in between, the brightness follows I = 4I₀ cos²(φ/2). An extra distance of a whole wavelength gives bright, and an extra half wavelength gives dark.'],
+        ['L|If Lumo is weaker than me, we can\'t cancel completely. The darkest spot stays a little bit bright.'],
+        ['M|So why don\'t two bulbs in my room make dark stripes?', 'L|Because those lights aren\'t twins. Their phase jumps around millions of times a second, so the pattern flickers too fast to see. You need coherent sources with a fixed phase difference.']
+      ],
+      moral: 'In step: bright (path difference nλ). Out of step: dark (path difference (n + ½)λ). You only see a steady pattern when the sources are coherent.' },
+    ydse: { scene: '🕯️🎩', place: 'Chapter 4 · Mr Young\'s Two Slits (1801)',
+      steps: [
+        ['N|Meera\'s dream takes her back to London in 1801, where Thomas Young is shining light at a card with two thin slits.', 'Y|The trick is to split one light into two. The halves will be perfect twins!', 'L|The same wavefront reaches both slits, so my two halves start in step.'],
+        ['M|Stripes on the wall, bright, dark, bright!', 'L|Bright where one twin\'s path is a whole number of wavelengths longer than the other\'s, and dark where the difference is half a wavelength. These stripes are fringes.'],
+        ['Y|Now I move the slits further apart...', 'M|The stripes squeeze together!', 'L|The fringe width is β = λD/d, so a bigger d gives narrower fringes.'],
+        ['L|Move the wall further away, so D is bigger, and the stripes spread out.'],
+        ['L|Change my colour. Red me has a longer wavelength and makes wider stripes than violet me. With white light only the centre stays white, and the rest become little rainbows.', 'Y|This proves light is a wave!']
+      ],
+      moral: 'In the double-slit experiment the fringes are equally spaced with β = λD/d. The bright centre comes from zero path difference.' },
+    diff: { scene: '🚪🔊', place: 'Chapter 5 · Squeezing Through the Door',
+      steps: [
+        ['N|Meera can hear her friends talking round the corner, but she can\'t see them.', 'L|Sound waves are long, so they bend round corners easily. Through a wide door I mostly go straight.'],
+        ['M|Make the door narrower!', 'L|Whoa, squeezing through makes me spread out MORE! Bending round edges like this is diffraction. It\'s only noticeable when the gap is close to my tiny wavelength.'],
+        ['L|Look at the pattern: a wide, bright middle band and fainter bands on each side. The middle one is twice as wide as the others: 2λD/a.'],
+        ['L|Red me has a longer wavelength, so I spread more than violet me.', 'M|So longer waves bend round more. That\'s why I can hear round the corner but can\'t see round it!'],
+        ['L|Move the screen closer and the whole pattern shrinks. And unlike Young\'s even stripes, these bands get fainter and fainter as you go out.']
+      ],
+      moral: 'Diffraction is a wave bending round an edge. For a single slit the minima are at a sin θ = nλ, and the central maximum is twice as wide as the others.' },
+    pol: { scene: '🕶️🪢', place: 'Chapter 6 · The Picket Fence',
+      steps: [
+        ['N|Meera shakes a rope that passes through a fence with vertical gaps.', 'L|I\'m a transverse wave: I wiggle sideways while moving forward, in every sideways direction. The fence is like a polaroid. Only the up-and-down wiggle gets through, so half of me is lost.'],
+        ['N|A second fence is turned slowly.', 'M|The wiggle gets smaller... and at 90° it stops completely!', 'L|Crossed polaroids block me totally.'],
+        ['L|In between, I = I₀ cos²θ. That\'s Malus\' law. At 45° exactly half gets through. A sound wave can\'t do this trick, which proves I\'m transverse.'],
+        ['N|At the lake, Meera squints at the glare.', 'L|When I bounce off water or glass, I come back partly polarised.'],
+        ['L|At the Brewster angle, tan i<sub>B</sub> = n, my reflected light is completely polarised. Polaroid sunglasses block exactly that glare!', 'M|Lumi, you\'re a ray AND a wave!', 'N|And that is the end of Lumi\'s secret journey through wave optics.']
+      ],
+      moral: 'Only transverse waves can be polarised. Malus\' law: I = I₀ cos²θ. Brewster angle: tan i<sub>B</sub> = n, where the reflected and refracted rays are at 90°.' }
+  };
+
   /* ================= engine ================= */
   var KEY = 'wv:lesson:1', S = { t: 0, phase: 'learn', step: 0, q: 0, done: [], first: 0, tried: {} };
   try { var sv = JSON.parse(localStorage.getItem(KEY)); if (sv && typeof sv.t === 'number' && sv.t <= TOPICS.length) S = sv; } catch (e) {}
@@ -446,12 +529,29 @@ svg text.g { fill: var(--good); }
     }
     raf = requestAnimationFrame(fr);
   }
+  var STORY = localStorage.getItem('story:on') !== '0';
+  function tell(T0, k) {
+    var el = $('tale'), tl = TALES[T0.id];
+    $('bStory').className = 'stog' + (STORY ? ' on' : ''); $('bStory').textContent = '📖 Story mode: ' + (STORY ? 'on' : 'off'); $('bStory').setAttribute('aria-pressed', STORY);
+    $('capl').hidden = !STORY || !tl;
+    if (!STORY || !tl) { el.hidden = true; el.innerHTML = ''; return; }
+    el.hidden = false;
+    var h = '<div class="scene"><i>' + tl.scene + '</i><span>' + tl.place + '</span></div>';
+    if (k === 'play') h += '<div class="moral"><strong>✨ What Lumi taught us</strong>' + tl.moral + '</div>';
+    else (tl.steps[k] || []).forEach(function (ln, i) {
+      var w = CAST[ln.charAt(0)];
+      h += '<div class="say s' + ln.charAt(0) + '" style="animation-delay:' + (i * 0.7).toFixed(1) + 's"><span class="av" aria-hidden="true">' + w[0] + '</span><div><b class="who">' + w[1] + '</b>' + ln.slice(2) + '</div></div>';
+    });
+    el.innerHTML = h;
+  }
+  $('bStory').onclick = function () { STORY = !STORY; try { localStorage.setItem('story:on', STORY ? '1' : '0'); } catch (e) {} tell(topic(), S.phase === 'play' ? 'play' : S.step); };
   function playStep() {
     var T0 = topic(), k = S.step, j;
     st = assign({}, T0.init);
     for (j = 0; j < k; j++) { assign(st, T0.story[j].set); assign(st, T0.story[j].to); }
     assign(st, T0.story[k].set);
     cap.innerHTML = T0.story[k].cap;
+    tell(T0, k);
     render();
     tween(T0.story[k].to, T0.story[k].dur);
   }
@@ -509,6 +609,7 @@ svg text.g { fill: var(--good); }
         assign(st, T0.play);
         cap.innerHTML = '<b>Your turn.</b> Move the sliders and see how the picture changes. When you are ready, start the questions.';
         $('todo').innerHTML = T0.todo.map(function (x) { return '<li>' + x + '</li>'; }).join('');
+        tell(T0, 'play');
         buildCtl(); render();
         $('bNext').textContent = 'Start the 5 questions ▶';
       } else {
